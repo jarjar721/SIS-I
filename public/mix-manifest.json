@@ -1,0 +1,8 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/Chart.js": "/Chart.js",
+    "/gauge.js": "/gauge.js",
+    "/flot.orderbars": "/flot.orderbars",
+    "/flot.curvedlines": "/flot.curvedlines"
+}
