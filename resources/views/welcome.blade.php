@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>Sistema Administrativo de Investigaciones</title>
 
     <!-- Bootstrap -->
     <link href="{{secure_asset('/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -54,8 +54,8 @@
                 <br />
 
                 <div>
-                  <h1><i class="fas fa-pen-alt"></i> Sis-I</h1>
-                  <p>©2016 All Rights Reserved.</p>
+                  <h1><i class="fas fa-pen-alt"></i>Sistema Administrativo de Investigaciones (Sis-I)</h1>
+                  <p>Proyecto de Sistemas de Base de Datos I</p>
                 </div>
               </div>
             </form>
@@ -90,8 +90,8 @@
                 <br />
 
                 <div>
-                  <h1><i class="fas fa-pen-alt"></i> Sis-I </h1>
-                  <p>©2016 All Rights Reserved.</p>
+                  <h1><i class="fas fa-pen-alt"></i>Sistema Administrativo de Investigaciones (Sis-I)</h1>
+                  <p>Proyecto de Sistemas de Base de Datos I</p>
                 </div>
               </div>
             </form>
