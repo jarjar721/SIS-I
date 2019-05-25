@@ -34,3 +34,4 @@ mix.copy('vendor/flot.curvedlines', 'public/flot.curvedlines');
 mix.copy('vendor/DateJS', 'public/DateJS');
 mix.copy('vendor/jqvmap', 'public/jqvmap');
 mix.copy('vendor/moment', 'public/moment');
+mix.copy('vendor/animate.css', 'public/animate.css');

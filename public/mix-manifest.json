@@ -4,5 +4,6 @@
     "/Chart.js": "/Chart.js",
     "/gauge.js": "/gauge.js",
     "/flot.orderbars": "/flot.orderbars",
-    "/flot.curvedlines": "/flot.curvedlines"
+    "/flot.curvedlines": "/flot.curvedlines",
+    "/animate.css": "/animate.css"
 }

@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+//Login
+Auth::routes(['register' => false]);
+Route::get('login#signup', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('login#signup', 'Auth\RegisterController@register');
+//\Login
 
 Route::get('/home', 'HomeController@index')->name('home');
