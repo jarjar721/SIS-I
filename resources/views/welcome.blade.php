@@ -214,6 +214,9 @@
                     <div class="clearfix"></div>
                     </div>
 
+                <div>
+                  <h1><i class="fas fa-pen-alt"></i>Sistema Administrativo de Investigaciones (Sis-I)</h1>
+                  <p>Proyecto de Sistemas de Base de Datos I</p>
                 </div>
                 </div>
             </div>
