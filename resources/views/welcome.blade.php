@@ -7,26 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>JAR</title>
 
     <!-- Bootstrap -->
     <link href="{{asset('/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- NProgress -->
-    <link href="{{asset('/nprogress/nprogress.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('/nprogress/nprogress.css')}}" rel="stylesheet">
     <!-- iCheck -->
-    <link href="{{asset('/iCheck/skins/flat/green.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('/iCheck/skins/flat/green.css')}}" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
-    <link href="{{asset('/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="{{asset('/jqvmap/dist/jqvmap.min.css')}}" rel="stylesheet"/>
+    <link href="{{secure_asset('/jqvmap/dist/jqvmap.min.css')}}" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="{{asset('/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="{{asset('/build/css/custom.min.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('/build/css/custom.min.css')}}" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -47,7 +47,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2>JAR</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
