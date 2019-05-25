@@ -10,7 +10,7 @@
     <title>JAR</title>
 
     <!-- Bootstrap -->
-    <link href="{{asset('/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- NProgress -->
@@ -43,7 +43,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{asset('images/img.jpg')}}" alt="..." class="img-circle profile_img">
+                <img src="{{secure_asset('images/img.jpg')}}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -188,7 +188,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('images/img.jpg')}}" alt="">John Doe
+                    <img src="{{secure_asset('images/img.jpg')}}" alt="">John Doe
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -212,7 +212,7 @@
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <span class="image"><img src="{{asset('images/img.jpg')}}" alt="Profile Image" /></span>
+                        <span class="image"><img src="{{secure_asset('images/img.jpg')}}" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -224,7 +224,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="{{asset('images/img.jpg')}}" alt="Profile Image" /></span>
+                        <span class="image"><img src="{{secure_asset('images/img.jpg')}}" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -236,7 +236,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="{{asset('images/img.jpg')}}" alt="Profile Image" /></span>
+                        <span class="image"><img src="{{secure_asset('images/img.jpg')}}" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -248,7 +248,7 @@
                     </li>
                     <li>
                       <a>
-                        <span class="image"><img src="{{asset('images/img.jpg')}}" alt="Profile Image" /></span>
+                        <span class="image"><img src="{{secure_asset('images/img.jpg')}}" alt="Profile Image" /></span>
                         <span>
                           <span>John Smith</span>
                           <span class="time">3 mins ago</span>
@@ -980,45 +980,45 @@
     </div>
 
     <!-- jQuery -->
-    <script src="{{asset('jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{secure_asset('jquery/dist/jquery.min.js')}}"></script>
     <!-- Bootstrap -->
-    <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{secure_asset('bootstrap/js/bootstrap.min.js')}}"></script>
     <!-- FastClick -->
-    <script src="{{asset('fastclick/lib/fastclick.js')}}"></script>
+    <script src="{{secure_asset('fastclick/lib/fastclick.js')}}"></script>
     <!-- NProgress -->
-    <script src="{{asset('nprogress/nprogress.js')}}"></script>
+    <script src="{{secure_asset('nprogress/nprogress.js')}}"></script>
     <!-- Chart.js')}} -->
-    <script src="{{asset('Chart.js/dist/Chart.min.js')}}"></script>
+    <script src="{{secure_asset('Chart.js/dist/Chart.min.js')}}"></script>
     <!-- gauge.js')}} -->
-    <script src="{{asset('gauge.js/dist/gauge.min.js')}}"></script>
+    <script src="{{secure_asset('gauge.js/dist/gauge.min.js')}}"></script>
     <!-- bootstrap-progressbar -->
-    <script src="{{asset('bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
+    <script src="{{secure_asset('bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
     <!-- iCheck -->
-    <script src="{{asset('iCheck/icheck.min.js')}}"></script>
+    <script src="{{secure_asset('iCheck/icheck.min.js')}}"></script>
     <!-- Skycons -->
-    <script src="{{asset('skycons/skycons.js')}}"></script>
+    <script src="{{secure_asset('skycons/skycons.js')}}"></script>
     <!-- Flot -->
-    <script src="{{asset('Flot/jquery.flot.js')}}"></script>
-    <script src="{{asset('Flot/jquery.flot.pie.js')}}"></script>
-    <script src="{{asset('Flot/jquery.flot.time.js')}}"></script>
-    <script src="{{asset('Flot/jquery.flot.stack.js')}}"></script>
-    <script src="{{asset('Flot/jquery.flot.resize.js')}}"></script>
+    <script src="{{secure_asset('Flot/jquery.flot.js')}}"></script>
+    <script src="{{secure_asset('Flot/jquery.flot.pie.js')}}"></script>
+    <script src="{{secure_asset('Flot/jquery.flot.time.js')}}"></script>
+    <script src="{{secure_asset('Flot/jquery.flot.stack.js')}}"></script>
+    <script src="{{secure_asset('Flot/jquery.flot.resize.js')}}"></script>
     <!-- Flot plugins -->
-    <script src="{{asset('flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
-    <script src="{{asset('flot-spline/js/jquery.flot.spline.min.js')}}"></script>
-    <script src="{{asset('flot.curvedlines/curvedLines.js')}}"></script>
+    <script src="{{secure_asset('flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
+    <script src="{{secure_asset('flot-spline/js/jquery.flot.spline.min.js')}}"></script>
+    <script src="{{secure_asset('flot.curvedlines/curvedLines.js')}}"></script>
     <!-- DateJS -->
-    <script src="{{asset('DateJS/build/date.js')}}"></script>
+    <script src="{{secure_asset('DateJS/build/date.js')}}"></script>
     <!-- JQVMap -->
-    <script src="{{asset('jqvmap/dist/jquery.vmap.js')}}"></script>
-    <script src="{{asset('jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
-    <script src="{{asset('jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
+    <script src="{{secure_asset('jqvmap/dist/jquery.vmap.js')}}"></script>
+    <script src="{{secure_asset('jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
+    <script src="{{secure_asset('jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="{{asset('moment/min/moment.min.js')}}"></script>
-    <script src="{{asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+    <script src="{{secure_asset('moment/min/moment.min.js')}}"></script>
+    <script src="{{secure_asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="{{asset('build/js/custom.min.js')}}"></script>
+    <script src="{{secure_asset('build/js/custom.min.js')}}"></script>
 	
   </body>
 </html>
