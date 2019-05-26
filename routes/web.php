@@ -10,19 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => ['auth']], function() {
+    //Principal
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    //\Principal
+    
+    //Dashboard del usuario
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    });
+    //\Dashboard del usuario
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
+    Route::get('/home', 'HomeController@index')->name('home');
 });
 
 //Login
-Auth::routes(['register' => false]);
-Route::get('login#signup', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('login#signup', 'Auth\RegisterController@register');
+Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //\Login
-
-Route::get('/home', 'HomeController@index')->name('home');

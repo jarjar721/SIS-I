@@ -24,18 +24,16 @@
 
   <body class="login">
     <div>
-      <a class="hiddenanchor" id="signup"></a>
-      <a class="hiddenanchor" id="signin"></a>
 
       <div class="login_wrapper">
-        <div class="animate form login_form">
+        <div id="register">
           <section class="login_content">
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('register') }}">
             @csrf
 
-                <h1>Iniciar sesión</h1>
+                <h1>Regístrate</h1>
                 <div>
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Usuario" required autocomplete="name" autofocus/>
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Usuario" required autocomplete="name"/>
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -43,7 +41,15 @@
                     @enderror
                 </div>
                 <div>
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" name="password" placeholder="Contraseña" required autocomplete="current-password"/>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email" />
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div>
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" placeholder="Contraseña" required autocomplete="new-password"/>
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -51,35 +57,33 @@
                     @enderror
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-default submit" style="font-size: 12px">
-                        {{ __('Ingresar') }}
-                    </button>
-                    @if (Route::has('password.request'))
-                        <a style="color: #5A738E; margin-bottom: 10px" class="btn btn-link" href="{{ route('password.request') }}">
-                            {{ __('¿Olvidó su contraseña?') }}
-                        </a>
-                    @endif
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" value="{{ old('password') }}" placeholder="Confirmar contraseña" required autocomplete="new-password"/>
                 </div>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link">¿Nuevo a Sis-I?
-                  <a href="register" class="to_register"> Crear una cuenta </a>
-                </p>
+                <div>
+                    <button type="submit" class="btn btn-default submit" style="font-size: 12px">
+                        {{ __('Registrarse') }}
+                    </button>
+                </div>
 
                 <div class="clearfix"></div>
-                <br />
 
-                <div>
-                  <h1><i class="fas fa-pen-alt"></i>Sistema Administrativo de Investigaciones (Sis-I)</h1>
-                  <p>Proyecto de Sistemas de Base de Datos I</p>
+                <div class="separator">
+                    <p class="change_link">¿Ya eres miembro?
+                    <a href="login" class="to_register"> Inicia sesión </a>
+                    </p>
+
+                    <div class="clearfix"></div>
+                    <br />
+
+                    <div>
+                    <h1><i class="fas fa-pen-alt"></i>Sistema Administrativo de Investigaciones (Sis-I)</h1>
+                    <p>Proyecto de Sistemas de Base de Datos I</p>
+                    </div>
                 </div>
-              </div>
             </form>
+
           </section>
         </div>
-
       </div>
     </div>
   </body>
