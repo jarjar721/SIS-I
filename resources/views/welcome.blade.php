@@ -65,7 +65,7 @@
                     <p>Facebook Campaign</p>
                     <div class="">
                     <div class="progress progress_sm" style="width: 76%;">
-                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
+                        <div class="progress-bar bg-blue" role="progressbar" data-transitiongoal="80"></div>
                     </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                     <p>Twitter Campaign</p>
                     <div class="">
                     <div class="progress progress_sm" style="width: 76%;">
-                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
+                        <div class="progress-bar bg-blue" role="progressbar" data-transitiongoal="60"></div>
                     </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                     <p>Conventional Media</p>
                     <div class="">
                     <div class="progress progress_sm" style="width: 76%;">
-                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
+                        <div class="progress-bar bg-blue" role="progressbar" data-transitiongoal="40"></div>
                     </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                     <p>Bill boards</p>
                     <div class="">
                     <div class="progress progress_sm" style="width: 76%;">
-                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
+                        <div class="progress-bar bg-blue" role="progressbar" data-transitiongoal="50"></div>
                     </div>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                     </div>
                     <div class="w_center w_55">
                         <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
+                        <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
                             <span class="sr-only">60% Complete</span>
                         </div>
                         </div>
@@ -155,7 +155,7 @@
                     </div>
                     <div class="w_center w_55">
                         <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
+                        <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
                             <span class="sr-only">60% Complete</span>
                         </div>
                         </div>
@@ -171,7 +171,7 @@
                     </div>
                     <div class="w_center w_55">
                         <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
+                        <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
                             <span class="sr-only">60% Complete</span>
                         </div>
                         </div>
@@ -187,7 +187,7 @@
                     </div>
                     <div class="w_center w_55">
                         <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
+                        <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
                             <span class="sr-only">60% Complete</span>
                         </div>
                         </div>
@@ -203,7 +203,7 @@
                     </div>
                     <div class="w_center w_55">
                         <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
+                        <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
                             <span class="sr-only">60% Complete</span>
                         </div>
                         </div>

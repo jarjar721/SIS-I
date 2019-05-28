@@ -26,7 +26,12 @@
     <link href="{{asset('bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
+    @if(Auth::user()->fk_rol == 1) 
+      <link href="{{asset('build/css/admin.min.css')}}" rel="stylesheet">
+    @else 
+      <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
+    @endif
+
   </head>
 
   <body class="nav-md">
@@ -43,11 +48,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{asset('images/img.jpg')}}" alt="..." class="img-circle profile_img">
+                <img src="{{asset('images/user.png')}}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2> {{Auth::user()->name}}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -188,7 +193,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('images/img.jpg')}}" alt="">John Doe
+                    <img src="{{asset('images/user.png')}}" alt="">{{Auth::user()->name}}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -207,7 +212,7 @@
                 <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="far fa-envelope"></i>
-                    <span class="badge bg-green">6</span>
+                    <span class="badge bg-blue">6</span>
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
