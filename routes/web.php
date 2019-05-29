@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Todo lo que se haga dentro de esto solo podra ser visto si un usuario esta logged
 Route::group(['middleware' => ['auth']], function() {
     //Principal
     Route::get('/', function () {
@@ -23,8 +25,18 @@ Route::group(['middleware' => ['auth']], function() {
     });
     //\Dashboard del usuario
 
+    //Rol
+    Route::get('/rol','RolController@lista');
+    Route::post('/rol/store','RolController@store');
+    Route::get('/rol/edit/{Codigo}','RolController@edit');
+    Route::post('/rol/update','RolController@actualizar');
+    Route::get('/rol/delete/{Codigo}','RolController@delete');
+    Route::get('/roles','RolController@anyData')->name('rol.data');
+    //\Rol
+
     Route::get('/home', 'HomeController@index')->name('home');
 });
+//\
 
 //Login
 Auth::routes();

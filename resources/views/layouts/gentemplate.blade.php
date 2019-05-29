@@ -11,6 +11,8 @@
 
     <!-- Bootstrap -->
     <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Datatable -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- NProgress -->
@@ -24,7 +26,7 @@
     <link href="{{asset('jqvmap/dist/jqvmap.min.css')}}" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="{{asset('bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
-
+  
     <!-- Custom Theme Style -->
     @if(Auth::user()->fk_rol == 1) 
       <link href="{{asset('build/css/admin.min.css')}}" rel="stylesheet">
@@ -51,7 +53,7 @@
                 <img src="{{asset('images/user.png')}}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
+                <span>Bienvenido admin,</span>
                 <h2> {{Auth::user()->name}}</h2>
               </div>
             </div>
@@ -283,6 +285,7 @@
         <div class="right_col" role="main">
           @yield('Content')
         </div>
+        <!-- page content -->
 
         <!-- footer content -->
         <footer>
@@ -297,6 +300,8 @@
 
     <!-- jQuery -->
     <script src="{{asset('jquery/dist/jquery.min.js')}}"></script>
+    <!-- Datatable -->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <!-- Bootstrap -->
     <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
     <!-- FastClick -->
@@ -332,6 +337,9 @@
     <!-- bootstrap-daterangepicker -->
     <script src="{{asset('moment/min/moment.min.js')}}"></script>
     <script src="{{asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+
+    <!-- App scripts -->
+    @stack('scripts')
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('build/js/custom.min.js')}}"></script>

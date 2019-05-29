@@ -29,7 +29,7 @@ left:27px;
 position:absolute;
 top:0}
 .nav.top_menu>li>a,.nav>li>a{position:relative;display:block}.nav.child_menu>li>a,.nav.side-menu>li>a{color:#E7E7E7;font-weight:500}.nav li li.current-page a,.nav.child_menu li li a.active,.nav.child_menu li li a:hover{color:#fff}.nav.child_menu li li.active,.nav.child_menu li li:hover{background:0 0}.nav>li>a{padding:13px 15px 12px}
-.nav.side-menu>li.active,.nav.side-menu>li.current-page{border-right:5px solid #15ad74}
+.nav.side-menu>li.active,.nav.side-menu>li.current-page{border-right:5px solid #2aa0d6}
 .nav li.current-page{background:rgba(255,255,255,.05)}.nav li li li.current-page{background:0 0}.navbar-brand,.navbar-nav>li>a,.site_title{color:#ECF0F1!important;margin-left:0!important}
 .nav.side-menu>li.active>a{text-shadow:rgba(0,0,0,.25) 0 -1px 0;
 background:linear-gradient(#409576,#30745b),#2e8869;
