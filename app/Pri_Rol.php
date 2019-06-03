@@ -1,6 +1,6 @@
 <?php
 
-namespace LogUCAB;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,8 +11,8 @@ class Pri_Rol extends Model
     public $timestamps=false;
 
     protected $fillable =[
-        'fk_rol',  //Rol
-        'fk_privilegio'  //Privilegio
+        'codigo_rol',  //Rol
+        'codigo_pri'  //Privilegio
     ];
 
 }

@@ -1,14 +1,22 @@
-@extends('layouts.app')
-@section('contenido')
-<div class="wrapper">
-	<div class="sidemenu">
-		<a href="/rol">Inicio</a>
-		<a href="/rol/create">Agregar</a>
-		<a href="/rol/lista" style="border-bottom: 0px">Lista</a>
-	</div>
-					<div class="contenido_ppal">
-                        <!--Agregar-->
-                        <h3 style="text-align: center; color: whitesmoke">Crear rol</h3>
+@extends('layouts.gentemplate')
+@section('Content')
+<!-- internal content -->
+	<div class="">
+		<div class="page-title">
+		<div class="title_left">
+			<h3>Roles</h3>
+		</div>
+		</div>
+		<div class="clearfix"></div>
+
+		<div class="x_panel">
+			<div class="x_title">
+				<h2>Crear</h2>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="x_content">
+		
 						<form action="/rol/store" method="POST">
 							@csrf
 

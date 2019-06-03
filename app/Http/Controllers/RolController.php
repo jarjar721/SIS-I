@@ -20,29 +20,29 @@ class RolController extends Controller
     public function __construct(){}
 
     public function store(Request $request){
-        $priv = Pri_Rol::where('fk_rol', Auth::user()->rol)
-        //->where('fk_privilegio',7)
+        $priv = Pri_Rol::where('codigo_rol', Auth::user()->fk_rol)
+        ->where('codigo_pri', 1)
         ->first();
 
         if(isset($priv)){
 
             $request->validate([
-                'Tipo' => 'required'
+                'nombre' => 'required'
             ]);
 
             Rol::create([
-                'Codigo' =>  Rol::max('Codigo')+1,
-                'Tipo' => $request->Tipo
+                'code' =>  Rol::max('code')+1,
+                'nombre' => $request->nombre
             ]);
 
-            $user = Usuario::where('Correo', Auth::user()->email)->first();
+            /*$user = Usuario::where('Correo', Auth::user()->email)->first();
             Audi::create([
                 'Codigo' => Audi::max('Codigo')+1,
                 'Usuario' => Auth::user()->name,
                 'Accion' => 'Crea Rol',
                 'Fecha_Ingreso' => Carbon::now()->format('Y-m-d'),
                 'FK_Observa' => $user->Codigo
-            ]);
+            ]);*/
             Session::flash('message','Rol creado correctamente.');
             return Redirect::to('rol');
 
@@ -67,45 +67,46 @@ class RolController extends Controller
 
     public function edit($Codigo){
 
-            $validated = Rol::where('Codigo', $Codigo)->first();
-            $privs = DB::table('Privilegio')->orderBy('Codigo')->get();
-            $pr = Priv_Rol::where('FK_Accede_Sis', $Codigo)->get();
-            return view("rol.editrol", compact('validated','privs','pr'));
+        $userol = Rol::where('code', Auth::user()->fk_rol)->first();
+        $privs = DB::table('privilegio')->orderBy('code')->get();
+        $pr = Pri_Rol::where('codigo_rol', $Codigo)->get();
+        $validated = Rol::where('code', $Codigo)->first();
+
+        return view("rol.editrol", compact('validated','privs','pr','userol'));
 
     }
 
     public function actualizar(Request $request){
-        $priv = Priv_Rol::where('FK_Accede_Sis',Auth::user()->rol)
-        ->where('FK_Opcion',7)
+        $priv = Pri_Rol::where('codigo_rol',Auth::user()->fk_rol)
+        ->where('codigo_pri', 1)
         ->first();
 
         if(isset($priv)){
 
             $rol = Rol::find($request->Codigo);
-            $privs = DB::table('Privilegio')->orderBy('Codigo')->get();
-            Priv_Rol::where('FK_Accede_Sis', $request->Codigo)->delete();
+            $privs = DB::table('privilegio')->orderBy('code')->get();
+            Pri_Rol::where('codigo_rol', $request->Codigo)->delete();
         
-            $rol->Tipo = $request->Tipo;
+            $rol->nombre = $request->nombre;
             $rol->save();
 
             foreach($privs as $priv){
-                if($request->{$priv->tipo}){
-                    Priv_Rol::create([
-                        'Codigo' => Priv_Rol::max('Codigo')+1,
-                        'FK_Opcion' => $priv->Codigo,
-                        'FK_Accede_Sis' => $rol->Codigo
+                if($request->{$priv->nombre}){
+                    Pri_Rol::create([
+                        'codigo_pri' => $priv->Codigo,
+                        'codigo_rol' => $rol->Codigo
                     ]);
                 }
             }
 
-            $user = Usuario::where('Correo', Auth::user()->email)->first();
+            /*$user = Usuario::where('Correo', Auth::user()->email)->first();
             Audi::create([
                 'Codigo' => Audi::max('Codigo')+1,
                 'Usuario' => Auth::user()->name,
                 'Accion' => 'Modifica Rol',
                 'Fecha_Ingreso' => Carbon::now()->format('Y-m-d'),
                 'FK_Observa' => $user->Codigo
-            ]);
+            ]);*/
             Session::flash('message','Rol modificado correctamente.');
             return Redirect::to('/rol');
         }else{
@@ -115,23 +116,23 @@ class RolController extends Controller
     }
 
     public function delete($Codigo){
-        $priv = Priv_Rol::where('FK_Accede_Sis',Auth::user()->rol)
-        ->where('FK_Opcion',7)
+        $priv = Pri_Rol::where('codigo_rol',Auth::user()->fk_rol)
+        ->where('codigo_pri', 1)
         ->first();
 
         if(isset($priv)){
 
-            Priv_Rol::where('FK_Accede_Sis', $Codigo)->delete();
+            Pri_Rol::where('codigo_rol', $Codigo)->delete();
             Rol::find($Codigo)->delete();
 
-            $user = Usuario::where('Correo', Auth::user()->email)->first();
+            /*$user = Usuario::where('Correo', Auth::user()->email)->first();
             Audi::create([
                 'Codigo' => Audi::max('Codigo')+1,
                 'Usuario' => Auth::user()->name,
                 'Accion' => 'Elimina Rol',
                 'Fecha_Ingreso' => Carbon::now()->format('Y-m-d'),
                 'FK_Observa' => $user->Codigo
-            ]);
+            ]);*/
             Session::flash('messagedel','Rol eliminado correctamente.');
             return redirect('/rol');
         }else{
