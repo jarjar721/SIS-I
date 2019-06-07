@@ -25,6 +25,15 @@ Route::group(['middleware' => ['auth']], function() {
     });
     //\Dashboard del usuario
 
+    //Usuario
+    Route::get('/usuario','UserController@lista');
+    Route::post('/usuario/store','UserController@store');
+    Route::get('/usuario/edit/{Codigo}','UserController@edit');
+    Route::post('/usuario/update','UserController@actualizar');
+    Route::get('/usuario/delete/{Codigo}','UserController@delete');
+    Route::get('/users','UserController@anyData')->name('user.data');
+    //\Usuario
+
     //Rol
     Route::get('/rol','RolController@lista');
     Route::post('/rol/store','RolController@store');

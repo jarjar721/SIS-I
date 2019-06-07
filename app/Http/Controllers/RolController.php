@@ -53,7 +53,7 @@ class RolController extends Controller
     }
     
     public function lista(){
-        return view("rol.lista");
+        return view("usuarios.rol.lista");
     }
 
     public function anyData(){
@@ -72,7 +72,7 @@ class RolController extends Controller
         $pr = Pri_Rol::where('codigo_rol', $Codigo)->get();
         $validated = Rol::where('code', $Codigo)->first();
 
-        return view("rol.editrol", compact('validated','privs','pr','userol'));
+        return view("usuarios.rol.editrol", compact('validated','privs','pr','userol'));
 
     }
 
@@ -108,7 +108,7 @@ class RolController extends Controller
                 'FK_Observa' => $user->Codigo
             ]);*/
             Session::flash('message','Rol modificado correctamente.');
-            return Redirect::to('/rol');
+            return Redirect::to('rol');
         }else{
             Session::flash('message','Usted no tiene permisos para realizar esta accion.');
             return Redirect::back()->withInput(Input::all());
@@ -134,7 +134,7 @@ class RolController extends Controller
                 'FK_Observa' => $user->Codigo
             ]);*/
             Session::flash('messagedel','Rol eliminado correctamente.');
-            return redirect('/rol');
+            return redirect('rol');
         }else{
             Session::flash('message','Usted no tiene permisos para realizar esta accion.');
             return Redirect::back()->withInput(Input::all());

@@ -40,12 +40,12 @@
 
             <div class="row">
 
-              <table class="table table-bordered" id="roles-table">
+              <table class="table table-striped table-bordered dt-responsive nowrap" id="roles-table">
                 <thead>
                     <tr>
-                        <th>Codigo</th>
+                        <th>Código</th>
                         <th>Nombre</th>
-                        <th style="width: 128px">Accion</th>
+                        <th style="width: 128px">Acción</th>
                     </tr>
                 </thead>
               </table>
@@ -61,6 +61,21 @@
 <script>
   $(function() {
       $('#roles-table').DataTable({
+          language: {
+                "emptyTable": "No hay datos disponible en la tabla",
+                "search": "Buscar:",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                "infoEmpty":      "Mostrando 0 a 0 de 0 entradas",
+                "lengthMenu":     "Mostrar _MENU_ entradas",
+                "loadingRecords": "Cargando...",
+                "processing":     "Procesando...",
+                "paginate": {
+                    "first":      "Primera",
+                    "last":       "Última",
+                    "next":       "Siguiente",
+                    "previous":   "Anterior"
+                },
+            },
           processing: true,
           serverSide: true,
           ajax: '{!! route('rol.data') !!}',

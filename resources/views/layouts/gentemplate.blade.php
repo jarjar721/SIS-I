@@ -12,7 +12,7 @@
     <!-- Bootstrap -->
     <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Datatable -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- NProgress -->
@@ -66,10 +66,10 @@
                 <div class="menu_section">
                   <h3>General</h3>
                   <ul class="nav side-menu">
-                    <li><a><i class="fas fa-home"></i> Home <span class="fas fa-chevron-down" style="float:right"></span></a>
+                    <li><a><i class="fas fa-list"></i> Usuarios <span class="fas fa-chevron-down" style="float:right"></span></a>
                       <ul class="nav child_menu">
                         <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="index2.html">Dashboard2</a></li>
+                        <li><a href="usuario">Lista usuarios</a></li>
                         <li><a href="rol">Roles</a></li>
                       </ul>
                     </li>
@@ -301,7 +301,8 @@
     <!-- jQuery -->
     <script src="{{asset('jquery/dist/jquery.min.js')}}"></script>
     <!-- Datatable -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
     <!-- Bootstrap -->
     <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
     <!-- FastClick -->
