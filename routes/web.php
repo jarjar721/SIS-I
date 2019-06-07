@@ -27,7 +27,6 @@ Route::group(['middleware' => ['auth']], function() {
 
     //Usuario
     Route::get('/usuario','UserController@lista');
-    Route::post('/usuario/store','UserController@store');
     Route::get('/usuario/edit/{Codigo}','UserController@edit');
     Route::post('/usuario/update','UserController@actualizar');
     Route::get('/usuario/delete/{Codigo}','UserController@delete');

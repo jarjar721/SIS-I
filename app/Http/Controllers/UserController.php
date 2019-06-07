@@ -20,11 +20,6 @@ use DB;
 class UserController extends Controller
 {
     public function __construct(){}
-
-    public function create(){
-        $rols = Rol::select()->orderBy('Codigo', 'asc')->get();
-        return view("persona.usuario.createuser", compact('rols'));
-    }
     
     public function lista(){
         $users = User::leftjoin('rol','rol.code','=','usuario.fk_rol')
