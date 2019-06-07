@@ -43,6 +43,22 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/roles','RolController@anyData')->name('rol.data');
     //\Rol
 
+    Route::get('/nueva_investigacion', function () {
+        return view('nuevainvestigacion');
+    });
+    
+    Route::get('/ver_investigacion', function () {
+        return view('ver_investigacion');
+    });
+    
+    Route::get('/configuracion', function () {
+        return view('configuracion');
+    });
+    
+    Route::get('/users', function () {
+        return view('users');
+    });
+
     Route::get('/home', 'HomeController@index')->name('home');
 });
 //\
