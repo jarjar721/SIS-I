@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>Sistema de administración de investigaciones | </title>
 
     <!-- Bootstrap -->
     <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

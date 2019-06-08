@@ -3,7 +3,7 @@
     <!-- page content -->
             <div class="page-title">
               <div class="title_left">
-                <h3>Nueva investigación</h3>
+                <h3>Investigación</h3>
               </div>
             </div>
             <div class="clearfix"></div>
@@ -13,7 +13,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Definamos una idea <small>Temática de la investigación</small></h2>
+                    <h2>Nueva <small>Defina temática de la investigación</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>

@@ -43,19 +43,15 @@ Route::group(['middleware' => ['auth']], function() {
     //\Rol
 
     Route::get('/nueva_investigacion', function () {
-        return view('nuevainvestigacion');
+        return view('investigacion.nueva');
     });
     
     Route::get('/ver_investigacion', function () {
-        return view('ver_investigacion');
+        return view('investigacion.consultar');
     });
     
     Route::get('/configuracion', function () {
-        return view('configuracion');
-    });
-    
-    Route::get('/users', function () {
-        return view('users');
+        return view('usuarios.invconf');
     });
 
     Route::get('/home', 'HomeController@index')->name('home');
