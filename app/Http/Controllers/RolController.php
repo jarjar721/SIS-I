@@ -59,8 +59,8 @@ class RolController extends Controller
     public function anyData(){
         return Datatables::of(Rol::query())
         ->addColumn('action', function ($rol) {
-            return '<a href="rol/edit/'.$rol->code.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>
-            <a href="rol/delete/'.$rol->code.'" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>';
+            return '<a href="rol/modificar/'.$rol->code.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>
+            <a href="rol/eliminar/'.$rol->code.'" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>';
         })
         ->make(true);
     }
@@ -137,7 +137,7 @@ class RolController extends Controller
             return redirect('rol');
         }else{
             Session::flash('message','Usted no tiene permisos para realizar esta accion.');
-            return Redirect::back()->withInput(Input::all());
+            return Redirect::back();
         }
     }
 }

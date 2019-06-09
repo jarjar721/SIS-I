@@ -50,7 +50,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{asset('images/user.png')}}" alt="..." class="img-circle profile_img">
+                <img src="{{asset('images/'.Auth::user()->image)}}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bienvenido admin,</span>
@@ -68,7 +68,7 @@
                   <ul class="nav side-menu">
                     <li><a><i class="fas fa-list"></i> Usuarios <span class="fas fa-chevron-down" style="float:right"></span></a>
                       <ul class="nav child_menu">
-                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="dashboard">Dashboard</a></li>
                         <li><a href="usuario">Lista usuarios</a></li>
                         <li><a href="rol">Roles</a></li>
                       </ul>
@@ -195,7 +195,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('images/user.png')}}" alt="">{{Auth::user()->name}}
+                    <img src="{{asset('images/'.Auth::user()->image)}}" alt="">{{Auth::user()->name}}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

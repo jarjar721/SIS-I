@@ -27,12 +27,12 @@
                 <table class="table table-striped table-bordered dt-responsive nowrap" id="users-table">	
                     <thead>
                         <tr>
-                        <th>ID</th>
-                        <th>Usuario</th>
-                        <th>Email</th>
-                        <th>Rol</th>
-                        <th>Fecha de creación</th>
-                        <th>Acción</th>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Fecha de creación</th>
+                            <th style="width:128px; text-align:center">Acción</th>
                         </tr>
                     </thead>
                 </table>

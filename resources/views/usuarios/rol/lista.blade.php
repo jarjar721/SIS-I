@@ -45,7 +45,7 @@
                     <tr>
                         <th>Código</th>
                         <th>Nombre</th>
-                        <th style="width: 128px">Acción</th>
+                        <th style="width: 128px; text-align:center">Acción</th>
                     </tr>
                 </thead>
               </table>

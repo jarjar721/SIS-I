@@ -21,38 +21,36 @@ Route::group(['middleware' => ['auth']], function() {
     
     //Dashboard del usuario
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('usuarios.dashboard');
     });
     //\Dashboard del usuario
 
     //Usuario
     Route::get('/usuario','UserController@lista');
-    Route::get('/usuario/edit/{Codigo}','UserController@edit');
+    Route::get('/usuario/modificar/{Codigo}','UserController@edit');
     Route::post('/usuario/update','UserController@actualizar');
-    Route::get('/usuario/delete/{Codigo}','UserController@delete');
+    Route::get('/usuario/eliminar/{Codigo}','UserController@delete');
     Route::get('/users','UserController@anyData')->name('user.data');
+    Route::post('image-upload', 'UserController@imageUploadPost')->name('image.upload.post');
     //\Usuario
 
     //Rol
     Route::get('/rol','RolController@lista');
     Route::post('/rol/store','RolController@store');
-    Route::get('/rol/edit/{Codigo}','RolController@edit');
+    Route::get('/rol/modificar/{Codigo}','RolController@edit');
     Route::post('/rol/update','RolController@actualizar');
-    Route::get('/rol/delete/{Codigo}','RolController@delete');
+    Route::get('/rol/eliminar/{Codigo}','RolController@delete');
     Route::get('/roles','RolController@anyData')->name('rol.data');
     //\Rol
 
+    //Investigacion
     Route::get('/nueva_investigacion', function () {
         return view('investigacion.nueva');
     });
-    
     Route::get('/ver_investigacion', function () {
         return view('investigacion.consultar');
     });
-    
-    Route::get('/configuracion', function () {
-        return view('usuarios.invconf');
-    });
+    //\Investigacion
 
     Route::get('/home', 'HomeController@index')->name('home');
 });
