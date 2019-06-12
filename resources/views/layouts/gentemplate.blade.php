@@ -33,6 +33,7 @@
     @else 
       <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
     @endif
+    @yield('css')
 
   </head>
 
@@ -341,6 +342,7 @@
 
     <!-- App scripts -->
     @stack('scripts')
+    @stack('js')
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('build/js/custom.min.js')}}"></script>

@@ -11,6 +11,7 @@ use App\Pri_Rol;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Datatables;
 use Session;
@@ -74,38 +75,21 @@ class UserController extends Controller
         ->first();
 
         if(isset($priv)){
-            $usuario = User::where('id', $request->Codigo);
-            $rols = Rol::select()->orderBy('Codigo', 'asc')->get();
-            $usuario->FK_Sele_Concede = $request->FK_Sele_Concede;
-            $usuario->save();
+            $usuario = User::where('id', $request->id);
+            $rols = Rol::select()->orderBy('code', 'asc')->get();
 
-            if(isset($us) && $usuario->Codigo != $us->Codigo && $request->Nombre == $us->Nombre){
-                Session::flash('message','El nombre de usuario '.$request->Nombre.' ya existe.');
+            $us = User::where('usuario.email', $request->email)->first();
+        
+            if(isset($us) && $usuario->id != $us->id && $request->email == $us->email){
+                Session::flash('message','El correo '.$request->email.' ya existe.');
                 return Redirect::back()->withInput(Input::all())->with('rols', $rols);
-            }else{
-                $us = Usuario::where('Usuario.Correo', $request->Correo)->first();
-            
-                if(isset($us) && $usuario->Codigo != $us->Codigo && $request->Correo == $us->Correo){
-                    Session::flash('message','El correo '.$request->Correo.' ya existe.');
-                    return Redirect::back()->withInput(Input::all())->with('rols', $rols);
-                }
             }
-            $us = User::where('email', $request->Correo)->first();
-            $usuario->Nombre = $request->Nombre;
-            $usuario->Correo = $request->Correo;
-            $usuario->save();
-            if(is_null($us)){
-            User::create([
-                "name" => $request->Nombre,
-                "email" => $request->Correo,
-                "rol" => $request->FK_Sele_Concede
-            ]);
-            }else{
-                $us->name = $request->Nombre;
-                $us->email = $request->Correo;
-                $us->rol = $request->FK_Sele_Concede;
-                $us->save();
-            }
+
+            $user->fill([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password)
+            ])->update();
 
             /*$user = Usuario::where('Correo', Auth::user()->email)->first();
             Audi::create([

@@ -46,11 +46,11 @@
                     @csrf
                     <div class="row">
 
-                        <div class="col-md-6">
-                            <input type="file" name="image" class="form-control">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="file" name="image" value="{{old('image', Auth::user()->image)}}" class="form-control">
                         </div>
           
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <button type="submit" class="btn btn-success">Subir</button>
                         </div>
 
@@ -59,7 +59,30 @@
                 <!-- /Subir imagen -->
                 <h4>Modificar datos</h4>
                 <!-- User data -->
-                
+                <form action="/usuario/update" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" name="id" hidden type="number">
+                <div class="item form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de usuario <span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" value="{{old('name', Auth::user()->name)}}" name="name" placeholder="Usuario ej: Jon Doe" type="text">
+                  </div>
+                </div>
+                <div class="item form-group">
+                  <label for="email" class="control-label col-md-3">Correo</label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="email" type="email" name="email" value="{{old('email', Auth::user()->email)}}" class="form-control col-md-7 col-xs-12">
+                  </div>
+                <div class="item form-group">
+                  <label for="password" class="control-label col-md-3">Contraseña</label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="password" type="password" name="password" value="{{old('password', Auth::user()->password)}}" data-validate-length="6,8" class="form-control col-md-7 col-xs-12">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <button type="submit" class="btn btn-success">Modificar</button>
+                </div>
                 <!-- /User data -->
               </div>
             </div>
