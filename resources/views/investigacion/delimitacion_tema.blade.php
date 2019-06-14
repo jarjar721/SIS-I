@@ -125,9 +125,9 @@
                             <td>Customer Service</td>
                             <td>(313) 555-5735</td>
                             <td>
-                                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                <a class="add" title="Add" style="cursor:pointer" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                <a class="edit" title="Edit" style="cursor:pointer" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                <a class="delete" title="Delete" style="cursor:pointer" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                             </td>
                         </tr>
                         <tr>
@@ -135,9 +135,9 @@
                             <td>Human Resources</td>
                             <td>(503) 555-9931</td>
                             <td>
-                                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                <a class="add" title="Add" style="cursor:pointer" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                <a class="edit" title="Edit" style="cursor:pointer" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                <a class="delete" title="Delete" style="cursor:pointer" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                             </td>
                         </tr>
                     </tbody>

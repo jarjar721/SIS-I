@@ -50,9 +50,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/investigación/ver', function () {
         return view('investigacion.consultar');
     });
-    Route::get('/investigación/delimitación_tema', function () {
-        return view('investigacion.delimitacion_tema');
-    });
+    Route::get('/investigación/delimitación_tema', 'InvestigacionController@d_tema');
     //\Investigacion
 
     Route::get('/home', 'HomeController@index')->name('home');
