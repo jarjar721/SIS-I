@@ -44,13 +44,13 @@ Route::group(['middleware' => ['auth']], function() {
     //\Rol
 
     //Investigacion
-    Route::get('/nueva_investigacion', function () {
+    Route::get('/investigación/nueva', function () {
         return view('investigacion.nueva');
     });
-    Route::get('/ver_investigacion', function () {
+    Route::get('/investigación/ver', function () {
         return view('investigacion.consultar');
     });
-    Route::get('/delimitacion_tema', function () {
+    Route::get('/investigación/delimitación_tema', function () {
         return view('investigacion.delimitacion_tema');
     });
     //\Investigacion

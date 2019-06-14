@@ -68,7 +68,7 @@
             ajax: '{!! route('user.data') !!}',
             columns: [
                 { data: 'id', name: 'id' },
-                { data: 'name', name: 'name' },
+                { data: 'username', name: 'username' },
                 { data: 'email', name: 'email' },
                 { data: 'rol', name: 'rol' },
                 { data: 'created_at', name: 'created_at' },

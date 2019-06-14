@@ -86,7 +86,7 @@ class UserController extends Controller
             }
 
             $user->fill([
-                'name' => $request->name,
+                'username' => $request->username,
                 'email' => $request->email,
                 'password' => Hash::make($request->password)
             ])->update();

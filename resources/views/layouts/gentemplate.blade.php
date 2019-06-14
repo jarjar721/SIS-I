@@ -55,7 +55,7 @@
               </div>
               <div class="profile_info">
                 <span>Bienvenido admin,</span>
-                <h2> {{Auth::user()->name}}</h2>
+                <h2> {{Auth::user()->username}}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -74,9 +74,9 @@
                         <li><a href="rol">Roles</a></li>
                       </ul>
                     </li>
-                    <li><a><i class="fas fa-edit"></i> Forms <span class="fas fa-chevron-down" style="float:right"></span></a>
+                    <li><a><i class="fas fa-edit"></i> Investigación <span class="fas fa-chevron-down" style="float:right"></span></a>
                       <ul class="nav child_menu">
-                        <li><a href="form.html">General Form</a></li>
+                        <li><a href="/investigación/delimitación_tema">Delimitación de tema</a></li>
                         <li><a href="form_advanced.html">Advanced Components</a></li>
                         <li><a href="form_validation.html">Form Validation</a></li>
                         <li><a href="form_wizards.html">Form Wizard</a></li>
@@ -196,7 +196,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('images/'.Auth::user()->image)}}" alt="">{{Auth::user()->name}}
+                    <img src="{{asset('images/'.Auth::user()->image)}}" alt="">{{Auth::user()->username}}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

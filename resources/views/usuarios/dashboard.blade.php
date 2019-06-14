@@ -13,7 +13,7 @@
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
               <div class="x_title">
-                <h2>Perfil {{Auth::user()->name}} <small>Modifique su perfil</small></h2>
+                <h2>Perfil {{Auth::user()->username}} <small>Modifique su perfil</small></h2>
                 <ul class="nav navbar-right panel_toolbox">
                   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                   </li>
@@ -61,12 +61,12 @@
                 <!-- User data -->
                 <form action="/usuario/update" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" name="id" hidden type="number">
+                <input id="id" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" name="id" hidden type="number">
                 <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de usuario <span class="required">*</span>
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">Nombre de usuario <span class="required">*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" value="{{old('name', Auth::user()->name)}}" name="name" placeholder="Usuario ej: Jon Doe" type="text">
+                    <input id="username" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" value="{{old('username', Auth::user()->username)}}" name="username" placeholder="Usuario ej: Jon Doe" type="text">
                   </div>
                 </div>
                 <div class="item form-group">

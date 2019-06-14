@@ -35,8 +35,8 @@
 
                 <h1>Iniciar sesión</h1>
                 <div>
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Usuario" required autocomplete="name" autofocus/>
-                    @error('name')
+                    <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="Usuario" required autocomplete="username" autofocus/>
+                    @error('username')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
