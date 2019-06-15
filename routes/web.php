@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth']], function() {
         return view('investigacion.consultar');
     });
     Route::get('/investigación/delimitación_tema', 'InvestigacionController@d_tema');
+    Route::post('/investigacion/store', 'InvestigacionController@store');
     //\Investigacion
 
     Route::get('/home', 'HomeController@index')->name('home');
