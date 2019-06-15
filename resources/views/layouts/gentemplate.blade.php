@@ -69,9 +69,9 @@
                   <ul class="nav side-menu">
                     <li><a><i class="fas fa-list"></i> Usuarios <span class="fas fa-chevron-down" style="float:right"></span></a>
                       <ul class="nav child_menu">
-                        <li><a href="dashboard">Dashboard</a></li>
-                        <li><a href="usuario">Lista usuarios</a></li>
-                        <li><a href="rol">Roles</a></li>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/usuario">Lista usuarios</a></li>
+                        <li><a href="/rol">Roles</a></li>
                       </ul>
                     </li>
                     <li><a><i class="fas fa-edit"></i> Investigación <span class="fas fa-chevron-down" style="float:right"></span></a>

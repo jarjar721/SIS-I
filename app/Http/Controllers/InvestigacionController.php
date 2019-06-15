@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Pri_Rol;
+use App\U_Estudio;
 use App\EH;
 use App\Temporalidad;
 use App\Evento;
@@ -35,12 +36,34 @@ class InvestigacionController extends Controller
             'pregunta' => $request->eh
         ]);
 
+        Pregunta::create([
+            'pregunta'
+        ]);
+
+        U_Estudio::create([
+            'unidad_estudio' => $request->unidad_estudio,
+            /*if() fk_pregunta*/
+        ]);
+
+        Contexto::create([
+            'contexto' => $request->contexto,
+            /*if() fk_pregunta*/
+        ]);
+
         Temporalidad::create([
             'fecha_inicio' => $request->temp_inicio,
             'fecha_fin' => $request->temp_fin,
-            /*if()*/
+            /*if() fk_pregunta*/
         ]);
 
+        Evento::create([
+            'nombre' => $request->evento,
+            /*'tipo' => ,
+            'fk_evento',
+            'fk_investigacion',
+            'fk_unidad_informacion',
+            'fk_pregunta'*/
+        ]);
 
     }
 }
