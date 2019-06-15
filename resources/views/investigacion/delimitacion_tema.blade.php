@@ -195,8 +195,8 @@
                                         <div class="controls">
                                             <div class="input-prepend input-group">
                                                 <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                                <input type="date" name="temp_inicio" id="temp_inicio" class="form-control"  style="width: 50%"/>
-                                                <input type="date" name="temp_fin" id="temp_fin" class="form-control"  style="width: 50%"/>
+                                                <input type="date" name="temp_inicio" id="temp_inicio" class="form-control" style="width: 50%"/>
+                                                <input type="date" name="temp_fin" id="temp_fin" class="form-control" style="width: 50%"/>
                                             </div>
                                         </div>
                                     </div>
@@ -273,28 +273,30 @@
             '<div class="panel-body">' +
             '<div class="row">' +
             '<div class="form-group">' +
-                '<div class="col-md-3 col-sm-3 col-xs-12">' +
+                '<div class="col-md-3 col-sm-3 col-xs-12" style="width: 50%">' +
+                    '<label>Contexto</label>' +
+                    '<input type="text" id="contexto' + count_pregunta + '" class="form-control" name="contexto' + count_pregunta + '" required />' +
+                '</div>' +
+                '<div class="col-md-3 col-sm-3 col-xs-12" style="width: 50%">' +
+                    '<label>Evento</label>' +
+                    '<input type="text" id="evento' + count_pregunta + '" class="form-control" name="evento' + count_pregunta + '" required />' +
+                '</div>' +
+                '<div class="col-md-3 col-sm-3 col-xs-12" style="width: 50%">' +
                     '<label>Temporalidad</label>' +
                     '<fieldset>' +
                         '<div class="control-group">' +
                             '<div class="controls">' +
                                 '<div class="input-prepend input-group">' +
                                     '<span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>' +
-                                    '<input type="text" name="temporalidad' + count_pregunta + '" id="temporalidad' + count_pregunta + '" class="form-control" value="01/01/16 - 01/25/16" />' +
+                                    '<input type="date" name="temp_inicio' + count_pregunta + '" id="temp_inicio' + count_pregunta + '" class="form-control" style="width: 50%" />' +
+                                    '<input type="date" name="temp_fin' + count_pregunta + '" id="temp_fin' + count_pregunta + '" class="form-control" style="width: 50%" />' +
                                 '</div>' +
                             '</div>' +
                         '</div>' +
                     '</fieldset>' +
                 '</div>' +
-                '<div class="col-md-3 col-sm-3 col-xs-12">' +
-                    '<label>Contexto</label>' +
-                    '<input type="text" id="contexto' + count_pregunta + '" class="form-control" name="contexto' + count_pregunta + '" required />' +
-                '</div>' +
-                '<div class="col-md-3 col-sm-3 col-xs-12">' +
-                    '<label>Evento</label>' +
-                    '<input type="text" id="evento' + count_pregunta + '" class="form-control" name="evento' + count_pregunta + '" required />' +
-                '</div>' +
-                '<div class="col-md-3 col-sm-3 col-xs-12">' +
+
+                '<div class="col-md-3 col-sm-3 col-xs-12" style="width: 50%">' +
                     '<label>Unidad de estudio</label>' +
                     '<input type="text" id="unidad_estudio' + count_pregunta + '" class="form-control" name="unidad_estudio' + count_pregunta + '" required />' +
                 '</div>' +

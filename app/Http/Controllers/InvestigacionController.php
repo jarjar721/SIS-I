@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Pri_Rol;
 use App\U_Estudio;
-use App\EH;
 use App\Temporalidad;
 use App\Evento;
 use App\Pregunta;
@@ -32,12 +31,14 @@ class InvestigacionController extends Controller
 
     public function store(Request $request){
 
-        EH::create([
-            'pregunta' => $request->eh
+        Investigacion::create([
+            'titulo' => ,
+            'fk_usuario' => Auth::user()->id
         ]);
 
         Pregunta::create([
-            'pregunta'
+            'pregunta' => $request->eh,
+            'pregunta' => 'Principal',
         ]);
 
         U_Estudio::create([
