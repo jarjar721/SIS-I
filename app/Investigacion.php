@@ -10,6 +10,8 @@ class Investigacion extends Model
 
     protected $primaryKey='id';
 
+    public $timestamps=false;
+
     protected $fillable =[
         'titulo',
         'fk_usuario'

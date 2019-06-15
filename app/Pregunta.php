@@ -10,6 +10,8 @@ class Pregunta extends Model
 
     protected $primaryKey='id';
 
+    public $timestamps=false;
+
     protected $fillable =[
         'pregunta',
         'fk_pregunta',  //Recursiva

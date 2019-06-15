@@ -10,6 +10,8 @@ class Temporalidad extends Model
 
     protected $primaryKey='id';
 
+    public $timestamps=false;
+
     protected $fillable =[
         'fecha_inicio',
         'fecha_fin',

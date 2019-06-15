@@ -10,6 +10,8 @@ class U_Estudio extends Model
 
     protected $primaryKey='id';
 
+    public $timestamps=false;
+
     protected $fillable =[
         'unidad_estudio',
         'fk_pregunta'

@@ -10,6 +10,8 @@ class Evento extends Model
 
     protected $primaryKey='id';
 
+    public $timestamps=false;
+
     protected $fillable =[
         'nombre',
         'tipo',

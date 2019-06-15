@@ -10,6 +10,8 @@ class Contexto extends Model
 
     protected $primaryKey='id';
 
+    public $timestamps=false;
+
     protected $fillable =[
         'contexto',
         'fk_pregunta'
