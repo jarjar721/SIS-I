@@ -178,6 +178,7 @@
         var pregunta = $("#pregunta").val();
         createpregunta(pregunta);
         document.getElementById('agregar-pregunta').disabled = true;
+        if(count_pregunta == 1) document.getElementById('optionsRadiop1').checked = true;
     });
 
     //create task
@@ -220,10 +221,10 @@
                                 '</div>' +
                                 '<div class="col-md-12 col-sm-12 col-xs-12">' +
                                     '<label style="width: 50%; float: left">' +
-                                        '<input type="radio" checked="" value="Primaria" id="optionsRadios' + count_pregunta + '" name="optionsRadios' + count_pregunta + '"> Selecione esta opcion si esta pregunta es el enunciado holopráxico' +
+                                        '<input type="radio" class="pradio" value="Primaria" onclick="seleccion(this)" id="optionsRadiop' + count_pregunta + '" name="optionsRadios' + count_pregunta + '"> Selecione esta opcion si esta pregunta es el enunciado holopráxico' +
                                     '</label>' +
                                     '<label style="width: 50%">' +
-                                        '<input type="radio" value="Secundaria" id="optionsRadios' + count_pregunta + '" name="optionsRadios' + count_pregunta + '"> Selecione esta opcion si esta pregunta es pregunta secundaria' +
+                                        '<input type="radio" checked value="Secundaria" id="optionsRadios' + count_pregunta + '" name="optionsRadios' + count_pregunta + '"> Selecione esta opcion si esta pregunta es pregunta secundaria' +
                                     '</label>' +
                                 '</div>' +
                             '</div>' +
@@ -245,6 +246,16 @@
     //remove done task from list
     function removeItem(element) {
         $(element).parent().parent().parent().remove();
+    }
+
+    function seleccion(myRadio){
+        var radioId = myRadio.id;
+        var allInp = document.getElementsByTagName("input");
+        for (i=0; i<allInp.length; i++){
+            if(allInp[i].type == "radio" && allInp[i].value == "Primaria" && allInp[i].id != myRadio){
+                allInp[i].checked = false;
+            }
+        }
     }
 </script>
 
