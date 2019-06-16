@@ -252,9 +252,13 @@
         var radioId = myRadio.id;
         var allInp = document.getElementsByTagName("input");
         for (i=0; i<allInp.length; i++){
-            if(allInp[i].type == "radio" && allInp[i].value == "Primaria" && allInp[i].id != myRadio){
-                allInp[i].checked = false;
+            if(allInp[i].type == "radio" && allInp[i].value == "Secundaria"){
+                allInp[i].checked = true;
             }
+            if(allInp[i].id == myRadio.id) allInp[i].checked = true;
+        }
+        for (i=0; i<allInp.length; i++){
+            if(allInp[i].id == myRadio.id) allInp[i].checked = true;
         }
     }
 </script>
