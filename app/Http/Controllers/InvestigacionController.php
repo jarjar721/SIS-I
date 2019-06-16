@@ -39,6 +39,57 @@ class InvestigacionController extends Controller
         //\Fin creacion de la investigacion
 
         //Ciclo para llenado de la investigacion
+        $i = 1;
+        $data = "optionsRadios".$i;
+
+        //Se crea primero pregunta principal:
+        while ($request->$data != "Primaria"){ 
+            $i++;
+            $data = "optionsRadios".$i;
+        }
+        $principal = Pregunta::create([
+            'tipo' => $request->$data,
+            $data = "pregunta".$i,
+            'pregunta' => $request->$data,
+            'fk_investigacion' => $investigacion->id
+        ]);
+
+        //Rellenado de resto de datos:
+        $data = "unidad_estudio".$i;
+        
+        U_Estudio::create([
+            'unidad_estudio' => $request->$data,
+            'fk_pregunta' => $principal->id
+        ]);
+
+        $data = "contexto".$i;
+
+        Contexto::create([
+            'contexto' => $request->$data,
+            'fk_pregunta' => $principal->id
+        ]);
+
+        $data = "temp_inicio".$i;
+
+        Temporalidad::create([
+            'fecha_inicio' => $request->$data,
+            $data = "fecha_fin".$i,
+            'fecha_fin' => $request->$data,
+            'fk_pregunta' => $principal->id
+        ]);
+
+        $data = "evento".$i;
+
+        Evento::create([
+            'nombre' => $request->$data,
+            /*'tipo' => ,
+            'fk_evento' =>,
+            'fk_investigacion' => $investigacion->id,
+            'fk_unidad_informacion' =>,*/
+            'fk_pregunta' => $principal->id
+        ]);
+        //\ Fin creado principal
+
         $i = 0;
 
         while ($i != $request->iteracion){
@@ -47,36 +98,51 @@ class InvestigacionController extends Controller
 
             //Comprobar si existe ese dato en esta iteracion:
             if(!is_null($request->$data)){
-                Pregunta::create([
-                    'pregunta' => $request->eh,
-                    'tipo' => $request->$data,
-                    'fk_investigacion' => $investigacion->id
-                ]);
+                //Agregar solo secundarias:
+                if($request->$data != "Principal"){
+                    $secundaria = Pregunta::create([
+                        'tipo' => $request->$data,
+                        $data = "pregunta".$i,
+                        'pregunta' => $request->$data,
+                        'fk_investigacion' => $investigacion->id,
+                        'fk_pregunta' => $principal->id
+                    ]);
+
+                    //Rellenado de resto de datos:
+                    $data = "unidad_estudio".$i;
         
-                U_Estudio::create([
-                    'unidad_estudio' => $request->unidad_estudio,
-                    /*if() fk_pregunta*/
-                ]);
-        
-                Contexto::create([
-                    'contexto' => $request->contexto,
-                    /*if() fk_pregunta*/
-                ]);
-        
-                Temporalidad::create([
-                    'fecha_inicio' => $request->temp_inicio,
-                    'fecha_fin' => $request->temp_fin,
-                    /*if() fk_pregunta*/
-                ]);
-        
-                Evento::create([
-                    'nombre' => $request->evento,
-                    /*'tipo' => ,
-                    'fk_evento',
-                    'fk_investigacion',
-                    'fk_unidad_informacion',
-                    'fk_pregunta'*/
-                ]);
+                    U_Estudio::create([
+                        'unidad_estudio' => $request->$data,
+                        'fk_pregunta' => $secundaria->id
+                    ]);
+            
+                    $data = "contexto".$i;
+            
+                    Contexto::create([
+                        'contexto' => $request->$data,
+                        'fk_pregunta' => $secundaria->id
+                    ]);
+            
+                    $data = "temp_inicio".$i;
+            
+                    Temporalidad::create([
+                        'fecha_inicio' => $request->$data,
+                        $data = "fecha_fin".$i,
+                        'fecha_fin' => $request->$data,
+                        'fk_pregunta' => $secundaria->id
+                    ]);
+            
+                    $data = "evento".$i;
+            
+                    Evento::create([
+                        'nombre' => $request->$data,
+                        /*'tipo' => ,
+                        'fk_evento' =>,
+                        'fk_investigacion' => $investigacion->id,
+                        'fk_unidad_informacion' =>,*/
+                        'fk_pregunta' => $secundaria->id
+                    ]);
+                }
             };
 
         }

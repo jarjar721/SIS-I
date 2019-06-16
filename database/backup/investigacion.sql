@@ -5,7 +5,7 @@
 -- Dumped from database version 11.3 (Ubuntu 11.3-1.pgdg16.04+1)
 -- Dumped by pg_dump version 11.3
 
--- Started on 2019-06-14 14:44:49
+-- Started on 2019-06-15 20:35:43
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -18,9 +18,8 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DROP DATABASE de7cii1u0v9dve;
 --
--- TOC entry 4076 (class 1262 OID 937389)
+-- TOC entry 4053 (class 1262 OID 937389)
 -- Name: de7cii1u0v9dve; Type: DATABASE; Schema: -; Owner: zesixxdowbqgyx
 --
 
@@ -47,7 +46,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 210 (class 1259 OID 7512231)
+-- TOC entry 206 (class 1259 OID 7512231)
 -- Name: contexto; Type: TABLE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -61,7 +60,7 @@ CREATE TABLE public.contexto (
 ALTER TABLE public.contexto OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 211 (class 1259 OID 7512237)
+-- TOC entry 207 (class 1259 OID 7512237)
 -- Name: contexto_id_seq; Type: SEQUENCE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -76,8 +75,8 @@ CREATE SEQUENCE public.contexto_id_seq
 ALTER TABLE public.contexto_id_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4080 (class 0 OID 0)
--- Dependencies: 211
+-- TOC entry 4057 (class 0 OID 0)
+-- Dependencies: 207
 -- Name: contexto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -85,107 +84,7 @@ ALTER SEQUENCE public.contexto_id_seq OWNED BY public.contexto.id;
 
 
 --
--- TOC entry 209 (class 1259 OID 5748963)
--- Name: cuestionario; Type: TABLE; Schema: public; Owner: zesixxdowbqgyx
---
-
-CREATE TABLE public.cuestionario (
-    id bigint NOT NULL,
-    p1 character varying(255),
-    p2 character varying(255),
-    p3 character varying(255),
-    p4 character varying(255),
-    p5 character varying(255),
-    p6 character varying(255),
-    p7 character varying(255),
-    p8 character varying(255),
-    p9 character varying(255),
-    p10 character varying(255),
-    p11 character varying(255),
-    p12 character varying(255),
-    p13 character varying(255),
-    p14 character varying(255),
-    p15 character varying(255),
-    p16 character varying(255),
-    p17 character varying(255),
-    p18 character varying(255),
-    p19 character varying(255) NOT NULL,
-    p20 character varying(255) NOT NULL,
-    p21 character varying(255) NOT NULL,
-    p22 character varying(255) NOT NULL,
-    p23 character varying(255) NOT NULL,
-    created_at timestamp(0) without time zone,
-    updated_at timestamp(0) without time zone
-);
-
-
-ALTER TABLE public.cuestionario OWNER TO zesixxdowbqgyx;
-
---
--- TOC entry 208 (class 1259 OID 5748961)
--- Name: cuestionarios_id_seq; Type: SEQUENCE; Schema: public; Owner: zesixxdowbqgyx
---
-
-CREATE SEQUENCE public.cuestionarios_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.cuestionarios_id_seq OWNER TO zesixxdowbqgyx;
-
---
--- TOC entry 4081 (class 0 OID 0)
--- Dependencies: 208
--- Name: cuestionarios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
---
-
-ALTER SEQUENCE public.cuestionarios_id_seq OWNED BY public.cuestionario.id;
-
-
---
--- TOC entry 207 (class 1259 OID 5748955)
--- Name: enunciado_holopraxicos; Type: TABLE; Schema: public; Owner: zesixxdowbqgyx
---
-
-CREATE TABLE public.enunciado_holopraxicos (
-    id bigint NOT NULL,
-    pregunta character varying(255) NOT NULL,
-    created_at timestamp(0) without time zone,
-    updated_at timestamp(0) without time zone
-);
-
-
-ALTER TABLE public.enunciado_holopraxicos OWNER TO zesixxdowbqgyx;
-
---
--- TOC entry 206 (class 1259 OID 5748953)
--- Name: enunciado_holopraxicos_id_seq; Type: SEQUENCE; Schema: public; Owner: zesixxdowbqgyx
---
-
-CREATE SEQUENCE public.enunciado_holopraxicos_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.enunciado_holopraxicos_id_seq OWNER TO zesixxdowbqgyx;
-
---
--- TOC entry 4082 (class 0 OID 0)
--- Dependencies: 206
--- Name: enunciado_holopraxicos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
---
-
-ALTER SEQUENCE public.enunciado_holopraxicos_id_seq OWNED BY public.enunciado_holopraxicos.id;
-
-
---
--- TOC entry 212 (class 1259 OID 7512239)
+-- TOC entry 208 (class 1259 OID 7512239)
 -- Name: evento; Type: TABLE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -203,7 +102,7 @@ CREATE TABLE public.evento (
 ALTER TABLE public.evento OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 213 (class 1259 OID 7512245)
+-- TOC entry 209 (class 1259 OID 7512245)
 -- Name: evento_id_seq; Type: SEQUENCE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -218,8 +117,8 @@ CREATE SEQUENCE public.evento_id_seq
 ALTER TABLE public.evento_id_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4083 (class 0 OID 0)
--- Dependencies: 213
+-- TOC entry 4058 (class 0 OID 0)
+-- Dependencies: 209
 -- Name: evento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -227,7 +126,7 @@ ALTER SEQUENCE public.evento_id_seq OWNED BY public.evento.id;
 
 
 --
--- TOC entry 214 (class 1259 OID 7512247)
+-- TOC entry 210 (class 1259 OID 7512247)
 -- Name: indicio; Type: TABLE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -241,7 +140,7 @@ CREATE TABLE public.indicio (
 ALTER TABLE public.indicio OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 215 (class 1259 OID 7512253)
+-- TOC entry 211 (class 1259 OID 7512253)
 -- Name: indicio_id_seq; Type: SEQUENCE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -256,8 +155,8 @@ CREATE SEQUENCE public.indicio_id_seq
 ALTER TABLE public.indicio_id_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4084 (class 0 OID 0)
--- Dependencies: 215
+-- TOC entry 4059 (class 0 OID 0)
+-- Dependencies: 211
 -- Name: indicio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -265,7 +164,7 @@ ALTER SEQUENCE public.indicio_id_seq OWNED BY public.indicio.id;
 
 
 --
--- TOC entry 216 (class 1259 OID 7512255)
+-- TOC entry 212 (class 1259 OID 7512255)
 -- Name: investigacion; Type: TABLE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -279,7 +178,7 @@ CREATE TABLE public.investigacion (
 ALTER TABLE public.investigacion OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 217 (class 1259 OID 7512261)
+-- TOC entry 213 (class 1259 OID 7512261)
 -- Name: investigacion_id_seq; Type: SEQUENCE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -294,8 +193,8 @@ CREATE SEQUENCE public.investigacion_id_seq
 ALTER TABLE public.investigacion_id_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4085 (class 0 OID 0)
--- Dependencies: 217
+-- TOC entry 4060 (class 0 OID 0)
+-- Dependencies: 213
 -- Name: investigacion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -303,7 +202,7 @@ ALTER SEQUENCE public.investigacion_id_seq OWNED BY public.investigacion.id;
 
 
 --
--- TOC entry 218 (class 1259 OID 7512263)
+-- TOC entry 214 (class 1259 OID 7512263)
 -- Name: justificacion; Type: TABLE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -322,8 +221,8 @@ CREATE TABLE public.justificacion (
 ALTER TABLE public.justificacion OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4086 (class 0 OID 0)
--- Dependencies: 218
+-- TOC entry 4061 (class 0 OID 0)
+-- Dependencies: 214
 -- Name: COLUMN justificacion.fk_contexto; Type: COMMENT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -332,7 +231,7 @@ COMMENT ON COLUMN public.justificacion.fk_contexto IS '
 
 
 --
--- TOC entry 219 (class 1259 OID 7512269)
+-- TOC entry 215 (class 1259 OID 7512269)
 -- Name: justificacion_id_seq; Type: SEQUENCE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -347,8 +246,8 @@ CREATE SEQUENCE public.justificacion_id_seq
 ALTER TABLE public.justificacion_id_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4087 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 4062 (class 0 OID 0)
+-- Dependencies: 215
 -- Name: justificacion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -386,7 +285,7 @@ CREATE SEQUENCE public.migrations_id_seq
 ALTER TABLE public.migrations_id_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4088 (class 0 OID 0)
+-- TOC entry 4063 (class 0 OID 0)
 -- Dependencies: 196
 -- Name: migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -395,7 +294,7 @@ ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
 
 
 --
--- TOC entry 220 (class 1259 OID 7512271)
+-- TOC entry 216 (class 1259 OID 7512271)
 -- Name: objetivo; Type: TABLE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -412,7 +311,7 @@ CREATE TABLE public.objetivo (
 ALTER TABLE public.objetivo OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 221 (class 1259 OID 7512277)
+-- TOC entry 217 (class 1259 OID 7512277)
 -- Name: objetivo_id_seq; Type: SEQUENCE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -427,8 +326,8 @@ CREATE SEQUENCE public.objetivo_id_seq
 ALTER TABLE public.objetivo_id_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4089 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 4064 (class 0 OID 0)
+-- Dependencies: 217
 -- Name: objetivo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -450,7 +349,7 @@ CREATE TABLE public.password_resets (
 ALTER TABLE public.password_resets OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 222 (class 1259 OID 7512279)
+-- TOC entry 218 (class 1259 OID 7512279)
 -- Name: pregunta; Type: TABLE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -466,7 +365,7 @@ CREATE TABLE public.pregunta (
 ALTER TABLE public.pregunta OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 223 (class 1259 OID 7512285)
+-- TOC entry 219 (class 1259 OID 7512285)
 -- Name: pregunta_id_seq; Type: SEQUENCE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -481,8 +380,8 @@ CREATE SEQUENCE public.pregunta_id_seq
 ALTER TABLE public.pregunta_id_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4090 (class 0 OID 0)
--- Dependencies: 223
+-- TOC entry 4065 (class 0 OID 0)
+-- Dependencies: 219
 -- Name: pregunta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -518,7 +417,7 @@ CREATE SEQUENCE public.privilegio_code_seq
 ALTER TABLE public.privilegio_code_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4091 (class 0 OID 0)
+-- TOC entry 4066 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: privilegio_code_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -568,7 +467,7 @@ CREATE SEQUENCE public.rol_code_seq
 ALTER TABLE public.rol_code_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4092 (class 0 OID 0)
+-- TOC entry 4067 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: rol_code_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -577,7 +476,7 @@ ALTER SEQUENCE public.rol_code_seq OWNED BY public.rol.code;
 
 
 --
--- TOC entry 224 (class 1259 OID 7512287)
+-- TOC entry 220 (class 1259 OID 7512287)
 -- Name: sinergia; Type: TABLE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -591,7 +490,7 @@ CREATE TABLE public.sinergia (
 ALTER TABLE public.sinergia OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 225 (class 1259 OID 7512293)
+-- TOC entry 221 (class 1259 OID 7512293)
 -- Name: sinergia_id_seq; Type: SEQUENCE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -606,8 +505,8 @@ CREATE SEQUENCE public.sinergia_id_seq
 ALTER TABLE public.sinergia_id_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4093 (class 0 OID 0)
--- Dependencies: 225
+-- TOC entry 4068 (class 0 OID 0)
+-- Dependencies: 221
 -- Name: sinergia_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -615,21 +514,22 @@ ALTER SEQUENCE public.sinergia_id_seq OWNED BY public.sinergia.id;
 
 
 --
--- TOC entry 226 (class 1259 OID 7512295)
+-- TOC entry 222 (class 1259 OID 7512295)
 -- Name: temporalidad; Type: TABLE; Schema: public; Owner: zesixxdowbqgyx
 --
 
 CREATE TABLE public.temporalidad (
     id integer NOT NULL,
-    fecha date NOT NULL,
-    fk_pregunta integer
+    fecha_inicio date NOT NULL,
+    fk_pregunta integer,
+    fecha_fin date NOT NULL
 );
 
 
 ALTER TABLE public.temporalidad OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 227 (class 1259 OID 7512298)
+-- TOC entry 223 (class 1259 OID 7512298)
 -- Name: temporalidad_id_seq; Type: SEQUENCE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -644,8 +544,8 @@ CREATE SEQUENCE public.temporalidad_id_seq
 ALTER TABLE public.temporalidad_id_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4094 (class 0 OID 0)
--- Dependencies: 227
+-- TOC entry 4069 (class 0 OID 0)
+-- Dependencies: 223
 -- Name: temporalidad_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -653,7 +553,7 @@ ALTER SEQUENCE public.temporalidad_id_seq OWNED BY public.temporalidad.id;
 
 
 --
--- TOC entry 228 (class 1259 OID 7512300)
+-- TOC entry 224 (class 1259 OID 7512300)
 -- Name: unidad_estudio; Type: TABLE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -667,7 +567,7 @@ CREATE TABLE public.unidad_estudio (
 ALTER TABLE public.unidad_estudio OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 229 (class 1259 OID 7512306)
+-- TOC entry 225 (class 1259 OID 7512306)
 -- Name: unidad_estudio_id_seq; Type: SEQUENCE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -682,8 +582,8 @@ CREATE SEQUENCE public.unidad_estudio_id_seq
 ALTER TABLE public.unidad_estudio_id_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4095 (class 0 OID 0)
--- Dependencies: 229
+-- TOC entry 4070 (class 0 OID 0)
+-- Dependencies: 225
 -- Name: unidad_estudio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -691,7 +591,7 @@ ALTER SEQUENCE public.unidad_estudio_id_seq OWNED BY public.unidad_estudio.id;
 
 
 --
--- TOC entry 230 (class 1259 OID 7512308)
+-- TOC entry 226 (class 1259 OID 7512308)
 -- Name: unidad_informacion; Type: TABLE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -712,7 +612,7 @@ CREATE TABLE public.unidad_informacion (
 ALTER TABLE public.unidad_informacion OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 231 (class 1259 OID 7512314)
+-- TOC entry 227 (class 1259 OID 7512314)
 -- Name: unidad_informacion_id_seq; Type: SEQUENCE; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -727,8 +627,8 @@ CREATE SEQUENCE public.unidad_informacion_id_seq
 ALTER TABLE public.unidad_informacion_id_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4096 (class 0 OID 0)
--- Dependencies: 231
+-- TOC entry 4071 (class 0 OID 0)
+-- Dependencies: 227
 -- Name: unidad_informacion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -772,7 +672,7 @@ CREATE SEQUENCE public.usuario_id_seq
 ALTER TABLE public.usuario_id_seq OWNER TO zesixxdowbqgyx;
 
 --
--- TOC entry 4097 (class 0 OID 0)
+-- TOC entry 4072 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -781,7 +681,7 @@ ALTER SEQUENCE public.usuario_id_seq OWNED BY public.usuario.id;
 
 
 --
--- TOC entry 3825 (class 2604 OID 7512316)
+-- TOC entry 3810 (class 2604 OID 7512316)
 -- Name: contexto id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -789,23 +689,7 @@ ALTER TABLE ONLY public.contexto ALTER COLUMN id SET DEFAULT nextval('public.con
 
 
 --
--- TOC entry 3824 (class 2604 OID 5748966)
--- Name: cuestionario id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
---
-
-ALTER TABLE ONLY public.cuestionario ALTER COLUMN id SET DEFAULT nextval('public.cuestionarios_id_seq'::regclass);
-
-
---
--- TOC entry 3823 (class 2604 OID 5748958)
--- Name: enunciado_holopraxicos id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
---
-
-ALTER TABLE ONLY public.enunciado_holopraxicos ALTER COLUMN id SET DEFAULT nextval('public.enunciado_holopraxicos_id_seq'::regclass);
-
-
---
--- TOC entry 3826 (class 2604 OID 7512317)
+-- TOC entry 3811 (class 2604 OID 7512317)
 -- Name: evento id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -813,7 +697,7 @@ ALTER TABLE ONLY public.evento ALTER COLUMN id SET DEFAULT nextval('public.event
 
 
 --
--- TOC entry 3827 (class 2604 OID 7512318)
+-- TOC entry 3812 (class 2604 OID 7512318)
 -- Name: indicio id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -821,7 +705,7 @@ ALTER TABLE ONLY public.indicio ALTER COLUMN id SET DEFAULT nextval('public.indi
 
 
 --
--- TOC entry 3828 (class 2604 OID 7512319)
+-- TOC entry 3813 (class 2604 OID 7512319)
 -- Name: investigacion id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -829,7 +713,7 @@ ALTER TABLE ONLY public.investigacion ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 3829 (class 2604 OID 7512320)
+-- TOC entry 3814 (class 2604 OID 7512320)
 -- Name: justificacion id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -837,7 +721,7 @@ ALTER TABLE ONLY public.justificacion ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 3818 (class 2604 OID 3756499)
+-- TOC entry 3805 (class 2604 OID 3756499)
 -- Name: migrations id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -845,7 +729,7 @@ ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.m
 
 
 --
--- TOC entry 3830 (class 2604 OID 7512321)
+-- TOC entry 3815 (class 2604 OID 7512321)
 -- Name: objetivo id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -853,7 +737,7 @@ ALTER TABLE ONLY public.objetivo ALTER COLUMN id SET DEFAULT nextval('public.obj
 
 
 --
--- TOC entry 3831 (class 2604 OID 7512322)
+-- TOC entry 3816 (class 2604 OID 7512322)
 -- Name: pregunta id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -861,7 +745,7 @@ ALTER TABLE ONLY public.pregunta ALTER COLUMN id SET DEFAULT nextval('public.pre
 
 
 --
--- TOC entry 3820 (class 2604 OID 3757210)
+-- TOC entry 3807 (class 2604 OID 3757210)
 -- Name: privilegio code; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -869,7 +753,7 @@ ALTER TABLE ONLY public.privilegio ALTER COLUMN code SET DEFAULT nextval('public
 
 
 --
--- TOC entry 3819 (class 2604 OID 3757164)
+-- TOC entry 3806 (class 2604 OID 3757164)
 -- Name: rol code; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -877,7 +761,7 @@ ALTER TABLE ONLY public.rol ALTER COLUMN code SET DEFAULT nextval('public.rol_co
 
 
 --
--- TOC entry 3832 (class 2604 OID 7512323)
+-- TOC entry 3817 (class 2604 OID 7512323)
 -- Name: sinergia id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -885,7 +769,7 @@ ALTER TABLE ONLY public.sinergia ALTER COLUMN id SET DEFAULT nextval('public.sin
 
 
 --
--- TOC entry 3833 (class 2604 OID 7512324)
+-- TOC entry 3818 (class 2604 OID 7512324)
 -- Name: temporalidad id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -893,7 +777,7 @@ ALTER TABLE ONLY public.temporalidad ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
--- TOC entry 3834 (class 2604 OID 7512325)
+-- TOC entry 3819 (class 2604 OID 7512325)
 -- Name: unidad_estudio id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -901,7 +785,7 @@ ALTER TABLE ONLY public.unidad_estudio ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 3835 (class 2604 OID 7512326)
+-- TOC entry 3820 (class 2604 OID 7512326)
 -- Name: unidad_informacion id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -909,7 +793,7 @@ ALTER TABLE ONLY public.unidad_informacion ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
--- TOC entry 3821 (class 2604 OID 5748938)
+-- TOC entry 3808 (class 2604 OID 5748938)
 -- Name: usuario id; Type: DEFAULT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -917,63 +801,47 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN id SET DEFAULT nextval('public.usua
 
 
 --
--- TOC entry 4049 (class 0 OID 7512231)
--- Dependencies: 210
+-- TOC entry 4026 (class 0 OID 7512231)
+-- Dependencies: 206
 -- Data for Name: contexto; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
 
 
 
 --
--- TOC entry 4048 (class 0 OID 5748963)
--- Dependencies: 209
--- Data for Name: cuestionario; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
---
-
-
-
---
--- TOC entry 4046 (class 0 OID 5748955)
--- Dependencies: 207
--- Data for Name: enunciado_holopraxicos; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
---
-
-
-
---
--- TOC entry 4051 (class 0 OID 7512239)
--- Dependencies: 212
+-- TOC entry 4028 (class 0 OID 7512239)
+-- Dependencies: 208
 -- Data for Name: evento; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
 
 
 
 --
--- TOC entry 4053 (class 0 OID 7512247)
--- Dependencies: 214
+-- TOC entry 4030 (class 0 OID 7512247)
+-- Dependencies: 210
 -- Data for Name: indicio; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
 
 
 
 --
--- TOC entry 4055 (class 0 OID 7512255)
--- Dependencies: 216
+-- TOC entry 4032 (class 0 OID 7512255)
+-- Dependencies: 212
 -- Data for Name: investigacion; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
 
 
 
 --
--- TOC entry 4057 (class 0 OID 7512263)
--- Dependencies: 218
+-- TOC entry 4034 (class 0 OID 7512263)
+-- Dependencies: 214
 -- Data for Name: justificacion; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
 
 
 
 --
--- TOC entry 4036 (class 0 OID 3756496)
+-- TOC entry 4017 (class 0 OID 3756496)
 -- Dependencies: 197
 -- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -988,15 +856,15 @@ INSERT INTO public.migrations (id, migration, batch) VALUES (11, '2019_06_09_221
 
 
 --
--- TOC entry 4059 (class 0 OID 7512271)
--- Dependencies: 220
+-- TOC entry 4036 (class 0 OID 7512271)
+-- Dependencies: 216
 -- Data for Name: objetivo; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
 
 
 
 --
--- TOC entry 4044 (class 0 OID 5748946)
+-- TOC entry 4025 (class 0 OID 5748946)
 -- Dependencies: 205
 -- Data for Name: password_resets; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -1004,15 +872,15 @@ INSERT INTO public.migrations (id, migration, batch) VALUES (11, '2019_06_09_221
 
 
 --
--- TOC entry 4061 (class 0 OID 7512279)
--- Dependencies: 222
+-- TOC entry 4038 (class 0 OID 7512279)
+-- Dependencies: 218
 -- Data for Name: pregunta; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
 
 
 
 --
--- TOC entry 4040 (class 0 OID 3757207)
+-- TOC entry 4021 (class 0 OID 3757207)
 -- Dependencies: 201
 -- Data for Name: privilegio; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -1021,7 +889,7 @@ INSERT INTO public.privilegio (code, tipo) VALUES (1, 'Control Roles');
 
 
 --
--- TOC entry 4038 (class 0 OID 3757161)
+-- TOC entry 4019 (class 0 OID 3757161)
 -- Dependencies: 199
 -- Data for Name: rol; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -1031,7 +899,7 @@ INSERT INTO public.rol (code, nombre) VALUES (2, 'Investigador');
 
 
 --
--- TOC entry 4041 (class 0 OID 3757213)
+-- TOC entry 4022 (class 0 OID 3757213)
 -- Dependencies: 202
 -- Data for Name: rol-pri; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -1040,39 +908,39 @@ INSERT INTO public."rol-pri" (codigo_rol, codigo_pri) VALUES (1, 1);
 
 
 --
--- TOC entry 4063 (class 0 OID 7512287)
--- Dependencies: 224
+-- TOC entry 4040 (class 0 OID 7512287)
+-- Dependencies: 220
 -- Data for Name: sinergia; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
 
 
 
 --
--- TOC entry 4065 (class 0 OID 7512295)
--- Dependencies: 226
+-- TOC entry 4042 (class 0 OID 7512295)
+-- Dependencies: 222
 -- Data for Name: temporalidad; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
 
 
 
 --
--- TOC entry 4067 (class 0 OID 7512300)
--- Dependencies: 228
+-- TOC entry 4044 (class 0 OID 7512300)
+-- Dependencies: 224
 -- Data for Name: unidad_estudio; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
 
 
 
 --
--- TOC entry 4069 (class 0 OID 7512308)
--- Dependencies: 230
+-- TOC entry 4046 (class 0 OID 7512308)
+-- Dependencies: 226
 -- Data for Name: unidad_informacion; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
 
 
 
 --
--- TOC entry 4043 (class 0 OID 5748935)
+-- TOC entry 4024 (class 0 OID 5748935)
 -- Dependencies: 204
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -1081,8 +949,8 @@ INSERT INTO public.usuario (id, username, email, password, email_verified_at, re
 
 
 --
--- TOC entry 4098 (class 0 OID 0)
--- Dependencies: 211
+-- TOC entry 4073 (class 0 OID 0)
+-- Dependencies: 207
 -- Name: contexto_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1090,26 +958,8 @@ SELECT pg_catalog.setval('public.contexto_id_seq', 1, false);
 
 
 --
--- TOC entry 4099 (class 0 OID 0)
--- Dependencies: 208
--- Name: cuestionarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
---
-
-SELECT pg_catalog.setval('public.cuestionarios_id_seq', 1, false);
-
-
---
--- TOC entry 4100 (class 0 OID 0)
--- Dependencies: 206
--- Name: enunciado_holopraxicos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
---
-
-SELECT pg_catalog.setval('public.enunciado_holopraxicos_id_seq', 1, false);
-
-
---
--- TOC entry 4101 (class 0 OID 0)
--- Dependencies: 213
+-- TOC entry 4074 (class 0 OID 0)
+-- Dependencies: 209
 -- Name: evento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1117,8 +967,8 @@ SELECT pg_catalog.setval('public.evento_id_seq', 1, false);
 
 
 --
--- TOC entry 4102 (class 0 OID 0)
--- Dependencies: 215
+-- TOC entry 4075 (class 0 OID 0)
+-- Dependencies: 211
 -- Name: indicio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1126,8 +976,8 @@ SELECT pg_catalog.setval('public.indicio_id_seq', 1, false);
 
 
 --
--- TOC entry 4103 (class 0 OID 0)
--- Dependencies: 217
+-- TOC entry 4076 (class 0 OID 0)
+-- Dependencies: 213
 -- Name: investigacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1135,8 +985,8 @@ SELECT pg_catalog.setval('public.investigacion_id_seq', 1, false);
 
 
 --
--- TOC entry 4104 (class 0 OID 0)
--- Dependencies: 219
+-- TOC entry 4077 (class 0 OID 0)
+-- Dependencies: 215
 -- Name: justificacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1144,7 +994,7 @@ SELECT pg_catalog.setval('public.justificacion_id_seq', 1, false);
 
 
 --
--- TOC entry 4105 (class 0 OID 0)
+-- TOC entry 4078 (class 0 OID 0)
 -- Dependencies: 196
 -- Name: migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -1153,8 +1003,8 @@ SELECT pg_catalog.setval('public.migrations_id_seq', 11, true);
 
 
 --
--- TOC entry 4106 (class 0 OID 0)
--- Dependencies: 221
+-- TOC entry 4079 (class 0 OID 0)
+-- Dependencies: 217
 -- Name: objetivo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1162,8 +1012,8 @@ SELECT pg_catalog.setval('public.objetivo_id_seq', 1, false);
 
 
 --
--- TOC entry 4107 (class 0 OID 0)
--- Dependencies: 223
+-- TOC entry 4080 (class 0 OID 0)
+-- Dependencies: 219
 -- Name: pregunta_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1171,7 +1021,7 @@ SELECT pg_catalog.setval('public.pregunta_id_seq', 1, false);
 
 
 --
--- TOC entry 4108 (class 0 OID 0)
+-- TOC entry 4081 (class 0 OID 0)
 -- Dependencies: 200
 -- Name: privilegio_code_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -1180,7 +1030,7 @@ SELECT pg_catalog.setval('public.privilegio_code_seq', 1, false);
 
 
 --
--- TOC entry 4109 (class 0 OID 0)
+-- TOC entry 4082 (class 0 OID 0)
 -- Dependencies: 198
 -- Name: rol_code_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -1189,8 +1039,8 @@ SELECT pg_catalog.setval('public.rol_code_seq', 1, false);
 
 
 --
--- TOC entry 4110 (class 0 OID 0)
--- Dependencies: 225
+-- TOC entry 4083 (class 0 OID 0)
+-- Dependencies: 221
 -- Name: sinergia_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1198,8 +1048,8 @@ SELECT pg_catalog.setval('public.sinergia_id_seq', 1, false);
 
 
 --
--- TOC entry 4111 (class 0 OID 0)
--- Dependencies: 227
+-- TOC entry 4084 (class 0 OID 0)
+-- Dependencies: 223
 -- Name: temporalidad_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1207,8 +1057,8 @@ SELECT pg_catalog.setval('public.temporalidad_id_seq', 1, false);
 
 
 --
--- TOC entry 4112 (class 0 OID 0)
--- Dependencies: 229
+-- TOC entry 4085 (class 0 OID 0)
+-- Dependencies: 225
 -- Name: unidad_estudio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1216,8 +1066,8 @@ SELECT pg_catalog.setval('public.unidad_estudio_id_seq', 1, false);
 
 
 --
--- TOC entry 4113 (class 0 OID 0)
--- Dependencies: 231
+-- TOC entry 4086 (class 0 OID 0)
+-- Dependencies: 227
 -- Name: unidad_informacion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1225,7 +1075,7 @@ SELECT pg_catalog.setval('public.unidad_informacion_id_seq', 1, false);
 
 
 --
--- TOC entry 4114 (class 0 OID 0)
+-- TOC entry 4087 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zesixxdowbqgyx
 --
@@ -1234,7 +1084,7 @@ SELECT pg_catalog.setval('public.usuario_id_seq', 1, true);
 
 
 --
--- TOC entry 3843 (class 2606 OID 4348131)
+-- TOC entry 3828 (class 2606 OID 4348131)
 -- Name: rol-pri codigo; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1243,7 +1093,7 @@ ALTER TABLE ONLY public."rol-pri"
 
 
 --
--- TOC entry 3855 (class 2606 OID 7512328)
+-- TOC entry 3836 (class 2606 OID 7512328)
 -- Name: contexto contexto_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1252,25 +1102,7 @@ ALTER TABLE ONLY public.contexto
 
 
 --
--- TOC entry 3853 (class 2606 OID 5748971)
--- Name: cuestionario cuestionarios_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
---
-
-ALTER TABLE ONLY public.cuestionario
-    ADD CONSTRAINT cuestionarios_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 3851 (class 2606 OID 5748960)
--- Name: enunciado_holopraxicos enunciado_holopraxicos_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
---
-
-ALTER TABLE ONLY public.enunciado_holopraxicos
-    ADD CONSTRAINT enunciado_holopraxicos_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 3858 (class 2606 OID 7512330)
+-- TOC entry 3839 (class 2606 OID 7512330)
 -- Name: evento evento_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1279,7 +1111,7 @@ ALTER TABLE ONLY public.evento
 
 
 --
--- TOC entry 3863 (class 2606 OID 7512332)
+-- TOC entry 3844 (class 2606 OID 7512332)
 -- Name: indicio indicio_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1288,7 +1120,7 @@ ALTER TABLE ONLY public.indicio
 
 
 --
--- TOC entry 3866 (class 2606 OID 7512334)
+-- TOC entry 3847 (class 2606 OID 7512334)
 -- Name: investigacion investigacion_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1297,7 +1129,7 @@ ALTER TABLE ONLY public.investigacion
 
 
 --
--- TOC entry 3869 (class 2606 OID 7512336)
+-- TOC entry 3850 (class 2606 OID 7512336)
 -- Name: justificacion justificacion_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1306,7 +1138,7 @@ ALTER TABLE ONLY public.justificacion
 
 
 --
--- TOC entry 3837 (class 2606 OID 3756501)
+-- TOC entry 3822 (class 2606 OID 3756501)
 -- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1315,7 +1147,7 @@ ALTER TABLE ONLY public.migrations
 
 
 --
--- TOC entry 3872 (class 2606 OID 7512338)
+-- TOC entry 3853 (class 2606 OID 7512338)
 -- Name: objetivo objetivo_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1324,7 +1156,7 @@ ALTER TABLE ONLY public.objetivo
 
 
 --
--- TOC entry 3875 (class 2606 OID 7512340)
+-- TOC entry 3856 (class 2606 OID 7512340)
 -- Name: pregunta pregunta_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1333,7 +1165,7 @@ ALTER TABLE ONLY public.pregunta
 
 
 --
--- TOC entry 3841 (class 2606 OID 3757212)
+-- TOC entry 3826 (class 2606 OID 3757212)
 -- Name: privilegio privilegio_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1342,7 +1174,7 @@ ALTER TABLE ONLY public.privilegio
 
 
 --
--- TOC entry 3839 (class 2606 OID 3757166)
+-- TOC entry 3824 (class 2606 OID 3757166)
 -- Name: rol rol_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1351,7 +1183,7 @@ ALTER TABLE ONLY public.rol
 
 
 --
--- TOC entry 3877 (class 2606 OID 7512342)
+-- TOC entry 3858 (class 2606 OID 7512342)
 -- Name: sinergia sinergia_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1360,7 +1192,7 @@ ALTER TABLE ONLY public.sinergia
 
 
 --
--- TOC entry 3880 (class 2606 OID 7512344)
+-- TOC entry 3861 (class 2606 OID 7512344)
 -- Name: temporalidad temporalidad_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1369,7 +1201,7 @@ ALTER TABLE ONLY public.temporalidad
 
 
 --
--- TOC entry 3882 (class 2606 OID 7512346)
+-- TOC entry 3863 (class 2606 OID 7512346)
 -- Name: unidad_estudio unidad_estudio_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1378,7 +1210,7 @@ ALTER TABLE ONLY public.unidad_estudio
 
 
 --
--- TOC entry 3888 (class 2606 OID 7512348)
+-- TOC entry 3869 (class 2606 OID 7512348)
 -- Name: unidad_informacion unidad_informacion_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1387,7 +1219,7 @@ ALTER TABLE ONLY public.unidad_informacion
 
 
 --
--- TOC entry 3846 (class 2606 OID 5748945)
+-- TOC entry 3831 (class 2606 OID 5748945)
 -- Name: usuario usuario_email_unique; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1396,7 +1228,7 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- TOC entry 3848 (class 2606 OID 5748943)
+-- TOC entry 3833 (class 2606 OID 5748943)
 -- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1405,7 +1237,7 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- TOC entry 3864 (class 1259 OID 7512500)
+-- TOC entry 3845 (class 1259 OID 7512500)
 -- Name: fki_fk_usuario; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1413,7 +1245,7 @@ CREATE INDEX fki_fk_usuario ON public.investigacion USING btree (fk_usuario);
 
 
 --
--- TOC entry 3844 (class 1259 OID 7513201)
+-- TOC entry 3829 (class 1259 OID 7513201)
 -- Name: fki_foreign_key_rol; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1421,7 +1253,7 @@ CREATE INDEX fki_foreign_key_rol ON public.usuario USING btree (fk_rol);
 
 
 --
--- TOC entry 3859 (class 1259 OID 7512349)
+-- TOC entry 3840 (class 1259 OID 7512349)
 -- Name: fki_nexo_pregunta; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1429,7 +1261,7 @@ CREATE INDEX fki_nexo_pregunta ON public.evento USING btree (fk_pregunta);
 
 
 --
--- TOC entry 3873 (class 1259 OID 7512350)
+-- TOC entry 3854 (class 1259 OID 7512350)
 -- Name: fki_recursiva; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1437,7 +1269,7 @@ CREATE INDEX fki_recursiva ON public.pregunta USING btree (fk_pregunta);
 
 
 --
--- TOC entry 3860 (class 1259 OID 7512351)
+-- TOC entry 3841 (class 1259 OID 7512351)
 -- Name: fki_recursiva_evento; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1445,7 +1277,7 @@ CREATE INDEX fki_recursiva_evento ON public.evento USING btree (fk_evento);
 
 
 --
--- TOC entry 3883 (class 1259 OID 7512352)
+-- TOC entry 3864 (class 1259 OID 7512352)
 -- Name: fki_recursiva_ui; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1453,7 +1285,7 @@ CREATE INDEX fki_recursiva_ui ON public.unidad_informacion USING btree (fk_unida
 
 
 --
--- TOC entry 3884 (class 1259 OID 7512353)
+-- TOC entry 3865 (class 1259 OID 7512353)
 -- Name: fki_relacion_evento; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1461,7 +1293,7 @@ CREATE INDEX fki_relacion_evento ON public.unidad_informacion USING btree (fk_ev
 
 
 --
--- TOC entry 3885 (class 1259 OID 7512354)
+-- TOC entry 3866 (class 1259 OID 7512354)
 -- Name: fki_relacion_investigacion; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1469,7 +1301,7 @@ CREATE INDEX fki_relacion_investigacion ON public.unidad_informacion USING btree
 
 
 --
--- TOC entry 3886 (class 1259 OID 7512355)
+-- TOC entry 3867 (class 1259 OID 7512355)
 -- Name: fki_relacion_justificacion; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1477,7 +1309,7 @@ CREATE INDEX fki_relacion_justificacion ON public.unidad_informacion USING btree
 
 
 --
--- TOC entry 3878 (class 1259 OID 7512356)
+-- TOC entry 3859 (class 1259 OID 7512356)
 -- Name: fki_relacion_oregunta; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1485,7 +1317,7 @@ CREATE INDEX fki_relacion_oregunta ON public.temporalidad USING btree (fk_pregun
 
 
 --
--- TOC entry 3856 (class 1259 OID 7512357)
+-- TOC entry 3837 (class 1259 OID 7512357)
 -- Name: fki_relacion_pregunta; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1493,7 +1325,7 @@ CREATE INDEX fki_relacion_pregunta ON public.contexto USING btree (fk_pregunta);
 
 
 --
--- TOC entry 3870 (class 1259 OID 7512358)
+-- TOC entry 3851 (class 1259 OID 7512358)
 -- Name: fki_relacion_recursiva; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1501,7 +1333,7 @@ CREATE INDEX fki_relacion_recursiva ON public.objetivo USING btree (fk_objetivo)
 
 
 --
--- TOC entry 3867 (class 1259 OID 7512359)
+-- TOC entry 3848 (class 1259 OID 7512359)
 -- Name: fki_relacion_temporalidad; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1509,7 +1341,7 @@ CREATE INDEX fki_relacion_temporalidad ON public.justificacion USING btree (fk_t
 
 
 --
--- TOC entry 3861 (class 1259 OID 7512360)
+-- TOC entry 3842 (class 1259 OID 7512360)
 -- Name: fki_relacion_unidad_informacion; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1517,7 +1349,7 @@ CREATE INDEX fki_relacion_unidad_informacion ON public.evento USING btree (fk_un
 
 
 --
--- TOC entry 3849 (class 1259 OID 5748952)
+-- TOC entry 3834 (class 1259 OID 5748952)
 -- Name: password_resets_email_index; Type: INDEX; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1525,7 +1357,7 @@ CREATE INDEX password_resets_email_index ON public.password_resets USING btree (
 
 
 --
--- TOC entry 3898 (class 2606 OID 7512495)
+-- TOC entry 3879 (class 2606 OID 7512495)
 -- Name: investigacion fk_usuario; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1534,7 +1366,7 @@ ALTER TABLE ONLY public.investigacion
 
 
 --
--- TOC entry 3891 (class 2606 OID 7513196)
+-- TOC entry 3872 (class 2606 OID 7513196)
 -- Name: usuario foreign_key_rol; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1543,7 +1375,7 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- TOC entry 3893 (class 2606 OID 7512361)
+-- TOC entry 3874 (class 2606 OID 7512361)
 -- Name: evento nexo_pregunta; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1552,7 +1384,7 @@ ALTER TABLE ONLY public.evento
 
 
 --
--- TOC entry 3905 (class 2606 OID 7512366)
+-- TOC entry 3886 (class 2606 OID 7512366)
 -- Name: pregunta recursiva; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1561,7 +1393,7 @@ ALTER TABLE ONLY public.pregunta
 
 
 --
--- TOC entry 3894 (class 2606 OID 7512371)
+-- TOC entry 3875 (class 2606 OID 7512371)
 -- Name: evento recursiva_evento; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1570,7 +1402,7 @@ ALTER TABLE ONLY public.evento
 
 
 --
--- TOC entry 3910 (class 2606 OID 7512376)
+-- TOC entry 3891 (class 2606 OID 7512376)
 -- Name: unidad_informacion recursiva_ui; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1579,7 +1411,7 @@ ALTER TABLE ONLY public.unidad_informacion
 
 
 --
--- TOC entry 3906 (class 2606 OID 7512381)
+-- TOC entry 3887 (class 2606 OID 7512381)
 -- Name: pregunta relacion; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1588,7 +1420,7 @@ ALTER TABLE ONLY public.pregunta
 
 
 --
--- TOC entry 3911 (class 2606 OID 7512386)
+-- TOC entry 3892 (class 2606 OID 7512386)
 -- Name: unidad_informacion relacion_evento; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1597,7 +1429,7 @@ ALTER TABLE ONLY public.unidad_informacion
 
 
 --
--- TOC entry 3899 (class 2606 OID 7512391)
+-- TOC entry 3880 (class 2606 OID 7512391)
 -- Name: justificacion relacion_evento; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1606,7 +1438,7 @@ ALTER TABLE ONLY public.justificacion
 
 
 --
--- TOC entry 3907 (class 2606 OID 7512396)
+-- TOC entry 3888 (class 2606 OID 7512396)
 -- Name: sinergia relacion_evento; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1615,7 +1447,7 @@ ALTER TABLE ONLY public.sinergia
 
 
 --
--- TOC entry 3902 (class 2606 OID 7512401)
+-- TOC entry 3883 (class 2606 OID 7512401)
 -- Name: objetivo relacion_investigacion; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1624,7 +1456,7 @@ ALTER TABLE ONLY public.objetivo
 
 
 --
--- TOC entry 3895 (class 2606 OID 7512406)
+-- TOC entry 3876 (class 2606 OID 7512406)
 -- Name: evento relacion_investigacion; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1633,7 +1465,7 @@ ALTER TABLE ONLY public.evento
 
 
 --
--- TOC entry 3912 (class 2606 OID 7512411)
+-- TOC entry 3893 (class 2606 OID 7512411)
 -- Name: unidad_informacion relacion_investigacion; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1642,7 +1474,7 @@ ALTER TABLE ONLY public.unidad_informacion
 
 
 --
--- TOC entry 3900 (class 2606 OID 7512416)
+-- TOC entry 3881 (class 2606 OID 7512416)
 -- Name: justificacion relacion_investigacion; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1651,7 +1483,7 @@ ALTER TABLE ONLY public.justificacion
 
 
 --
--- TOC entry 3913 (class 2606 OID 7512421)
+-- TOC entry 3894 (class 2606 OID 7512421)
 -- Name: unidad_informacion relacion_justificacion; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1660,7 +1492,7 @@ ALTER TABLE ONLY public.unidad_informacion
 
 
 --
--- TOC entry 3908 (class 2606 OID 7512426)
+-- TOC entry 3889 (class 2606 OID 7512426)
 -- Name: temporalidad relacion_oregunta; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1669,7 +1501,7 @@ ALTER TABLE ONLY public.temporalidad
 
 
 --
--- TOC entry 3903 (class 2606 OID 7512431)
+-- TOC entry 3884 (class 2606 OID 7512431)
 -- Name: objetivo relacion_pregunta; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1678,7 +1510,7 @@ ALTER TABLE ONLY public.objetivo
 
 
 --
--- TOC entry 3892 (class 2606 OID 7512436)
+-- TOC entry 3873 (class 2606 OID 7512436)
 -- Name: contexto relacion_pregunta; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1687,7 +1519,7 @@ ALTER TABLE ONLY public.contexto
 
 
 --
--- TOC entry 3904 (class 2606 OID 7512441)
+-- TOC entry 3885 (class 2606 OID 7512441)
 -- Name: objetivo relacion_recursiva; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1696,7 +1528,7 @@ ALTER TABLE ONLY public.objetivo
 
 
 --
--- TOC entry 3897 (class 2606 OID 7512446)
+-- TOC entry 3878 (class 2606 OID 7512446)
 -- Name: indicio relacion_sinergia; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1705,7 +1537,7 @@ ALTER TABLE ONLY public.indicio
 
 
 --
--- TOC entry 3901 (class 2606 OID 7512451)
+-- TOC entry 3882 (class 2606 OID 7512451)
 -- Name: justificacion relacion_temporalidad; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1714,7 +1546,7 @@ ALTER TABLE ONLY public.justificacion
 
 
 --
--- TOC entry 3896 (class 2606 OID 7512456)
+-- TOC entry 3877 (class 2606 OID 7512456)
 -- Name: evento relacion_unidad_informacion; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1723,7 +1555,7 @@ ALTER TABLE ONLY public.evento
 
 
 --
--- TOC entry 3890 (class 2606 OID 3757221)
+-- TOC entry 3871 (class 2606 OID 3757221)
 -- Name: rol-pri rol_pri_fk_privilegio_foreign; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1732,7 +1564,7 @@ ALTER TABLE ONLY public."rol-pri"
 
 
 --
--- TOC entry 3889 (class 2606 OID 3757216)
+-- TOC entry 3870 (class 2606 OID 3757216)
 -- Name: rol-pri rol_pri_fk_rol_foreign; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1741,7 +1573,7 @@ ALTER TABLE ONLY public."rol-pri"
 
 
 --
--- TOC entry 3909 (class 2606 OID 7512461)
+-- TOC entry 3890 (class 2606 OID 7512461)
 -- Name: unidad_estudio unidad_estudio_fk_pregunta_fkey; Type: FK CONSTRAINT; Schema: public; Owner: zesixxdowbqgyx
 --
 
@@ -1750,8 +1582,8 @@ ALTER TABLE ONLY public.unidad_estudio
 
 
 --
--- TOC entry 4077 (class 0 OID 0)
--- Dependencies: 4076
+-- TOC entry 4054 (class 0 OID 0)
+-- Dependencies: 4053
 -- Name: DATABASE de7cii1u0v9dve; Type: ACL; Schema: -; Owner: zesixxdowbqgyx
 --
 
@@ -1759,7 +1591,7 @@ REVOKE CONNECT,TEMPORARY ON DATABASE de7cii1u0v9dve FROM PUBLIC;
 
 
 --
--- TOC entry 4078 (class 0 OID 0)
+-- TOC entry 4055 (class 0 OID 0)
 -- Dependencies: 3
 -- Name: SCHEMA public; Type: ACL; Schema: -; Owner: zesixxdowbqgyx
 --
@@ -1771,15 +1603,15 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
--- TOC entry 4079 (class 0 OID 0)
--- Dependencies: 711
+-- TOC entry 4056 (class 0 OID 0)
+-- Dependencies: 698
 -- Name: LANGUAGE plpgsql; Type: ACL; Schema: -; Owner: postgres
 --
 
 GRANT ALL ON LANGUAGE plpgsql TO zesixxdowbqgyx;
 
 
--- Completed on 2019-06-14 14:45:25
+-- Completed on 2019-06-15 20:37:18
 
 --
 -- PostgreSQL database dump complete

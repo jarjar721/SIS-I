@@ -119,11 +119,23 @@
                                 <h4>Agregue las <b>preguntas</b> de la investigación. Recuerde luego señalar cuál de ellas es el <b>enunciado holopráxico</b>.</h4>
                                 <div class="row">
                                     <div class="col-md-11 col-sm-11 col-xs-12">
-                                        <textarea id="pregunta" class="form-control" name="pregunta" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10"></textarea>
+                                        <textarea id="pregunta" onkeyup="stoppedTyping()" class="form-control" name="pregunta"></textarea>
                                     </div>
                                     <div class="col-md-1 col-sm-1 col-xs-12">
-                                        <button type="button" id="agregar-pregunta" class="btn btn-round btn-lg btn-info">+</button>
+                                        <button type="button" id="agregar-pregunta" class="btn btn-round btn-lg btn-info" disabled>+</button>
                                     </div>
+                                    <!-- Si campo esta vacio, inhabilita el boton -->
+                                    <script type="text/javascript">
+
+                                        function stoppedTyping(){
+                                            if(document.getElementById("pregunta").value==="") { 
+                                                document.getElementById('agregar-pregunta').disabled = true; 
+                                            } else { 
+                                                document.getElementById('agregar-pregunta').disabled = false;
+                                            }
+                                        }
+                                        
+                                    </script>
                                 </div>
                                 <div class="ln_solid"></div>
                             </div>
@@ -160,22 +172,12 @@
 <!-- Script Pregunta Secundaria -->
 <script type="text/javascript">
 
-    $('#agregar-pregunta').prop('disabled', true);
-    $('#pregunta').keyup(function() {
-    var disable = false;
-    $('#pregunta').each(function() {
-        if ($(this).val() == "") {
-        disable = true;
-        }
-    });
-    $('#agregar-pregunta').prop('disabled', disable);
-    });
-
     count_pregunta = 0;
     // all done btn
     $("#agregar-pregunta").click(function() {
         var pregunta = $("#pregunta").val();
         createpregunta(pregunta);
+        document.getElementById('agregar-pregunta').disabled = true;
     });
 
     //create task
@@ -185,6 +187,7 @@
                 '<a style="min-height: 40px;" class="panel-heading" role="tab" id="pregunta' + count_pregunta + '" data-toggle="collapse" data-parent="#lista-preguntas" href="#collapse' + count_pregunta + '" aria-expanded="false" aria-controls="collapse' + count_pregunta + '">' +
                     '<h4 class="panel-title">' + pregunta + '<i class="borrar-pregunta fas fa-times pull-right"></i></h4>' +
                 '</a>' +
+                '<input type="hidden" id="pregunta' + count_pregunta + '" value="' + pregunta + '" name="pregunta' + count_pregunta + '"/>' +
                 '<div id="collapse' + count_pregunta + '" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="pregunta' + count_pregunta + '">' +
                     '<div class="panel-body">' +
                         '<div class="row">' +
