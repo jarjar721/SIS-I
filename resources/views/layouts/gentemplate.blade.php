@@ -12,9 +12,10 @@
     <!-- Bootstrap -->
     <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Datatable -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('DataTables-1.10.18/css/dataTables.bootstrap4.min.css')}}"/>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="{{asset('font-awesome/css/all.css')}}" rel="stylesheet">
+    <script defer src="{{asset('font-awesome/js/all.js')}}"></script>
     <!-- NProgress -->
     <link href="{{asset('nprogress/nprogress.css')}}" rel="stylesheet">
     <!-- iCheck -->
@@ -302,8 +303,8 @@
     <!-- jQuery -->
     <script src="{{asset('jquery/dist/jquery.min.js')}}"></script>
     <!-- Datatable -->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="{{asset('DataTables-1.10.18/js/jquery.dataTables.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('DataTables-1.10.18/js/dataTables.bootstrap4.min.js')}}"></script>
     <!-- Bootstrap -->
     <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
     <!-- FastClick -->
