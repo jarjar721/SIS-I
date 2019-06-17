@@ -195,29 +195,49 @@
                             '<div class="form-group">' +
                                 '<div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%">' +
                                     '<label>Contexto</label>' +
-                                    '<input type="text" id="contexto' + count_pregunta + '" class="form-control" name="contexto' + count_pregunta + '" required />' +
+                                    '<input type="text" id="contexto' + count_pregunta + '" class="form-control" placeholder="Introduzca contexto" name="contexto' + count_pregunta + '" required />' +
                                 '</div>' +
                                 '<div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%">' +
-                                    '<label>Evento</label>' +
-                                    '<input type="text" id="evento' + count_pregunta + '" class="form-control" name="evento' + count_pregunta + '" required />' +
+                                    '<label>Unidad de estudio</label>' +
+                                    '<input type="text" id="unidad_estudio' + count_pregunta + '" class="form-control" placeholder="Introduzca unidad de estudio" name="unidad_estudio' + count_pregunta + '" required />' +
                                 '</div>' +
-                                '<div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%">' +
-                                    '<label>Temporalidad</label>' +
+                                '<div class="col-md-6 col-sm-6 col-xs-12">' +
+                                    '<label>Temporalidad (inicio)</label>' +
                                     '<fieldset>' +
                                         '<div class="control-group">' +
                                             '<div class="controls">' +
                                                 '<div class="input-prepend input-group">' +
                                                     '<span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>' +
-                                                    '<input type="date" name="temp_inicio' + count_pregunta + '" id="temp_inicio' + count_pregunta + '" class="form-control" style="width: 50%" />' +
-                                                    '<input type="date" name="temp_fin' + count_pregunta + '" id="temp_fin' + count_pregunta + '" class="form-control" style="width: 50%" />' +
+                                                    '<input type="date" name="temp_inicio' + count_pregunta + '" data-placeholder="Fecha inicio" id="temp_inicio' + count_pregunta + '" class="form-control" required/>' +
                                                 '</div>' +
                                             '</div>' +
                                         '</div>' +
                                     '</fieldset>' +
                                 '</div>' +
-                                '<div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%">' +
-                                    '<label>Unidad de estudio</label>' +
-                                    '<input type="text" id="unidad_estudio' + count_pregunta + '" class="form-control" name="unidad_estudio' + count_pregunta + '" required />' +
+                                '<div class="col-md-6 col-sm-6 col-xs-12">' +
+                                    '<label>Temporalidad (fin)</label>' +
+                                    '<fieldset>' +
+                                        '<div class="control-group">' +
+                                            '<div class="controls">' +
+                                                '<div class="input-prepend input-group">' +
+                                                    '<span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>' +
+                                                    '<input type="date" name="temp_fin' + count_pregunta + '" data-placeholder="Fecha culminación" id="temp_fin' + count_pregunta + '" class="form-control" required/>' +
+                                                '</div>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</fieldset>' +
+                                '</div>' +
+                                '<div class="col-md-6 col-sm-6 col-xs-12">' +
+                                    '<label>Evento</label>' +
+                                    '<input type="text" id="evento' + count_pregunta + '" class="form-control" placeholder="Introduzca evento" name="evento' + count_pregunta + '" required />' +
+                                '</div>' +
+                                '<div class="col-md-6 col-sm-6 col-xs-12">' +
+                                    '<label>Tipo evento</label>' +
+                                    '<select id="tipoEvento' + count_pregunta + '" class="form-control" name="tipoEvento' + count_pregunta + '" required>' +
+                                        '<option value="" disabled selected hidden>Seleccione tipo de evento</option>' +
+                                        '<option value="Evento a modificar">Evento a modificar</option>' +
+                                        '<option value="Proceso causal">Proceso causal</option>' +
+                                    '</select>'+
                                 '</div>' +
                                 '<div class="col-md-12 col-sm-12 col-xs-12">' +
                                     '<label style="width: 50%; float: left">' +

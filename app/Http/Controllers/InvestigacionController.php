@@ -82,10 +82,9 @@ class InvestigacionController extends Controller
 
         Evento::create([
             'nombre' => $request->$data,
-            /*'tipo' => ,
-            'fk_evento' =>,
+            $data = "tipoEvento".$i,
+            'tipo' => $request->$data,
             'fk_investigacion' => $investigacion->id,
-            'fk_unidad_informacion' =>,*/
             'fk_pregunta' => $principal->id
         ]);
         //\ Fin creado principal
@@ -136,10 +135,9 @@ class InvestigacionController extends Controller
             
                     Evento::create([
                         'nombre' => $request->$data,
-                        /*'tipo' => ,
-                        'fk_evento' =>,
+                        $data = "tipoEvento".$i,
+                        'tipo' => $request->$data,
                         'fk_investigacion' => $investigacion->id,
-                        'fk_unidad_informacion' =>,*/
                         'fk_pregunta' => $secundaria->id
                     ]);
                 }
