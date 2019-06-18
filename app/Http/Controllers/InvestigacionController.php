@@ -152,5 +152,12 @@ class InvestigacionController extends Controller
         return view("investigacion.fase_proyectiva", compact('i', 'data'));
     }
 
-    
+    public function holo($code){
+        $investigacion = Investigacion::where('id', $code)
+        ->leftjoin('Evento as e', 'e.fk_investigacion','=','investigacion.id')
+        ->select(\DB::raw("investigacion.*"))
+        ->first();
+
+        return view('investigacion.holograma', compact('investigacion'));
+    }
 }
