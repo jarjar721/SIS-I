@@ -178,6 +178,7 @@
         var pregunta = $("#pregunta").val();
         createpregunta(pregunta);
         document.getElementById('agregar-pregunta').disabled = true;
+        if(count_pregunta == 1) document.getElementById('optionsRadiop1').checked = true;
     });
 
     //create task
@@ -194,36 +195,56 @@
                             '<div class="form-group">' +
                                 '<div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%">' +
                                     '<label>Contexto</label>' +
-                                    '<input type="text" id="contexto' + count_pregunta + '" class="form-control" name="contexto' + count_pregunta + '" required />' +
+                                    '<input type="text" id="contexto' + count_pregunta + '" class="form-control" placeholder="Introduzca contexto" name="contexto' + count_pregunta + '" required />' +
                                 '</div>' +
                                 '<div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%">' +
-                                    '<label>Evento</label>' +
-                                    '<input type="text" id="evento' + count_pregunta + '" class="form-control" name="evento' + count_pregunta + '" required />' +
+                                    '<label>Unidad de estudio</label>' +
+                                    '<input type="text" id="unidad_estudio' + count_pregunta + '" class="form-control" placeholder="Introduzca unidad de estudio" name="unidad_estudio' + count_pregunta + '" required />' +
                                 '</div>' +
-                                '<div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%">' +
-                                    '<label>Temporalidad</label>' +
+                                '<div class="col-md-6 col-sm-6 col-xs-12">' +
+                                    '<label>Temporalidad (inicio)</label>' +
                                     '<fieldset>' +
                                         '<div class="control-group">' +
                                             '<div class="controls">' +
                                                 '<div class="input-prepend input-group">' +
                                                     '<span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>' +
-                                                    '<input type="date" name="temp_inicio' + count_pregunta + '" id="temp_inicio' + count_pregunta + '" class="form-control" style="width: 50%" />' +
-                                                    '<input type="date" name="temp_fin' + count_pregunta + '" id="temp_fin' + count_pregunta + '" class="form-control" style="width: 50%" />' +
+                                                    '<input type="date" name="temp_inicio' + count_pregunta + '" data-placeholder="Fecha inicio" id="temp_inicio' + count_pregunta + '" class="form-control" required/>' +
                                                 '</div>' +
                                             '</div>' +
                                         '</div>' +
                                     '</fieldset>' +
                                 '</div>' +
-                                '<div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%">' +
-                                    '<label>Unidad de estudio</label>' +
-                                    '<input type="text" id="unidad_estudio' + count_pregunta + '" class="form-control" name="unidad_estudio' + count_pregunta + '" required />' +
+                                '<div class="col-md-6 col-sm-6 col-xs-12">' +
+                                    '<label>Temporalidad (fin)</label>' +
+                                    '<fieldset>' +
+                                        '<div class="control-group">' +
+                                            '<div class="controls">' +
+                                                '<div class="input-prepend input-group">' +
+                                                    '<span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>' +
+                                                    '<input type="date" name="temp_fin' + count_pregunta + '" data-placeholder="Fecha culminación" id="temp_fin' + count_pregunta + '" class="form-control" required/>' +
+                                                '</div>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</fieldset>' +
+                                '</div>' +
+                                '<div class="col-md-6 col-sm-6 col-xs-12">' +
+                                    '<label>Evento</label>' +
+                                    '<input type="text" id="evento' + count_pregunta + '" class="form-control" placeholder="Introduzca evento" name="evento' + count_pregunta + '" required />' +
+                                '</div>' +
+                                '<div class="col-md-6 col-sm-6 col-xs-12">' +
+                                    '<label>Tipo evento</label>' +
+                                    '<select id="tipoEvento' + count_pregunta + '" class="form-control" name="tipoEvento' + count_pregunta + '" required>' +
+                                        '<option value="" disabled selected hidden>Seleccione tipo de evento</option>' +
+                                        '<option value="Evento a modificar">Evento a modificar</option>' +
+                                        '<option value="Proceso causal">Proceso causal</option>' +
+                                    '</select>'+
                                 '</div>' +
                                 '<div class="col-md-12 col-sm-12 col-xs-12">' +
                                     '<label style="width: 50%; float: left">' +
-                                        '<input type="radio" checked="" value="Primaria" id="optionsRadios' + count_pregunta + '" name="optionsRadios' + count_pregunta + '"> Selecione esta opcion si esta pregunta es el enunciado holopráxico' +
+                                        '<input type="radio" class="pradio" value="Primaria" onclick="seleccion(this)" id="optionsRadiop' + count_pregunta + '" name="optionsRadios' + count_pregunta + '"> Selecione esta opcion si esta pregunta es el enunciado holopráxico' +
                                     '</label>' +
                                     '<label style="width: 50%">' +
-                                        '<input type="radio" value="Secundaria" id="optionsRadios' + count_pregunta + '" name="optionsRadios' + count_pregunta + '"> Selecione esta opcion si esta pregunta es pregunta secundaria' +
+                                        '<input type="radio" checked value="Secundaria" id="optionsRadios' + count_pregunta + '" name="optionsRadios' + count_pregunta + '"> Selecione esta opcion si esta pregunta es pregunta secundaria' +
                                     '</label>' +
                                 '</div>' +
                             '</div>' +
@@ -245,6 +266,20 @@
     //remove done task from list
     function removeItem(element) {
         $(element).parent().parent().parent().remove();
+    }
+
+    function seleccion(myRadio){
+        var radioId = myRadio.id;
+        var allInp = document.getElementsByTagName("input");
+        for (i=0; i<allInp.length; i++){
+            if(allInp[i].type == "radio" && allInp[i].value == "Secundaria"){
+                allInp[i].checked = true;
+            }
+            if(allInp[i].id == myRadio.id) allInp[i].checked = true;
+        }
+        for (i=0; i<allInp.length; i++){
+            if(allInp[i].id == myRadio.id) allInp[i].checked = true;
+        }
     }
 </script>
 
