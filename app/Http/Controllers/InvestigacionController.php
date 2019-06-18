@@ -145,5 +145,12 @@ class InvestigacionController extends Controller
 
         }
         //\Fin ciclo para llenado de la investigacion
+
+        $data = $request;
+
+        //Redireccion a fase_proyectiva.blade con los datos
+        return view("investigacion.fase_proyectiva", compact('i', 'data'));
     }
+
+    
 }
