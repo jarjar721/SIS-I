@@ -52,8 +52,10 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::get('/investigación/delimitación_tema', 'InvestigacionController@d_tema');
     Route::post('/investigacion/store', 'InvestigacionController@store');
+    Route::post('/inv', 'InvestigacionController@getInvData')->name('inv.data');
+    Route::post('/inv/{id}', 'InvestigacionController@getUsersData');
     //Route::get('/investigación/fase_proyectiva', 'InvestigacionController@f_proy');
-    Route::get('/investigación/holograma', 'InvestigacionController@holo');
+    Route::get('/investigación/holograma/{Codigo}', 'InvestigacionController@holo');
     //\Investigacion
 
     Route::get('/home', 'HomeController@index')->name('home');

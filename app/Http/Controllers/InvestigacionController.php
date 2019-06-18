@@ -154,10 +154,38 @@ class InvestigacionController extends Controller
 
     public function holo($code){
         $investigacion = Investigacion::where('id', $code)
-        ->leftjoin('Evento as e', 'e.fk_investigacion','=','investigacion.id')
+        ->leftjoin('evento as e', 'e.fk_investigacion','=','investigacion.id')
         ->select(\DB::raw("investigacion.*"))
         ->first();
 
         return view('investigacion.holograma', compact('investigacion'));
+    }
+    
+    public function getInvData(){
+        if(Auth::user()->fk_rol == 1){
+            $investigaciones = Investigacion::select()->get();
+        }else{
+            $investigaciones = Investigacion::where('fk_usuario', Auth::user()->id)
+            ->get();
+        }
+        
+        return Datatables::of($investigaciones)
+        /*->addColumn('miembros', function($user) {
+            return url('inv/', $user->id);
+        })*/
+        ->addColumn('action', function ($investigacion) {
+            return '<a href="/investigacion/holograma/'.$investigacion->id.'" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>Ver</a>
+                <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
+                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
+        })
+        ->make(true);
+    }
+
+    public function getUsersData($id){
+            $usuarios = Users::join('usuario as u', 'u.id','=','investigacion.fk_usuario')
+            ->where('u.id', $id)
+            ->get();
+        
+        return Datatables::of($usuarios)->make(true);
     }
 }
