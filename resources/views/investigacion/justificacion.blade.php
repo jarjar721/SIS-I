@@ -185,7 +185,8 @@
             '<a style="min-height: 40px;" class="panel-heading" role="tab" id="justificacion' + count_justificacion + '" data-toggle="collapse" data-parent="#lista-justificacions" href="#collapse' + count_justificacion + '" aria-expanded="false" aria-controls="collapse' + count_justificacion + '">' +
             '<h4 class="panel-title">Justificación #' + count_justificacion + '<i class="borrar-justificacion fas fa-times pull-right"></i></h4>' +
             '</a>' +
-            '<input type="hidden" id="argumento' + count_justificacion + '" value="' + justificacion + '" name="justificacion' + count_justificacion + '"/>' +
+            '<input type="hidden" id="argumento' + count_justificacion + '" value="' + justificacion + '" name="argumento' + count_justificacion + '"/>' +
+            '<input type="hidden" id="tipo-argumento' + count_justificacion + '" value="' + tipo + '" name="tipo-argumento' + count_justificacion + '"/>' +
             '<div id="collapse' + count_justificacion + '" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="justificacion' + count_justificacion + '">' +
             '<div class="panel-body">' +
             '<div class="row">' +
