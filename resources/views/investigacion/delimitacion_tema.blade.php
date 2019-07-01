@@ -2,9 +2,9 @@
 
 @section('css')
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|VarelaRound|OpenSans">
 
-@endsection()
+@endsection
 
 @section('Content')
 
@@ -108,42 +108,98 @@
                     <div class="row">
                         <div class="form-group">
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <h4>Ingrese aquí el <b>título</b> del proyecto de investigación:</h4>
-                                <input type="text" id="titulo" required="required" class="form-control" name="titulo"/>
+                                <h4>Ingrese aquí el <b>tema</b> del proyecto de investigación:</h4>
+                                <input type="text" id="tema" required="required" class="form-control" name="tema"/>
                             </div>
                         </div>
                         <br />
-                        <div class="form-group">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="ln_solid"></div>
-                                <h4>Agregue las <b>preguntas</b> de la investigación. Recuerde luego señalar cuál de ellas es el <b>enunciado holopráxico</b>.</h4>
-                                <div class="row">
-                                    <div class="col-md-11 col-sm-11 col-xs-12">
-                                        <textarea id="pregunta" onkeyup="stoppedTyping()" class="form-control" name="pregunta"></textarea>
-                                    </div>
-                                    <div class="col-md-1 col-sm-1 col-xs-12">
-                                        <button type="button" id="agregar-pregunta" class="btn btn-round btn-lg btn-info" disabled>+</button>
-                                    </div>
-                                    <!-- Si campo esta vacio, inhabilita el boton -->
-                                    <script type="text/javascript">
-
-                                        function stoppedTyping(){
-                                            if(document.getElementById("pregunta").value==="") { 
-                                                document.getElementById('agregar-pregunta').disabled = true; 
-                                            } else { 
-                                                document.getElementById('agregar-pregunta').disabled = false;
-                                            }
-                                        }
-                                        
-                                    </script>
-                                </div>
-                                <div class="ln_solid"></div>
-                            </div>
-                        </div>
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="accordion" id="lista-preguntas" role="tablist" aria-multiselectable="true">
 
-                                <!-- Aqui se anexan las preguntas secundarias-->
+                                <div id="collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="pregunta"> 
+                                    <div class="panel-body"> 
+                                        <div class="row"> 
+                                            <div class="form-group"> 
+                                                <h4>Agregue la <b>pregunta</b> de la investigación.</h4>
+                                                <div class="row">
+                                                    <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px">
+                                                        <textarea id="pregunta" class="form-control" name="pregunta"></textarea>
+                                                    </div>
+                                                </div> 
+                                                <div class="col-md-6 col-sm-6 col-xs-12" style="width: 100%"> 
+                                                    <label>Disciplina</label> 
+                                                    <input type="text" id="disciplina" class="form-control" placeholder="Introduzca disciplina" name="disciplina" required/> 
+                                                </div> 
+                                                <div class="col-md-6 col-sm-6 col-xs-12" style="width: 100%"> 
+                                                    <label>Tipo de investigación</label> 
+                                                    <select id="tipoInvestigacion" class="form-control" name="tipoInvestigacion" required> 
+                                                        <option value="" disabled selected hidden>Seleccione <b>tipo</b> de investigación</option> 
+                                                        <option value="3">Analítica</option> 
+                                                        <option value="4">Comparativa</option> 
+                                                        <option value="9">Confirmatoria</option> 
+                                                        <option value="2">Descriptiva</option> 
+                                                        <option value="5">Explicativa</option> 
+                                                        <option value="1">Exploratoria</option> 
+                                                        <option value="10">Evaluativa</option> 
+                                                        <option value="8">Interactiva</option> 
+                                                        <option value="6">Predictiva</option> 
+                                                        <option value="7">Proyectiva</option> 
+                                                    </select> 
+                                                </div> 
+                                                <h4>Datos de la investigación.</h4>
+                                                <div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%"> 
+                                                    <label>Contexto</label> 
+                                                    <input type="text" id="contexto" class="form-control" placeholder="Introduzca contexto" name="contexto" required /> 
+                                                </div> 
+                                                <div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%"> 
+                                                    <label>Unidad de estudio</label> 
+                                                    <input type="text" id="unidad_estudio" class="form-control" placeholder="Introduzca unidad de estudio" name="unidad_estudio" required /> 
+                                                </div> 
+                                                <div class="col-md-6 col-sm-6 col-xs-12"> 
+                                                    <label>Temporalidad (inicio)</label> 
+                                                    <fieldset> 
+                                                        <div class="control-group"> 
+                                                            <div class="controls"> 
+                                                                <div class="input-prepend input-group"> 
+                                                                    <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span> 
+                                                                    <input type="date" name="temp_inicio" data-placeholder="Fecha inicio" id="temp_inicio" class="form-control" required/> 
+                                                                </div> 
+                                                            </div> 
+                                                        </div> 
+                                                    </fieldset> 
+                                                </div> 
+                                                <div class="col-md-6 col-sm-6 col-xs-12"> 
+                                                    <label>Temporalidad (fin)</label> 
+                                                    <fieldset> 
+                                                        <div class="control-group"> 
+                                                            <div class="controls"> 
+                                                                <div class="input-prepend input-group"> 
+                                                                    <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span> 
+                                                                    <input type="date" name="temp_fin" data-placeholder="Fecha culminación" id="temp_fin" class="form-control" required/> 
+                                                                </div> 
+                                                            </div> 
+                                                        </div> 
+                                                    </fieldset> 
+                                                </div> 
+                                                <div class="col-md-6 col-sm-6 col-xs-12"> 
+                                                    <label>Evento</label> 
+                                                    <input type="text" id="evento" class="form-control" placeholder="Introduzca evento" name="evento" required /> 
+                                                </div> 
+                                                <div class="col-md-6 col-sm-6 col-xs-12"> 
+                                                    <label>Tipo evento</label> 
+                                                    <select id="tipoEvento" class="form-control" name="tipoEvento" required> 
+                                                        <option value="" disabled selected hidden>Seleccione tipo de evento</option> 
+                                                        <option value="Comportamiento">Comportamiento</option> 
+                                                        <option value="Hecho">Hecho</option> 
+                                                        <option value="Proceso">Proceso</option> 
+                                                        <option value="Situación">Situación</option> 
+                                                    </select>
+                                                </div> 
+                                            </div> 
+                                        </div> 
+                                        <br> 
+                                    </div> 
+                                </div> 
 
                             </div>
                         </div>
@@ -151,7 +207,6 @@
                     <br>
 
                     <div class="form-group">
-                    <input type="hidden" id="iteracion" value="iteracion" name="iteracion"/>
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-round btn-lg btn-success pull-right">Guardar</button>
                         </div>
@@ -163,124 +218,3 @@
 </div>
 
 @endsection
-
-@push('js')
-
-<!-- bootstrap-datetimepicker -->
-<script src="{{asset('bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')}}"></script>
-
-<!-- Script Pregunta Secundaria -->
-<script type="text/javascript">
-
-    count_pregunta = 0;
-    // all done btn
-    $("#agregar-pregunta").click(function() {
-        var pregunta = $("#pregunta").val();
-        createpregunta(pregunta);
-        document.getElementById('agregar-pregunta').disabled = true;
-        if(count_pregunta == 1) document.getElementById('optionsRadiop1').checked = true;
-    });
-
-    //create task
-    function createpregunta(pregunta) {
-        count_pregunta = count_pregunta + 1;
-        var markup = '<div class="panel">' +
-                '<a style="min-height: 40px;" class="panel-heading" role="tab" id="pregunta' + count_pregunta + '" data-toggle="collapse" data-parent="#lista-preguntas" href="#collapse' + count_pregunta + '" aria-expanded="false" aria-controls="collapse' + count_pregunta + '">' +
-                    '<h4 class="panel-title">' + pregunta + '<i class="borrar-pregunta fas fa-times pull-right"></i></h4>' +
-                '</a>' +
-                '<input type="hidden" id="pregunta' + count_pregunta + '" value="' + pregunta + '" name="pregunta' + count_pregunta + '"/>' +
-                '<div id="collapse' + count_pregunta + '" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="pregunta' + count_pregunta + '">' +
-                    '<div class="panel-body">' +
-                        '<div class="row">' +
-                            '<div class="form-group">' +
-                                '<div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%">' +
-                                    '<label>Contexto</label>' +
-                                    '<input type="text" id="contexto' + count_pregunta + '" class="form-control" placeholder="Introduzca contexto" name="contexto' + count_pregunta + '" required />' +
-                                '</div>' +
-                                '<div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%">' +
-                                    '<label>Unidad de estudio</label>' +
-                                    '<input type="text" id="unidad_estudio' + count_pregunta + '" class="form-control" placeholder="Introduzca unidad de estudio" name="unidad_estudio' + count_pregunta + '" required />' +
-                                '</div>' +
-                                '<div class="col-md-6 col-sm-6 col-xs-12">' +
-                                    '<label>Temporalidad (inicio)</label>' +
-                                    '<fieldset>' +
-                                        '<div class="control-group">' +
-                                            '<div class="controls">' +
-                                                '<div class="input-prepend input-group">' +
-                                                    '<span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>' +
-                                                    '<input type="date" name="temp_inicio' + count_pregunta + '" data-placeholder="Fecha inicio" id="temp_inicio' + count_pregunta + '" class="form-control" required/>' +
-                                                '</div>' +
-                                            '</div>' +
-                                        '</div>' +
-                                    '</fieldset>' +
-                                '</div>' +
-                                '<div class="col-md-6 col-sm-6 col-xs-12">' +
-                                    '<label>Temporalidad (fin)</label>' +
-                                    '<fieldset>' +
-                                        '<div class="control-group">' +
-                                            '<div class="controls">' +
-                                                '<div class="input-prepend input-group">' +
-                                                    '<span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>' +
-                                                    '<input type="date" name="temp_fin' + count_pregunta + '" data-placeholder="Fecha culminación" id="temp_fin' + count_pregunta + '" class="form-control" required/>' +
-                                                '</div>' +
-                                            '</div>' +
-                                        '</div>' +
-                                    '</fieldset>' +
-                                '</div>' +
-                                '<div class="col-md-6 col-sm-6 col-xs-12">' +
-                                    '<label>Evento</label>' +
-                                    '<input type="text" id="evento' + count_pregunta + '" class="form-control" placeholder="Introduzca evento" name="evento' + count_pregunta + '" required />' +
-                                '</div>' +
-                                '<div class="col-md-6 col-sm-6 col-xs-12">' +
-                                    '<label>Tipo evento</label>' +
-                                    '<select id="tipoEvento' + count_pregunta + '" class="form-control" name="tipoEvento' + count_pregunta + '" required>' +
-                                        '<option value="" disabled selected hidden>Seleccione tipo de evento</option>' +
-                                        '<option value="Evento a modificar">Evento a modificar</option>' +
-                                        '<option value="Proceso causal">Proceso causal</option>' +
-                                    '</select>'+
-                                '</div>' +
-                                '<div class="col-md-12 col-sm-12 col-xs-12">' +
-                                    '<label style="width: 50%; float: left">' +
-                                        '<input type="radio" class="pradio" value="Primaria" onclick="seleccion(this)" id="optionsRadiop' + count_pregunta + '" name="optionsRadios' + count_pregunta + '"> Selecione esta opcion si esta pregunta es el enunciado holopráxico' +
-                                    '</label>' +
-                                    '<label style="width: 50%">' +
-                                        '<input type="radio" checked value="Secundaria" id="optionsRadios' + count_pregunta + '" name="optionsRadios' + count_pregunta + '"> Selecione esta opcion si esta pregunta es pregunta secundaria' +
-                                    '</label>' +
-                                '</div>' +
-                            '</div>' +
-                        '</div>' +
-                        '<br>' +
-                    '</div>' +
-                '</div>' +
-            '</div>';
-        $('#lista-preguntas').append(markup);
-        $('#pregunta').val('');
-        document.getElementById("iteracion").value = count_pregunta;
-    }
-
-    //delete done task from "already done"
-    $('#lista-preguntas').on('click', '.borrar-pregunta', function() {
-        removeItem(this);
-    });
-
-    //remove done task from list
-    function removeItem(element) {
-        $(element).parent().parent().parent().remove();
-    }
-
-    function seleccion(myRadio){
-        var radioId = myRadio.id;
-        var allInp = document.getElementsByTagName("input");
-        for (i=0; i<allInp.length; i++){
-            if(allInp[i].type == "radio" && allInp[i].value == "Secundaria"){
-                allInp[i].checked = true;
-            }
-            if(allInp[i].id == myRadio.id) allInp[i].checked = true;
-        }
-        for (i=0; i<allInp.length; i++){
-            if(allInp[i].id == myRadio.id) allInp[i].checked = true;
-        }
-    }
-</script>
-
-@endpush()

@@ -13,8 +13,7 @@ class Contexto extends Model
     public $timestamps=false;
 
     protected $fillable =[
-        'contexto',
-        'fk_pregunta'
+        'contexto'
     ];
 
     protected $guarded =[

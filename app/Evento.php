@@ -14,12 +14,7 @@ class Evento extends Model
 
     protected $fillable =[
         'nombre',
-        'tipo',
-        'descripcion',
-        'fk_evento',
-        'fk_investigacion',
-        'fk_unidad_informacion',
-        'fk_pregunta'
+        'tipo'
     ];
 
     protected $guarded =[

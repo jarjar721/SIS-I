@@ -44,16 +44,12 @@ Route::group(['middleware' => ['auth']], function () {
     //\Rol
 
     //Investigacion
-    Route::get('/investigación/nueva', function () {
-        return view('investigacion.nueva');
-    });
     Route::get('/investigación/ver', function () {
         return view('investigacion.consultar');
     });
     Route::get('/investigación/delimitación_tema', 'InvestigacionController@d_tema');
     Route::post('/investigacion/store', 'InvestigacionController@store');
-    Route::post('/inv', 'InvestigacionController@getInvData')->name('inv.data');
-    Route::post('/inv/{id}', 'InvestigacionController@getUsersData');
+    Route::get('/inv', 'InvestigacionController@getInvData')->name('inv.data');
     //Route::get('/investigación/fase_proyectiva', 'InvestigacionController@f_proy');
     Route::get('/investigación/holograma/{Codigo}', 'InvestigacionController@holo');
     //\Investigacion

@@ -14,9 +14,10 @@ class Pregunta extends Model
 
     protected $fillable =[
         'pregunta',
-        'fk_pregunta',  //Recursiva
-        'tipo',
-        'fk_investigacion'
+        'fk_modalidad',
+        'fk_investigacion',
+        'fk_tipo_investigacion',
+        'fk_temporalidad'
     ];
 
     protected $guarded =[

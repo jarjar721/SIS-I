@@ -13,8 +13,7 @@ class U_Estudio extends Model
     public $timestamps=false;
 
     protected $fillable =[
-        'unidad_estudio',
-        'fk_pregunta'
+        'unidad_estudio'
     ];
 
     protected $guarded =[
