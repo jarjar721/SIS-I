@@ -1,11 +1,11 @@
 
 /*ALTER SEQUENCE START*/
 
-ALTER TABLE ONLY public.evento_estudio
+ALTER TABLE ONLY public.evento_ui
 ALTER COLUMN id
 SET
 DEFAULT nextval
-('public.evento_estudio_id_seq'::regclass);
+('public.evento_ui_id_seq'::regclass);
 
 ALTER TABLE ONLY public.contexto
 ALTER COLUMN id
@@ -18,6 +18,12 @@ ALTER COLUMN id
 SET
 DEFAULT nextval
 ('public.criterio_metodologico_id_seq'::regclass);
+
+ALTER TABLE ONLY public.criterio_metodologico_ui
+ALTER COLUMN id
+SET
+DEFAULT nextval
+('public.criterio_metodologico_ui_id_seq'::regclass);
 
 ALTER TABLE ONLY public.diseno
 ALTER COLUMN id
@@ -181,17 +187,17 @@ SET
 DEFAULT nextval
 ('public.tecnica_analisis_aplicada_id_seq'::regclass);
 
-ALTER TABLE ONLY public.unidad_estudio_pregunta
+ALTER TABLE ONLY public.unidad_estudio_ui
 ALTER COLUMN id
 SET
 DEFAULT nextval
-('public.unidad_estudio_pregunta_id_seq'::regclass);
+('public.unidad_estudio_ui_id_seq'::regclass);
 
-ALTER TABLE ONLY public.contexto_pregunta
+ALTER TABLE ONLY public.contexto_ui
 ALTER COLUMN id
 SET
 DEFAULT nextval
-('public.contexto_pregunta_id_seq'::regclass);
+('public.contexto_ui_id_seq'::regclass);
 
 ALTER TABLE ONLY public.dimension
 ALTER COLUMN id
@@ -216,6 +222,12 @@ ALTER COLUMN id
 SET
 DEFAULT nextval
 ('public.justificacion_id_seq'::regclass);
+
+ALTER TABLE ONLY public.justificacion_ui
+ALTER COLUMN id
+SET
+DEFAULT nextval
+('public.justificacion_ui_id_seq'::regclass);
 
 ALTER TABLE ONLY public.categoria_calidad
 ALTER COLUMN id
@@ -265,12 +277,16 @@ DEFAULT nextval
 
 /*ALTER PRIMARY KEY START*/
 
-ALTER TABLE ONLY public.evento_estudio
-ADD CONSTRAINT evento_estudio_pkey PRIMARY KEY
+ALTER TABLE ONLY public.evento_ui
+ADD CONSTRAINT evento_ui_pkey PRIMARY KEY
 (id);
 
 ALTER TABLE ONLY public.criterio_metodologico
 ADD CONSTRAINT criterio_metodologico_pkey PRIMARY KEY
+(id);
+
+ALTER TABLE ONLY public.criterio_metodologico_ui
+ADD CONSTRAINT criterio_metodologico_ui_pkey PRIMARY KEY
 (id);
 
 ALTER TABLE ONLY public.rol_privilegio
@@ -405,16 +421,20 @@ ALTER TABLE ONLY public.tecnica_analisis_aplicada
 ADD CONSTRAINT tecnica_analisis_aplicada_pkey PRIMARY KEY
 (id);
 
-ALTER TABLE ONLY public.unidad_estudio_pregunta
-ADD CONSTRAINT unidad_estudio_pregunta_pkey PRIMARY KEY
+ALTER TABLE ONLY public.unidad_estudio_ui
+ADD CONSTRAINT unidad_estudio_ui_pkey PRIMARY KEY
 (id);
 
-ALTER TABLE ONLY public.contexto_pregunta
-ADD CONSTRAINT contexto_pregunta_pkey PRIMARY KEY
+ALTER TABLE ONLY public.contexto_ui
+ADD CONSTRAINT contexto_ui_pkey PRIMARY KEY
 (id);
 
 ALTER TABLE ONLY public.justificacion
 ADD CONSTRAINT justificacion_pkey PRIMARY KEY
+(id);
+
+ALTER TABLE ONLY public.justificacion_ui
+ADD CONSTRAINT justificacion_ui_pkey PRIMARY KEY
 (id);
 
 ALTER TABLE ONLY public.categoria_calidad
@@ -470,10 +490,10 @@ CREATE INDEX fki_relacion_modalidad ON public.pregunta USING btree
 CREATE INDEX fki_pregunta_temporalidad ON public.pregunta USING btree
 (fk_temporalidad);
 
-/*evento_estudio*/
-CREATE INDEX fki_evento_estudio_pregunta ON public.evento_estudio USING btree
-(fk_pregunta);
-CREATE INDEX fki_relacion_evento ON public.evento_estudio USING btree
+/*evento_ui*/
+CREATE INDEX fki_evento_ui_unidad_informacion ON public.evento_ui USING btree
+(fk_unidad_informacion);
+CREATE INDEX fki_relacion_evento ON public.evento_ui USING btree
 (fk_evento);
 
 /*indicio*/
@@ -517,8 +537,12 @@ CREATE INDEX password_resets_email_index ON public.password_resets USING btree
 /*criterio_metodologico*/
 CREATE INDEX fki_criterio_metodologico_diseno ON public.criterio_metodologico USING btree
 (fk_diseno);
-CREATE INDEX fki_criterio_metodologico_investigacion ON public.criterio_metodologico USING btree
-(fk_pregunta);
+
+/*criterio_metodologico_ui*/
+CREATE INDEX fki_criterio_metodologico_ui_unidad_informacion ON public.criterio_metodologico_ui USING btree
+(fk_unidad_informacion);
+CREATE INDEX fki_criterio_metodologico_ui_criterio_metodologico ON public.criterio_metodologico_ui USING btree
+(fk_criterio_metodologico);
 
 /*instrumento*/
 CREATE INDEX fki_instrumento_tecnica_recoleccion ON public.instrumento USING btree
@@ -531,22 +555,14 @@ CREATE INDEX fki_rol_privilegio_privilegio ON public.rol_privilegio USING btree
 (fk_privilegio);
 
 /*sinergia*/
-CREATE INDEX fki_sinergia_evento_estudio ON public.sinergia USING btree
-(fk_evento_estudio);
+CREATE INDEX fki_sinergia_evento_ui ON public.sinergia USING btree
+(fk_evento_ui);
 
 /*unidad_informacion*/
 CREATE INDEX fki_unidad_informacion_categoria ON public.unidad_informacion USING btree
 (fk_categoria);
-CREATE INDEX fki_unidad_informacion_contexto_pregunta ON public.unidad_informacion USING btree
-(fk_contexto_pregunta);
-CREATE INDEX fki_unidad_informacion_unidad_estudio_pregunta ON public.unidad_informacion USING btree
-(fk_unidad_estudio_pregunta);
-CREATE INDEX fki_unidad_informacion_evento_estudio ON public.unidad_informacion USING btree
-(fk_evento_estudio);
 CREATE INDEX fki_unidad_informacion_pregunta ON public.unidad_informacion USING btree
 (fk_pregunta);
-CREATE INDEX fki_unidad_informacion_justificacion ON public.unidad_informacion USING btree
-(fk_justificacion);
 
 /*bibliografia_usada*/
 CREATE INDEX fki_bibliografia_usada_unidad_informacion ON public.bibliografia_usada USING btree
@@ -558,17 +574,17 @@ CREATE INDEX fki_bibliografia_usada_bibliografia ON public.bibliografia_usada US
 CREATE INDEX fki_categoria_categoria ON public.categoria USING btree
 (fk_categoria);
 
-/*unidad_estudio_pregunta*/
-CREATE INDEX fki_unidad_estudio_pregunta_unidad_estudio ON public.unidad_estudio_pregunta USING btree
+/*unidad_estudio_ui*/
+CREATE INDEX fki_unidad_estudio_ui_unidad_estudio ON public.unidad_estudio_ui USING btree
 (fk_unidad_estudio);
-CREATE INDEX fki_unidad_estudio_pregunta_pregunta ON public.unidad_estudio_pregunta USING btree
-(fk_pregunta);
+CREATE INDEX fki_unidad_estudio_ui_unidad_informacion ON public.unidad_estudio_ui USING btree
+(fk_unidad_informacion);
 
-/*contexto_pregunta*/
-CREATE INDEX fki_contexto_pregunta_contexto ON public.contexto_pregunta USING btree
+/*contexto_ui*/
+CREATE INDEX fki_contexto_ui_contexto ON public.contexto_ui USING btree
 (fk_contexto);
-CREATE INDEX fki_contexto_pregunta_pregunta ON public.contexto_pregunta USING btree
-(fk_pregunta);
+CREATE INDEX fki_contexto_ui_unidad_informacion ON public.contexto_ui USING btree
+(fk_unidad_informacion);
 
 /*calidad_pregunta*/
 CREATE INDEX fki_calidad_pregunta_categoria_calidad ON public.calidad_pregunta USING btree
@@ -581,8 +597,14 @@ CREATE INDEX fki_calidad_item_investigacion ON public.calidad_item USING btree
 (fk_investigacion);
 
 /*poblacion*/
-CREATE INDEX fki_poblacion_unidad_estudio_pregunta ON public.poblacion USING btree
-(fk_unidad_estudio_pregunta);
+CREATE INDEX fki_poblacion_unidad_estudio_ui ON public.poblacion USING btree
+(fk_unidad_estudio_ui);
+
+/*justificacion_ui*/
+CREATE INDEX fki_justificacion_ui_justificacion ON public.justificacion_ui USING btree
+(fk_justificacion);
+CREATE INDEX fki_justificacion_ui_unidad_informacion ON public.justificacion_ui USING btree
+(fk_unidad_informacion);
 
 /*muestra*/
 CREATE INDEX fki_muestra_poblacion ON public.muestra USING btree
@@ -643,25 +665,31 @@ ALTER TABLE ONLY public.criterio_metodologico
 ADD CONSTRAINT relacion_criterio_metodologico_diseno FOREIGN KEY
 (fk_diseno) REFERENCES public.diseno
 (id);
-ALTER TABLE ONLY public.criterio_metodologico
-ADD CONSTRAINT relacion_criterio_metodologico_pregunta FOREIGN KEY
-(fk_pregunta) REFERENCES public.pregunta
+
+/*FKs criterio_metodologico_ui*/
+ALTER TABLE ONLY public.criterio_metodologico_ui
+ADD CONSTRAINT relacion_criterio_metodologico_ui_criterio_metodologico FOREIGN KEY
+(fk_criterio_metodologico) REFERENCES public.criterio_metodologico
+(id);
+ALTER TABLE ONLY public.criterio_metodologico_ui
+ADD CONSTRAINT relacion_criterio_metodologico_ui_unidad_informacion FOREIGN KEY
+(fk_unidad_informacion) REFERENCES public.unidad_informacion
 (id);
 
-/*FKs evento_estudio*/
-ALTER TABLE ONLY public.evento_estudio
-ADD CONSTRAINT relacion_evento_estudio_evento FOREIGN KEY
+/*FKs evento_ui*/
+ALTER TABLE ONLY public.evento_ui
+ADD CONSTRAINT relacion_evento_ui_evento FOREIGN KEY
 (fk_evento) REFERENCES public.evento
 (id);
-ALTER TABLE ONLY public.evento_estudio
-ADD CONSTRAINT relacion_evento_estudio_pregunta FOREIGN KEY
-(fk_pregunta) REFERENCES public.pregunta
+ALTER TABLE ONLY public.evento_ui
+ADD CONSTRAINT relacion_evento_ui_unidad_informacion FOREIGN KEY
+(fk_unidad_informacion) REFERENCES public.unidad_informacion
 (id);
 
 /*FKs sinergia*/
 ALTER TABLE ONLY public.sinergia
-ADD CONSTRAINT relacion_sinergia_evento_estudio FOREIGN KEY
-(fk_evento_estudio) REFERENCES public.evento_estudio
+ADD CONSTRAINT relacion_sinergia_evento_ui FOREIGN KEY
+(fk_evento_ui) REFERENCES public.evento_ui
 (id);
 
 /*FKs diseno*/
@@ -697,24 +725,8 @@ ADD CONSTRAINT relacion_unidad_informacion_categoria FOREIGN KEY
 (fk_categoria) REFERENCES public.categoria
 (id);
 ALTER TABLE ONLY public.unidad_informacion
-ADD CONSTRAINT recursiva_unidad_informacion_contexto_pregunta FOREIGN KEY
-(fk_contexto_pregunta) REFERENCES public.contexto_pregunta
-(id);
-ALTER TABLE ONLY public.unidad_informacion
-ADD CONSTRAINT relacion_unidad_informacion_evento_estudio FOREIGN KEY
-(fk_evento_estudio) REFERENCES public.evento_estudio
-(id);
-ALTER TABLE ONLY public.unidad_informacion
-ADD CONSTRAINT relacion_unidad_informacion_unidad_estudio FOREIGN KEY
-(fk_unidad_estudio_pregunta) REFERENCES public.unidad_estudio_pregunta
-(id);
-ALTER TABLE ONLY public.unidad_informacion
 ADD CONSTRAINT relacion_unidad_informacion_pregunta FOREIGN KEY
 (fk_pregunta) REFERENCES public.pregunta
-(id);
-ALTER TABLE ONLY public.unidad_informacion
-ADD CONSTRAINT relacion_unidad_informacion_justificacion FOREIGN KEY
-(fk_justificacion) REFERENCES public.justificacion
 (id);
 
 /*FKs indicio*/
@@ -759,14 +771,14 @@ ADD CONSTRAINT recursiva_categoria FOREIGN KEY
 (fk_categoria) REFERENCES public.categoria
 (id);
 
-/*FKs contexto_pregunta*/
-ALTER TABLE ONLY public.contexto_pregunta
-ADD CONSTRAINT relacion_contexto_pregunta_contexto FOREIGN KEY
+/*FKs contexto_ui*/
+ALTER TABLE ONLY public.contexto_ui
+ADD CONSTRAINT relacion_contexto_ui_contexto FOREIGN KEY
 (fk_contexto) REFERENCES public.contexto
 (id);
-ALTER TABLE ONLY public.contexto_pregunta
-ADD CONSTRAINT relacion_contexto_pregunta_pregunta FOREIGN KEY
-(fk_pregunta) REFERENCES public.pregunta
+ALTER TABLE ONLY public.contexto_ui
+ADD CONSTRAINT relacion_contexto_ui_unidad_informacion FOREIGN KEY
+(fk_unidad_informacion) REFERENCES public.unidad_informacion
 (id);
 
 /*FKs instrumento*/
@@ -787,13 +799,13 @@ ADD CONSTRAINT relacion_objetivo_especifico_objetivo_general FOREIGN KEY
 (fk_objetivo_general) REFERENCES public.objetivo_general
 (id);
 
-/*FKs unidad_estudio_pregunta*/
-ALTER TABLE ONLY public.unidad_estudio_pregunta
-ADD CONSTRAINT relacion_unidad_estudio_pregunta_pregunta FOREIGN KEY
-(fk_pregunta) REFERENCES public.pregunta
+/*FKs unidad_estudio_ui*/
+ALTER TABLE ONLY public.unidad_estudio_ui
+ADD CONSTRAINT relacion_unidad_estudio_ui_unidad_informacion FOREIGN KEY
+(fk_unidad_informacion) REFERENCES public.unidad_informacion
 (id);
-ALTER TABLE ONLY public.unidad_estudio_pregunta
-ADD CONSTRAINT relacion_unidad_estudio_pregunta_unidad_estudio FOREIGN KEY
+ALTER TABLE ONLY public.unidad_estudio_ui
+ADD CONSTRAINT relacion_unidad_estudio_ui_unidad_estudio FOREIGN KEY
 (fk_unidad_estudio) REFERENCES public.unidad_estudio
 (id);
 
@@ -815,8 +827,8 @@ ADD CONSTRAINT relacion_calidad_item_calidad_pregunta FOREIGN KEY
 
 /*FKs poblacion*/
 ALTER TABLE ONLY public.poblacion
-ADD CONSTRAINT relacion_poblacion_unidad_estudio_pregunta FOREIGN KEY
-(fk_unidad_estudio_pregunta) REFERENCES public.unidad_estudio_pregunta
+ADD CONSTRAINT relacion_poblacion_unidad_estudio_ui FOREIGN KEY
+(fk_unidad_estudio_ui) REFERENCES public.unidad_estudio_ui
 (id);
 
 /*FKs muestra*/
@@ -844,5 +856,16 @@ ALTER TABLE ONLY public.tecnica_analisis_aplicada
 ADD CONSTRAINT relacion_tecnica_analisis_aplicada_tecnica_analisis FOREIGN KEY
 (fk_tecnica_analisis) REFERENCES public.tecnica_analisis
 (id);
+
+/*FKs justificacion_ui*/
+ALTER TABLE ONLY public.justificacion_ui
+ADD CONSTRAINT relacion_justificacion_ui_justificacion FOREIGN KEY
+(fk_justificacion) REFERENCES public.justificacion
+(id);
+ALTER TABLE ONLY public.justificacion_ui
+ADD CONSTRAINT relacion_justificacion_ui_unidad_informacion FOREIGN KEY
+(fk_unidad_informacion) REFERENCES public.unidad_informacion
+(id);
+
 
 /*ALTER FOREIGN KEY END*/

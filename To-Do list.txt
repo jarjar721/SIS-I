@@ -2,4 +2,4 @@ CRUD's
 
 Forms
 
-Cambiar lo relacionado a usuarios depues de autenticar
+Postgres graficos

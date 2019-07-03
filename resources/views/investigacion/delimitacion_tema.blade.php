@@ -126,11 +126,11 @@
                                                         <textarea id="pregunta" class="form-control" name="pregunta"></textarea>
                                                     </div>
                                                 </div> 
-                                                <div class="col-md-6 col-sm-6 col-xs-12" style="width: 100%"> 
+                                                <div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%;  margin-bottom: 20px;"> 
                                                     <label>Disciplina</label> 
                                                     <input type="text" id="disciplina" class="form-control" placeholder="Introduzca disciplina" name="disciplina" required/> 
                                                 </div> 
-                                                <div class="col-md-6 col-sm-6 col-xs-12" style="width: 100%"> 
+                                                <div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%;  margin-bottom: 20px;"> 
                                                     <label>Tipo de investigación</label> 
                                                     <select id="tipoInvestigacion" class="form-control" name="tipoInvestigacion" required> 
                                                         <option value="" disabled selected hidden>Seleccione <b>tipo</b> de investigación</option> 
