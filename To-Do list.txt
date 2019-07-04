@@ -3,3 +3,15 @@ CRUD's
 Forms
 
 Postgres graficos
+
+UPDATE public.evento E
+SET inicial = (SELECT LEFT(nombre, 1) FROM public.evento E2 WHERE E2.id = E.id);
+
+SELECT I.tema AS "Tema", ((COUNT(CI.respuesta)*1.)*100)/13 AS "Porcentaje"
+FROM investigacion I, calidad_item CI
+WHERE I.id = CI.fk_investigacion AND CI.respuesta IS TRUE
+GROUP BY I.tema;
+
+SELECT (SELECT (((COUNT(CI.respuesta) * 1.)*100)/13)
+FROM investigacion I, calidad_item CI
+WHERE I.id = CI.fk_investigacion AND CI.respuesta = TRUE)/(SELECT (count(I.id)*1.) FROM investigacion I) "Promedio total de calidad";
