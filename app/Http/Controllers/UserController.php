@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\User;
 use App\Rol;
 use App\Pri_Rol;
+use App\Persona;
+use App\Institucion;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -128,6 +130,43 @@ class UserController extends Controller
         }else{
             Session::flash('message','Usted no tiene permisos para realizar esta accion.');
             return Redirect::back();
+        }
+    }
+
+    public function crear(Request $request){
+        if(is_null(Persona::where('cedula', $request->cedula)->first())){
+            
+            $p = Persona::create([
+                'cedula' => $request->cedula,
+                'nombre' => $request->nombre,
+                'apellido' => $request->apellido,
+                'fk_usuario' => Auth::user()->id
+            ]);
+            if(!is_null($request->nombre2)){
+                $p->nombre_2 = $request->nombre2;
+                $p->save();
+            }
+            if(!is_null($request->apellido2)){
+                $p->apellido_2 = $request->apellido2;
+                $p->save();
+            }
+            if(!is_null($request->institucion)){
+                $i = Institucion::where('nombre', $request->institucion)->first();
+                if(is_null($i)){
+                    $i = Institucion::create([
+                        'id' => (Institucion::max('id'))+1,
+                        'nombre' => $request->institucion
+                    ]);
+                }
+                $p->fk_institucion = $i->id;
+                $p->save();
+            }
+            return redirect('/dashboard');
+
+        }else{
+            Session::flash('messagedel','La cédula de identidad '.$request->cedula.' ya existe.
+            Contacte a alguno de los ejecutivos en caso de inconvenientes.');
+            return Redirect::back()->withInput(Input::all());
         }
     }
 }

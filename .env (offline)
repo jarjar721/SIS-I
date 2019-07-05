@@ -7,11 +7,11 @@ APP_URL=http://localhost
 LOG_CHANNEL=stack
 
 DB_CONNECTION=pgsql
-DB_HOST=ec2-54-83-201-84.compute-1.amazonaws.com
+DB_HOST=localhost
 DB_PORT=5432
-DB_DATABASE=de7cii1u0v9dve
-DB_USERNAME=zesixxdowbqgyx
-DB_PASSWORD=596ddb44aabd18814288bc789169833d1a0f39c7fd1724ca0f1969738bc709fb
+DB_DATABASE=SIS-I
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file

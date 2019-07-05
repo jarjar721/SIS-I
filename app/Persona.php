@@ -6,22 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Persona extends Model
 {
-    protected $table='pregunta';
+    protected $table='persona';
 
-    protected $primaryKey='id';
+    protected $primaryKey='cedula';
 
     public $timestamps=false;
 
     protected $fillable =[
-        'id',
-        'pregunta',
-        'fk_modalidad',
-        'fk_investigacion',
-        'fk_tipo_investigacion',
-        'fk_temporalidad'
+        'cedula',
+        'nombre',
+        'apellido',
+        'nombre_2',
+        'apellido_2',
+        'fk_usuario',
+        'fk_institucion'
     ];
 
     protected $guarded =[
-        'id',
+        'cedula',
     ];
 }
