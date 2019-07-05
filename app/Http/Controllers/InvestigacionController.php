@@ -77,17 +77,16 @@ class InvestigacionController extends Controller
             'nombre' => $request->$evento,
             'tipo' => $request->$tipoEvento
         ]);
-        DB::table('evento_estudio')->create([
+        /*Evento m a m  
+            DB::table('evento_estudio')->create([
             'clase' => 'Evento a Modificar',
             'fk_pregunta' => $pregunta->id,
             'fk_evento' => $data->id
-        ]);
+        ]);*/
         //\ Fin creado principal
 
-        $data = $request;
-
         //Redireccion a fase_proyectiva.blade con los datos
-        return view("investigacion.fase_proyectiva", compact('data'));
+        return view("investigacion.fase_proyectiva", compact('data', 'pregunta'));
     }
 
     public function holo($code){

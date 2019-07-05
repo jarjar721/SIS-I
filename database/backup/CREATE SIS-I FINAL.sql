@@ -1,21 +1,21 @@
 
 /*CREATE START*/
 
-CREATE TABLE public.evento_estudio (
+CREATE TABLE public.evento_ui (
     id integer NOT NULL,
     clase character varying NOT NULL,
-    fk_pregunta integer NOT NULL,
+    fk_unidad_informacion integer NOT NULL,
     fk_evento integer NOT NULL
 );
-ALTER TABLE public.evento_estudio OWNER TO postgres;
-CREATE SEQUENCE public.evento_estudio_id_seq
+ALTER TABLE public.evento_ui OWNER TO postgres;
+CREATE SEQUENCE public.evento_ui_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.evento_estudio_id_seq OWNER TO postgres;
-ALTER SEQUENCE public.evento_estudio_id_seq OWNED BY public.evento_estudio.id;
+ALTER TABLE public.evento_ui_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.evento_ui_id_seq OWNED BY public.evento_ui.id;
 
 
 
@@ -40,8 +40,7 @@ ALTER SEQUENCE public.contexto_id_seq OWNED BY public.contexto.id;
 CREATE TABLE public.criterio_metodologico (
     id integer NOT NULL,
     tipo_abordaje character varying NOT NULL,
-    fk_diseno integer,
-    fk_pregunta integer
+    fk_diseno integer
 );
 ALTER TABLE public.criterio_metodologico OWNER TO postgres;
 CREATE SEQUENCE public.criterio_metodologico_id_seq
@@ -54,6 +53,21 @@ ALTER TABLE public.criterio_metodologico_id_seq OWNER TO postgres;
 ALTER SEQUENCE public.criterio_metodologico_id_seq OWNED BY public.criterio_metodologico.id;
 
 
+
+CREATE TABLE public.criterio_metodologico_ui (
+    id integer NOT NULL,
+    fk_unidad_informacion integer,
+    fk_criterio_metodologico integer
+);
+ALTER TABLE public.criterio_metodologico_ui OWNER TO postgres;
+CREATE SEQUENCE public.criterio_metodologico_ui_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+ALTER TABLE public.criterio_metodologico_ui_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.criterio_metodologico_ui_id_seq OWNED BY public.criterio_metodologico_ui.id;
 
 
 CREATE TABLE public.diseno (
@@ -272,6 +286,22 @@ ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
 
 
 
+CREATE TABLE public.justificacion_ui (
+    id integer NOT NULL,
+    fk_unidad_informacion integer,
+    fk_justificacion integer
+);
+ALTER TABLE public.justificacion_ui OWNER TO postgres;
+CREATE SEQUENCE public.justificacion_ui_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+ALTER TABLE public.justificacion_ui_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.justificacion_ui_id_seq OWNED BY public.justificacion_ui.id;
+
+
 
 CREATE TABLE public.objetivo_general (
     id integer NOT NULL,
@@ -432,7 +462,7 @@ ALTER SEQUENCE public.rol_privilegio_id_seq OWNED BY public.rol_privilegio.id;
 CREATE TABLE public.sinergia (
     id integer NOT NULL,
     nombre character varying NOT NULL,
-    fk_evento_estudio integer
+    fk_evento_ui integer
 );
 ALTER TABLE public.sinergia OWNER TO postgres;
 CREATE SEQUENCE public.sinergia_id_seq
@@ -504,11 +534,7 @@ CREATE TABLE public.unidad_informacion (
     cita character varying,
     nivel character varying NOT NULL,
     fk_categoria integer,
-    fk_contexto_pregunta integer,
-    fk_unidad_estudio_pregunta integer,
-    fk_evento_estudio integer,
-    fk_pregunta integer,
-    fk_justificacion integer
+    fk_pregunta integer
 );
 ALTER TABLE public.unidad_informacion OWNER TO postgres;
 CREATE SEQUENCE public.unidad_informacion_id_seq
@@ -660,38 +686,38 @@ ALTER SEQUENCE public.tecnica_analisis_aplicada_id_seq OWNED BY public.tecnica_a
 
 
 
-CREATE TABLE public.unidad_estudio_pregunta (
+CREATE TABLE public.unidad_estudio_ui (
     id integer NOT NULL,
-    fk_unidad_estudio integer NOT NULL,
-    fk_pregunta integer NOT NULL
+    fk_unidad_estudio integer,
+    fk_unidad_informacion integer
 );
-ALTER TABLE public.unidad_estudio_pregunta OWNER TO postgres;
-CREATE SEQUENCE public.unidad_estudio_pregunta_id_seq
+ALTER TABLE public.unidad_estudio_ui OWNER TO postgres;
+CREATE SEQUENCE public.unidad_estudio_ui_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.unidad_estudio_pregunta_id_seq OWNER TO postgres;
-ALTER SEQUENCE public.unidad_estudio_pregunta_id_seq OWNED BY public.unidad_estudio_pregunta.id;
+ALTER TABLE public.unidad_estudio_ui_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.unidad_estudio_ui_id_seq OWNED BY public.unidad_estudio_ui.id;
 
 
 
 
-CREATE TABLE public.contexto_pregunta (
+CREATE TABLE public.contexto_ui (
     id integer NOT NULL,
-    fk_contexto integer NOT NULL,
-    fk_pregunta integer NOT NULL
+    fk_contexto integer,
+    fk_unidad_informacion integer
 );
-ALTER TABLE public.contexto_pregunta OWNER TO postgres;
-CREATE SEQUENCE public.contexto_pregunta_id_seq
+ALTER TABLE public.contexto_ui OWNER TO postgres;
+CREATE SEQUENCE public.contexto_ui_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.contexto_pregunta_id_seq OWNER TO postgres;
-ALTER SEQUENCE public.contexto_pregunta_id_seq OWNED BY public.contexto_pregunta.id;
+ALTER TABLE public.contexto_ui_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.contexto_ui_id_seq OWNED BY public.contexto_ui.id;
 
 
 
@@ -773,7 +799,7 @@ CREATE TABLE public.poblacion (
     id integer NOT NULL,
     descripcion character varying,
     cantidad integer,
-    fk_unidad_estudio_pregunta integer
+    fk_unidad_estudio_ui integer
 );
 ALTER TABLE public.poblacion OWNER TO postgres;
 CREATE SEQUENCE public.poblacion_id_seq

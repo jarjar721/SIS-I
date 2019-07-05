@@ -55,7 +55,11 @@
                 <img src="{{asset('images/'.Auth::user()->image)}}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Bienvenido admin,</span>
+                  @if(Auth::user()->fk_rol == 1) 
+                    <span>Bienvenido admin,</span>
+                  @else 
+                    <span>Bienvenido,</span>
+                  @endif
                 <h2> {{Auth::user()->username}}</h2>
               </div>
             </div>
