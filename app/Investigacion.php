@@ -13,6 +13,7 @@ class Investigacion extends Model
     public $timestamps=false;
 
     protected $fillable =[
+        'id',
         'tema',
         'disciplina',
         'fecha_creacion',
