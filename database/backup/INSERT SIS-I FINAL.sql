@@ -582,6 +582,10 @@ INSERT INTO public.usuario
 (id, username, email, password, email_verified_at, remember_token, created_at, updated_at, fk_rol, image) 
 VALUES 
 (1, 'Adriadmin', 'a@a.com', '$2y$10$nWi7ptxrKLxpjCM0dJ9wOOzRzFOqOqXBYw1j/44noppkCT76Lilny', NULL, NULL, '2019-07-03 20:58:37', '2019-07-03 20:58:37', 1, 'user.png');
+INSERT INTO public.usuario 
+(id, username, email, password, email_verified_at, remember_token, created_at, updated_at, fk_rol, image) 
+VALUES 
+(2, 'jarjar721', 'jarjar721@sisi.com', '$2y$10$JT0NxhWX25TtsrwbWPdWKu.UqTJ8pfWWJzJQ0xblI3U0A.McEOtj2', NULL, NULL, '2019-07-03 20:58:37', '2019-07-03 20:58:37', 1, 'user.png');
 /* END usuario */
 
 /* START persona */

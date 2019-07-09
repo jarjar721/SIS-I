@@ -43,12 +43,12 @@ class InvestigacionController extends Controller
 
         //Llenado de la investigacion
         $data = Temporalidad::create([
-            'fecha_inicio' => $request->$temp_inicio,
-            'fecha_fin' => $request->$temp_fin
+            'fecha_inicio' => $request->temp_inicio,
+            'fecha_fin' => $request->temp_fin
         ]);
 
         $pregunta = Pregunta::create([
-            'pregunta' => $request->$pregunta,
+            'pregunta' => $request->pregunta,
             'fk_investigacion' => $investigacion->id,
             'fk_tipo_investigacion' => $request->tipoInvestigacion,
             'fk_modalidad' => 1,
@@ -58,29 +58,28 @@ class InvestigacionController extends Controller
         //Rellenado de resto de datos:
 
         $data = U_Estudio::create([
-            'unidad_estudio' => $request->$unidad_estudio
+            'unidad_estudio' => $request->unidad_estudio
         ]);
-        DB::table('unidad_estudio_pregunta')->create([
+        DB::table('unidad_estudio_ui')->create([
             'fk_unidad_estudio' => $data->id,
-            'fk_pregunta' => $pregunta->id
+            'fk_unidad_informacion' => $pregunta->id
         ]);
 
         $data = Contexto::create([
-            'contexto' => $request->$contexto
+            'contexto' => $request->contexto
         ]);
-        DB::table('contexto_pregunta')->create([
+        DB::table('contexto_ui')->create([
             'fk_contexto' => $data->id,
-            'fk_pregunta' => $pregunta->id
+            'fk_unidad_informacion' => $pregunta->id
         ]);
 
         $data = Evento::create([
-            'nombre' => $request->$evento,
-            'tipo' => $request->$tipoEvento
+            'nombre' => $request->evento,
+            'tipo' => $request->tipoEvento
         ]);
         /*Evento m a m  
-            DB::table('evento_estudio')->create([
-            'clase' => 'Evento a Modificar',
-            'fk_pregunta' => $pregunta->id,
+            DB::table('evento_ui')->create([
+            'fk_unidad_informacion' => $pregunta->id,
             'fk_evento' => $data->id
         ]);*/
         //\ Fin creado principal
