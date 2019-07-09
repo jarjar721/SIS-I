@@ -25,14 +25,14 @@ class UserController extends Controller
     public function __construct(){}
     
     public function lista(){
-        $users = User::leftjoin('rol','rol.code','=','usuario.fk_rol')
+        $users = User::leftjoin('rol','rol.id','=','usuario.fk_rol')
         ->select(DB::raw('"usuario".*, "rol"."nombre" as rol'))
         ->get();
         return view("usuarios.lista", compact('users'));
     }
 
     public function anyData(){
-        $users = User::leftjoin('rol','rol.code','=','usuario.fk_rol')
+        $users = User::leftjoin('rol','rol.id','=','usuario.fk_rol')
         ->select(DB::raw('"usuario".*, "rol"."nombre" as rol'))
         ->get();
 
@@ -46,10 +46,10 @@ class UserController extends Controller
 
     public function edit($Codigo){
         $validated = User::where('usuario.id', $Codigo)
-        ->leftjoin('rol','rol.code','=','usuario.fk_rol')
-        ->select(\DB::raw("\"usuario\".*,\"rol\".\"code\" as cod, \"rol\".\"nombre\" as rol"))
+        ->leftjoin('rol','rol.id','=','usuario.fk_rol')
+        ->select(\DB::raw("\"usuario\".*,\"rol\".\"id\" as cod, \"rol\".\"nombre\" as rol"))
         ->first();
-        $rols = Rol::select()->orderBy('code', 'asc')->get();
+        $rols = Rol::select()->orderBy('id', 'asc')->get();
 
         return view("usuarios.invconf", compact('validated', 'rols'));
     }
@@ -78,7 +78,7 @@ class UserController extends Controller
 
         if(isset($priv)){
             $usuario = User::where('id', $request->id);
-            $rols = Rol::select()->orderBy('code', 'asc')->get();
+            $rols = Rol::select()->orderBy('id', 'asc')->get();
 
             $us = User::where('usuario.email', $request->email)->first();
         

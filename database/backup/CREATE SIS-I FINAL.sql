@@ -3,13 +3,13 @@
 
 CREATE TABLE public.evento_ui (
     id integer NOT NULL,
-    clase character varying NOT NULL,
-    fk_unidad_informacion integer NOT NULL,
+    clase character varying,
+    fk_unidad_informacion integer,
     fk_evento integer NOT NULL
 );
 ALTER TABLE public.evento_ui OWNER TO postgres;
 CREATE SEQUENCE public.evento_ui_id_seq
-    START WITH 1
+    START WITH 10
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -26,7 +26,7 @@ CREATE TABLE public.contexto (
 );
 ALTER TABLE public.contexto OWNER TO postgres;
 CREATE SEQUENCE public.contexto_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -44,7 +44,7 @@ CREATE TABLE public.criterio_metodologico (
 );
 ALTER TABLE public.criterio_metodologico OWNER TO postgres;
 CREATE SEQUENCE public.criterio_metodologico_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -61,7 +61,7 @@ CREATE TABLE public.criterio_metodologico_ui (
 );
 ALTER TABLE public.criterio_metodologico_ui OWNER TO postgres;
 CREATE SEQUENCE public.criterio_metodologico_ui_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -79,7 +79,7 @@ CREATE TABLE public.diseno (
 );
 ALTER TABLE public.diseno OWNER TO postgres;
 CREATE SEQUENCE public.diseno_id_seq
-    START WITH 1
+    START WITH 65
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -97,7 +97,7 @@ CREATE TABLE public.evento (
 );
 ALTER TABLE public.evento OWNER TO postgres;
 CREATE SEQUENCE public.evento_id_seq
-    START WITH 1
+    START WITH 10
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -115,7 +115,7 @@ CREATE TABLE public.foco (
 );
 ALTER TABLE public.foco OWNER TO postgres;
 CREATE SEQUENCE public.foco_id_seq
-    START WITH 1
+    START WITH 3
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -134,7 +134,7 @@ CREATE TABLE public.fuente (
 );
 ALTER TABLE public.fuente OWNER TO postgres;
 CREATE SEQUENCE public.fuente_id_seq
-    START WITH 1
+    START WITH 3
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -151,7 +151,7 @@ CREATE TABLE public.dimension (
 );
 ALTER TABLE public.dimension OWNER TO postgres;
 CREATE SEQUENCE public.dimension_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -168,7 +168,7 @@ CREATE TABLE public.indicio (
 );
 ALTER TABLE public.indicio OWNER TO postgres;
 CREATE SEQUENCE public.indicio_id_seq
-    START WITH 1
+    START WITH 81
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -185,7 +185,7 @@ CREATE TABLE public.institucion (
 );
 ALTER TABLE public.institucion OWNER TO postgres;
 CREATE SEQUENCE public.institucion_id_seq
-    START WITH 1
+    START WITH 7
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -203,7 +203,7 @@ CREATE TABLE public.instrumento (
 );
 ALTER TABLE public.instrumento OWNER TO postgres;
 CREATE SEQUENCE public.instrumento_id_seq
-    START WITH 1
+    START WITH 7
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -220,7 +220,7 @@ CREATE TABLE public.tecnica_recoleccion (
 );
 ALTER TABLE public.tecnica_recoleccion OWNER TO postgres;
 CREATE SEQUENCE public.tecnica_recoleccion_id_seq
-    START WITH 1
+    START WITH 6
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -239,7 +239,7 @@ CREATE TABLE public.investigacion (
 );
 ALTER TABLE public.investigacion OWNER TO postgres;
 CREATE SEQUENCE public.investigacion_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -260,7 +260,7 @@ CREATE TABLE public.item (
 );
 ALTER TABLE public.item OWNER TO postgres;
 CREATE SEQUENCE public.item_id_seq
-    START WITH 1
+    START WITH 98
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -293,7 +293,7 @@ CREATE TABLE public.justificacion_ui (
 );
 ALTER TABLE public.justificacion_ui OWNER TO postgres;
 CREATE SEQUENCE public.justificacion_ui_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -313,7 +313,7 @@ CREATE TABLE public.objetivo_general (
 );
 ALTER TABLE public.objetivo_general OWNER TO postgres;
 CREATE SEQUENCE public.objetivo_general_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -326,13 +326,14 @@ ALTER SEQUENCE public.objetivo_general_id_seq OWNED BY public.objetivo_general.i
 
 CREATE TABLE public.objetivo_especifico (
     id integer NOT NULL,
+    pregunta_secundaria character varying,
     objetivo character varying NOT NULL,
     estadio character varying NOT NULL,
     fk_objetivo_general integer
 );
 ALTER TABLE public.objetivo_especifico OWNER TO postgres;
 CREATE SEQUENCE public.objetivo_especifico_id_seq
-    START WITH 1
+    START WITH 16
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -351,7 +352,7 @@ CREATE TABLE public.parametro (
 );
 ALTER TABLE public.parametro OWNER TO postgres;
 CREATE SEQUENCE public.parametro_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -396,7 +397,7 @@ CREATE TABLE public.pregunta (
 );
 ALTER TABLE public.pregunta OWNER TO postgres;
 CREATE SEQUENCE public.pregunta_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -413,7 +414,7 @@ CREATE TABLE public.privilegio (
 );
 ALTER TABLE public.privilegio OWNER TO postgres;
 CREATE SEQUENCE public.privilegio_id_seq
-    START WITH 1
+    START WITH 2
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -430,7 +431,7 @@ CREATE TABLE public.rol (
 );
 ALTER TABLE public.rol OWNER TO postgres;
 CREATE SEQUENCE public.rol_id_seq
-    START WITH 1
+    START WITH 6
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -448,7 +449,7 @@ CREATE TABLE public.rol_privilegio (
 );
 ALTER TABLE public.rol_privilegio OWNER TO postgres;
 CREATE SEQUENCE public.rol_privilegio_id_seq
-    START WITH 1
+    START WITH 2
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -466,7 +467,7 @@ CREATE TABLE public.sinergia (
 );
 ALTER TABLE public.sinergia OWNER TO postgres;
 CREATE SEQUENCE public.sinergia_id_seq
-    START WITH 1
+    START WITH 30
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -484,7 +485,7 @@ CREATE TABLE public.temporalidad (
 );
 ALTER TABLE public.temporalidad OWNER TO postgres;
 CREATE SEQUENCE public.temporalidad_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -502,7 +503,7 @@ CREATE TABLE public.tipo_investigacion (
 );
 ALTER TABLE public.tipo_investigacion OWNER TO postgres;
 CREATE SEQUENCE public.tipo_investigacion_id_seq
-    START WITH 1
+    START WITH 11
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -519,7 +520,7 @@ CREATE TABLE public.unidad_estudio (
 );
 ALTER TABLE public.unidad_estudio OWNER TO postgres;
 CREATE SEQUENCE public.unidad_estudio_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -531,14 +532,14 @@ ALTER SEQUENCE public.unidad_estudio_id_seq OWNED BY public.unidad_estudio.id;
 
 CREATE TABLE public.unidad_informacion (
     id integer NOT NULL,
-    cita character varying,
+    cita character varying NOT NULL,
     nivel character varying NOT NULL,
     fk_categoria integer,
     fk_pregunta integer
 );
 ALTER TABLE public.unidad_informacion OWNER TO postgres;
 CREATE SEQUENCE public.unidad_informacion_id_seq
-    START WITH 1
+    START WITH 79
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -563,7 +564,7 @@ CREATE TABLE public.usuario (
 );
 ALTER TABLE public.usuario OWNER TO postgres;
 CREATE SEQUENCE public.usuario_id_seq
-    START WITH 1
+    START WITH 7
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -580,7 +581,7 @@ CREATE TABLE public.modalidad (
 );
 ALTER TABLE public.modalidad OWNER TO postgres;
 CREATE SEQUENCE public.modalidad_id_seq
-    START WITH 1
+    START WITH 2
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -602,7 +603,7 @@ CREATE TABLE public.bibliografia (
 );
 ALTER TABLE public.bibliografia OWNER TO postgres;
 CREATE SEQUENCE public.bibliografia_id_seq
-    START WITH 1
+    START WITH 31
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -620,7 +621,7 @@ CREATE TABLE public.bibliografia_usada (
 );
 ALTER TABLE public.bibliografia_usada OWNER TO postgres;
 CREATE SEQUENCE public.bibliografia_usada_id_seq
-    START WITH 1
+    START WITH 67
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -639,7 +640,7 @@ CREATE TABLE public.categoria (
 );
 ALTER TABLE public.categoria OWNER TO postgres;
 CREATE SEQUENCE public.categoria_id_seq
-    START WITH 1
+    START WITH 78
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -657,7 +658,7 @@ CREATE TABLE public.tecnica_analisis (
 );
 ALTER TABLE public.tecnica_analisis OWNER TO postgres;
 CREATE SEQUENCE public.tecnica_analisis_id_seq
-    START WITH 1
+    START WITH 23
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -675,7 +676,7 @@ CREATE TABLE public.tecnica_analisis_aplicada (
 );
 ALTER TABLE public.tecnica_analisis_aplicada OWNER TO postgres;
 CREATE SEQUENCE public.tecnica_analisis_aplicada_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -693,7 +694,7 @@ CREATE TABLE public.unidad_estudio_ui (
 );
 ALTER TABLE public.unidad_estudio_ui OWNER TO postgres;
 CREATE SEQUENCE public.unidad_estudio_ui_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -711,7 +712,7 @@ CREATE TABLE public.contexto_ui (
 );
 ALTER TABLE public.contexto_ui OWNER TO postgres;
 CREATE SEQUENCE public.contexto_ui_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -728,7 +729,7 @@ CREATE TABLE public.categoria_calidad (
 );
 ALTER TABLE public.categoria_calidad OWNER TO postgres;
 CREATE SEQUENCE public.categoria_calidad_id_seq
-    START WITH 1
+    START WITH 10
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -746,7 +747,7 @@ CREATE TABLE public.calidad_pregunta (
 );
 ALTER TABLE public.calidad_pregunta OWNER TO postgres;
 CREATE SEQUENCE public.calidad_pregunta_id_seq
-    START WITH 1
+    START WITH 17
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -759,13 +760,13 @@ ALTER SEQUENCE public.calidad_pregunta_id_seq OWNED BY public.calidad_pregunta.i
 
 CREATE TABLE public.calidad_item (
     id integer NOT NULL,
-    respuesta boolean,
+    respuesta boolean DEFAULT false,
     fk_calidad_pregunta integer,
     fk_investigacion integer
 );
 ALTER TABLE public.calidad_item OWNER TO postgres;
 CREATE SEQUENCE public.calidad_item_id_seq
-    START WITH 1
+    START WITH 65
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -784,7 +785,7 @@ CREATE TABLE public.justificacion (
 );
 ALTER TABLE public.justificacion OWNER TO postgres;
 CREATE SEQUENCE public.justificacion_id_seq
-    START WITH 1
+    START WITH 30
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -803,7 +804,7 @@ CREATE TABLE public.poblacion (
 );
 ALTER TABLE public.poblacion OWNER TO postgres;
 CREATE SEQUENCE public.poblacion_id_seq
-    START WITH 1
+    START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -822,7 +823,7 @@ CREATE TABLE public.muestra (
 );
 ALTER TABLE public.muestra OWNER TO postgres;
 CREATE SEQUENCE public.muestra_id_seq
-    START WITH 1
+    START WITH 12
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -840,7 +841,7 @@ CREATE TABLE public.tecnica_muestreo_aplicada (
 );
 ALTER TABLE public.tecnica_muestreo_aplicada OWNER TO postgres;
 CREATE SEQUENCE public.tecnica_muestreo_aplicada_id_seq
-    START WITH 1
+    START WITH 12
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
@@ -857,7 +858,7 @@ CREATE TABLE public.tecnica_muestreo (
 );
 ALTER TABLE public.tecnica_muestreo OWNER TO postgres;
 CREATE SEQUENCE public.tecnica_muestreo_id_seq
-    START WITH 1
+    START WITH 8
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
