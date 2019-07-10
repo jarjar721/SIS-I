@@ -13,6 +13,7 @@ class Contexto extends Model
     public $timestamps=false;
 
     protected $fillable =[
+        'id',
         'contexto'
     ];
 

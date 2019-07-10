@@ -13,6 +13,7 @@ class Pregunta extends Model
     public $timestamps=false;
 
     protected $fillable =[
+        'id',
         'pregunta',
         'fk_modalidad',
         'fk_investigacion',

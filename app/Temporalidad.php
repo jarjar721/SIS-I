@@ -13,9 +13,9 @@ class Temporalidad extends Model
     public $timestamps=false;
 
     protected $fillable =[
+        'id',
         'fecha_inicio',
-        'fecha_fin',
-        'fk_pregunta'
+        'fecha_fin'
     ];
 
     protected $guarded =[

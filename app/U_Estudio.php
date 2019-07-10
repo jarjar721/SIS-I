@@ -13,7 +13,8 @@ class U_Estudio extends Model
     public $timestamps=false;
 
     protected $fillable =[
-        'unidad_estudio'
+        'id',
+        'nombre'
     ];
 
     protected $guarded =[
