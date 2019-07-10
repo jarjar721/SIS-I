@@ -2,21 +2,16 @@
 
 @section('css')
 
-<!-- Datatables -->
-<link href="{{asset('datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
-<link href="{{asset('datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
-<link href="{{asset('datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
-<link href="{{asset('datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
-<link href="{{asset('datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
-
 @endsection
 
 @section('Content')
-<div class="page-title">
-    <div class="title_left">
-        <h3>{{$investigacion->titulo}}</h3>
-    </div>
 
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="page-title">
+            <h4>{{$investigacion->tema}}</h4>
+        </div>
+    </div>
 </div>
 
 <div class="clearfix"></div>
@@ -35,7 +30,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                Add content to the page...
+                <p>{{$enunciado_holopraxico->pregunta}}</p>
             </div>
         </div>
 
@@ -43,12 +38,12 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6 col-xs-12">
+    <div class="col-md-12 col-sm-12 col-xs-12">
 
-        <!-- Preguntas secundarias -->
+        <!-- Objetivo Principal -->
         <div class="x_panel">
             <div class="x_title">
-                <h2>Preguntas Directrices <small>Preguntas Secundarias</small></h2>
+                <h2>Objetivo Principal <small>Objetivo General</small></h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -56,18 +51,20 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                Add content to the page...
+                <p>{{$objetivo_general->objetivo}}</p>
             </div>
         </div>
 
     </div>
+</div>
 
-    <div class="col-md-6 col-xs-12">
+<div class="row">
+    <div class="col-md-12 col-xs-12">
 
-        <!-- Objetivos -->
+        <!-- Preguntas y Objetivos Secundarios -->
         <div class="x_panel">
             <div class="x_title">
-                <h2>Objetivos <small>Objetivos de la Investigación</small></h2>
+                <h2>Preguntas y Objetivos Secundarios</h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
@@ -75,10 +72,22 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                Add content to the page...
+
+                <!-- start objetivos y preguntas secundarias -->
+                <table class="table table-striped projects" id="pregunta_objetivo_2-table">
+                    <thead>
+                        <tr>
+                            <th>Pregunta Directriz</th>
+                            <th>Objetivo Secundario</th>
+                            <th>Estadio</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+
+                </table>
+
             </div>
         </div>
-
     </div>
 
 </div>
@@ -107,7 +116,7 @@
     <!-- Tabla holopráxica -->
     <div class="x_panel">
         <div class="x_title">
-            <h2>Tabla holopráxica</h2>
+            <h2>Tabla Holopráxica</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -122,7 +131,7 @@
     <!-- Tabla de operacionalización -->
     <div class="x_panel">
         <div class="x_title">
-            <h2>Tabla de operacionalización</h2>
+            <h2>Tabla de Operacionalización</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -130,17 +139,12 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            <p class="text-muted font-13 m-b-30">
-                This example shows FixedHeader being styling by the Bootstrap CSS framework.
-            </p>
-            <table id="datatable-fixed-header" class="table table-striped table-bordered">
+            <table id="tabla_operacionalizacion-table" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Definición conceptual</th>
-                        <th>Definición operacional</th>
+                        <th>Evento</th>
                         <th>Sinergias</th>
                         <th>Indicios</th>
-                        <th>Fuentes</th>
                         <th>Ítemes</th>
                     </tr>
                 </thead>
@@ -151,7 +155,7 @@
     <!-- Tabla de especificaciones -->
     <div class="x_panel">
         <div class="x_title">
-            <h2>Tabla de especificaciones</h2>
+            <h2>Tabla de Especificaciones</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -166,7 +170,7 @@
     <!-- Tablas de población y muestra -->
     <div class="x_panel">
         <div class="x_title">
-            <h2>Tablas de población y muestra</h2>
+            <h2>Tablas de Población y Muestra</h2>
             <ul class="nav navbar-right panel_toolbox">
                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li>
@@ -182,23 +186,75 @@
 
 @endsection
 
-@section('js')
+@push('js')
 
-<!-- Datatables -->
-<script src="{{asset('datatables.net/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-<script src="{{asset('datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
-<script src="{{asset('datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
-<script src="{{asset('datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
-<script src="{{asset('datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
-<script src="{{asset('datatables.net-buttons/js/buttons.print.min.js')}}"></script>
-<script src="{{asset('datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>
-<script src="{{asset('datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
-<script src="{{asset('datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
-<script src="{{asset('datatables.net-scroller/js/dataTables.scroller.min.js')}}"></script>
-<script src="{{asset('jszip/dist/jszip.min.js')}}"></script>
-<script src="{{asset('pdfmake/build/pdfmake.min.js')}}"></script>
-<script src="{{asset('pdfmake/build/vfs_fonts.js')}}"></script>
+<script>
+    var table = $('#pregunta_objetivo_2-table').DataTable({
+        language: {
+            "emptyTable": "No hay datos disponibles en la tabla",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+            "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "paginate": {
+                "first": "Primera",
+                "last": "Última",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        },
+        processing: true,
+        serverSide: true,
+        ajax: '/pregunta_objetivo_2/{{$investigacion->id}}',
+        columns: [{
+                data: 'pregunta_secundaria',
+                name: 'pregunta_secundaria'
+            },
+            {
+                data: 'objetivo',
+                name: 'objetivo'
+            },
+            {
+                data: 'estadio',
+                name: 'estadio'
+            },
+            {
+                data: 'action',
+                name: 'action',
+                orderable: false,
+                searchable: false
+            }
+        ],
+    });
 
-@endsection
+    var table = $('#tabla_operacionalizacion-table').DataTable({
+        language: {
+            "emptyTable": "No hay datos disponibles en la tabla",
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+            "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+            "loadingRecords": "Cargando...",
+            "processing": "Procesando...",
+            "paginate": {
+                "first": "Primera",
+                "last": "Última",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            }
+        },
+        processing: true,
+        serverSide: true,
+        ajax: '/tabla_operacionalizacion/{{$investigacion->id}}',
+        columns: [{
+                data: 'evento',
+                name: 'evento'
+            },
+            {
+                data: 'sinergia',
+                name: 'sinergia'
+            }
+        ],
+    });
+
+</script>
+
+@endpush

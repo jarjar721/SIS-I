@@ -48,22 +48,55 @@ Route::group(['middleware' => ['auth']], function () {
         //\Rol
 
         //Investigacion
-        Route::get('/investigación/ver', function () {
-            return view('investigacion.consultar');
-        });
-        Route::get('/investigación/delimitación_tema', 'InvestigacionController@d_tema');
+        Route::get('/investigacion/delimitacion_tema', 'InvestigacionController@d_tema');
         Route::post('/investigacion/store', 'InvestigacionController@store');
-        Route::get('/inv', 'InvestigacionController@getInvData')->name('inv.data');
-        //Route::get('/investigación/fase_proyectiva', 'InvestigacionController@f_proy');
-        Route::get('/investigación/holograma/{Codigo}', 'InvestigacionController@holo');
+        Route::get('/inv', 'InvestigacionController@getInvData')->name('inv.data');        
         //\Investigacion
 
-        Route::get('/home', 'HomeController@index')->name('home');
+        //Holograma
+        Route::get('/investigacion/holograma/{id}', 'HologramaController@holograma');
+        Route::get('/pregunta_objetivo_2/{id}', 'HologramaController@getPreguntaObjetivo2');
+        Route::get('/tabla_operacionalizacion/{id}', 'HologramaController@getTablaOperacionalizacion');
+        //\Holograma
 
-        //En desarrollo
-        Route::get('/investigacion/justificacion', 'JustificacionController@create');
-        Route::post('/investigacion/justificacion/store', 'JustificacionController@store');
-        //\Fin de en desarrollo
+        //Evento
+        Route::get('/investigacion/evento', function () {
+            return view('investigacion.evento');
+        });
+        Route::get('/investigacion/sinergia', function () {
+            return view('investigacion.sinergia');
+        });
+        Route::get('/investigacion/indicio', function () {
+            return view('investigacion.indicio');
+        });
+        Route::get('/load_evento_investigacion', 'EventoController@getEventoData')->name('evento_investigacion.data');        
+        Route::get('/load_sinergia_evento', 'EventoController@getSinergiaData')->name('sinergia_evento.data'); 
+        Route::get('/load_indicio_sinergia', 'EventoController@getIndicioData')->name('indicio_sinergia.data');              
+        //\Evento
+
+        //Metodología
+        Route::get('/investigacion/item', function () {
+            return view('investigacion.item');
+        });
+        Route::get('/load_item_intrumento', 'ItemController@getItemData')->name('item.data');
+        //\Metodología
+
+        //Justificación
+        Route::get('/investigacion/justificacion', function () {
+            return view('investigacion.justificacion');
+        });
+        Route::get('/load_justificacion', 'JustificacionController@getJustificacionData')->name('justificacion.data');        
+        //\Justificación
+
+        //Unidad de Información
+        Route::get('/investigacion/unidad_informacion', function () {
+            return view('investigacion.unidad_informacion');
+        });
+        //\Unidad de Información
+
+        //MAITI
+        Route::get('/investigacion/MAITI/{id}', 'MAITIController@getMAITI');
+        //\MAITI
     });
 
     //Persona (Si no se ha creado)

@@ -12,6 +12,8 @@ use App\Evento;
 use App\Pregunta;
 use App\Contexto;
 use App\Investigacion;
+use App\ObjetivoEspecifico;
+use App\ObjetivoGeneral;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Support\Facades\Auth;
@@ -88,13 +90,15 @@ class InvestigacionController extends Controller
         return view("investigacion.fase_proyectiva", compact('data', 'pregunta'));
     }
 
-    public function holo($code){
-        $investigacion = Investigacion::where('id', $code)
-        ->leftjoin('evento as e', 'e.fk_investigacion','=','investigacion.id')
-        ->select(\DB::raw("investigacion.*"))
+    public function holograma($id){
+        $investigacion = Investigacion::where('id', $id)
+        ->first();
+        $enunciado_holopraxico = Pregunta::where('fk_investigacion', $id)
+        ->first();
+        $objetivo_general = ObjetivoGeneral::where('fk_pregunta', $id)
         ->first();
 
-        return view('investigacion.holograma', compact('investigacion'));
+        return view('investigacion.holograma', compact('investigacion', 'enunciado_holopraxico', 'objetivo_general'));
     }
     
     public function getInvData(){
@@ -113,4 +117,19 @@ class InvestigacionController extends Controller
         })
         ->make(true);
     }
+
+    public function getPreguntaObjetivo2(){
+        $preguntaObjetivo2 = ObjetivoEspecifico::
+        join('objetivo_general as og', 'fk_objetivo_general','=', 'og.id')
+        ->join('pregunta', 'og.fk_pregunta','=', 'pregunta.id')
+        ->join('investigacion', 'pregunta.fk_investigacion','=', 'investigacion.id')
+        ->get();
+
+        return Datatables::of($preguntaObjetivo2)
+        ->addColumn('action', function ($preguntaObjetivo2) {
+            return '<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>';
+        })
+        ->make(true);
+    }
+
 }

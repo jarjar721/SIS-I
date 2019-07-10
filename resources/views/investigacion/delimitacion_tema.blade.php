@@ -77,7 +77,7 @@
                                                     <input type="text" id="contexto" class="form-control" placeholder="Introduzca contexto" name="contexto" required /> 
                                                 </div> 
                                                 <div class="col-md-6 col-sm-6 col-xs-12" style="width: 50%"> 
-                                                    <label>Unidad de estudio</label> 
+                                                    <label>Unidad de Estudio</label> 
                                                     <input type="text" id="unidad_estudio" class="form-control" placeholder="Introduzca unidad de estudio" name="unidad_estudio" required /> 
                                                 </div> 
                                                 <div class="col-md-6 col-sm-6 col-xs-12"> 
@@ -111,9 +111,9 @@
                                                     <input type="text" id="evento" class="form-control" placeholder="Introduzca evento" name="evento" required /> 
                                                 </div> 
                                                 <div class="col-md-6 col-sm-6 col-xs-12"> 
-                                                    <label>Tipo evento</label> 
+                                                    <label>Tipo de Evento</label> 
                                                     <select id="tipoEvento" class="form-control" name="tipoEvento" required> 
-                                                        <option value="" disabled selected hidden>Seleccione tipo de evento</option> 
+                                                        <option value="" disabled selected hidden>Seleccione el tipo de evento</option> 
                                                         <option value="Comportamiento">Comportamiento</option> 
                                                         <option value="Hecho">Hecho</option> 
                                                         <option value="Proceso">Proceso</option> 

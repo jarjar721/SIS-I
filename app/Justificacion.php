@@ -15,11 +15,7 @@ class Justificacion extends Model
     protected $fillable = [
         'argumento',
         'tipo_argumento',
-        'fk_investigacion',
-        'fk_evento',
-        'fk_contexto',
-        'fk_temporalidad',
-        'fk_unidad_estudio'
+        'acerca_de'
     ];
 
     protected $guarded = [
