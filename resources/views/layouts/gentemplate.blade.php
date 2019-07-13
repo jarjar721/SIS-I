@@ -85,13 +85,22 @@
                     <li><a href="/investigacion/delimitacion_tema">Delimitación del Tema</a></li>
                     <li><a href="/investigacion/unidad_estudio">Unidades de Estudio</a></li>
                     <li><a href="/investigacion/poblacion_muestra">Población y Muestra</a></li>
-                    <li><a href="/investigacion/evento">Eventos</a></li>
                     <li><a href="/investigacion/unidad_informacion">Unidades de Información</a></li>
                     <li><a href="/investigacion/justificacion">Justificaciones</a></li>
                     <li><a href="/investigacion/">Metodología</a></li>
                     <li><a href="/investigacion/item">Instrumento de Recolección</a></li>
                   </ul>
                 </li>
+                @if(isset($investigacion->id))
+                <li><a><i class="fas fa-journal"></i> Detalles de investigación <span class="fas fa-chevron-down" style="float:right"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="/investigacion/{{$investigacion->id}}/evento">Eventos</a></li>
+                    @if(isset($evento->id))
+                      <li><a href="/investigacion/'{{$investigacion->id}}'/evento/'{{$evento->id}}'/sinergia">Sinergias</a></li>
+                    @endif
+                  </ul>
+                </li>
+                @endif
                 <li><a><i class="fas fa-chart-bar"></i> Reportes <span class="fas fa-chevron-down" style="float:right"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="/investigacion/MAITI">MAITI</a></li>

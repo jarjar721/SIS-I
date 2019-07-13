@@ -4,14 +4,16 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="page-title">
-            <h4>(AQUE VA EL TEMA DE LA INVESTIGACION)</h4>
+            <h4>{{$investigacion->tema}}</h4>
         </div>
     </div>
 </div>
 
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
-
+    @if(Session::has('message'))
+      <div class="alert alert-danger"> {{Session::get('message')}} </div>
+    @endif
     <div class="x_panel">
       <div class="x_title">
         <h2>Agregar un evento:</h2>
@@ -23,27 +25,28 @@
         <form method="POST" action="/evento/store">
           @csrf
           <!-- Aquí se agregan los eventos-->
+          <input type="hidden" name="InvID" value="{{old('InvID', $investigacion->id)}}">
           <div class="form-group">
             <h4>Agregue un <b>evento</b> a la investigación:</h4>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" placeholder="Nombre" id="evento-nombre" class="form-control col-md-7 col-xs-12">
+              <input type="text" placeholder="Nombre" name="nombreEvento" value="{{old('nombreEvento')}}" id="evento-nombre" class="form-control col-md-7 col-xs-12" required>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
               <select id="claseEvento" class="form-control" name="claseEvento" required>
                 <option value="" disabled selected hidden>Clase</option>
-                <option value="Evento a Modificar">Evento a Modificar</option>
-                <option value="Evento Causal">Evento Causal</option>
+                <option value="Evento a Modificar" @if (old('claseEvento') == "Evento a Modificar") selected @endif>Evento a Modificar</option>
+                <option value="Evento Causal" @if (old('claseEvento') == "Evento Causal") selected @endif>Evento Causal</option>
               </select>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
               <select id="tipoEvento" class="form-control" name="tipoEvento" required>
                 <option value="" disabled selected hidden>Tipo</option>
-                <option value="Proceso">Proceso</option>
-                <option value="Característica">Característica</option>
-                <option value="Comportamiento">Comportamiento</option>
-                <option value="Viviencia">Viviencia</option>
-                <option value="Situación">Situación</option>
-                <option value="Hecho">Hecho</option>
+                <option value="Proceso" @if (old('tipoEvento') == "Proceso") selected @endif>Proceso</option>
+                <option value="Característica" @if (old('tipoEvento') == "Característica") selected @endif>Característica</option>
+                <option value="Comportamiento" @if (old('tipoEvento') == "Comportamiento") selected @endif>Comportamiento</option>
+                <option value="Viviencia" @if (old('tipoEvento') == "Viviencia") selected @endif>Viviencia</option>
+                <option value="Situación" @if (old('tipoEvento') == "Situación") selected @endif>Situación</option>
+                <option value="Hecho" @if (old('tipoEvento') == "Hecho") selected @endif>Hecho</option>
               </select>
             </div>
           </div>
@@ -91,25 +94,30 @@
 <script>
     var table = $('#evento-table').DataTable({
         language: {
-            "emptyTable": "No hay datos disponible en la tabla",
-            "search": "Buscar:",
-            "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
-            "infoEmpty":      "Mostrando 0 a 0 de 0 entradas",
-            "lengthMenu":     "Mostrar _MENU_ entradas",
-            "loadingRecords": "Cargando...",
-            "processing":     "Procesando...",
-            "paginate": {
-                "first":      "Primera",
-                "last":       "Última",
-                "next":       "Siguiente",
-                "previous":   "Anterior"
-            },
+          "emptyTable": "No hay datos disponible en la tabla",
+          "search": "Buscar:",
+          "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+          "infoEmpty":      "Mostrando 0 a 0 de 0 entradas",
+          "lengthMenu":     "Mostrar _MENU_ entradas",
+          "loadingRecords": "Cargando...",
+          "processing":     "Procesando...",
+          "paginate": {
+            "first":      "Primera",
+            "last":       "Última",
+            "next":       "Siguiente",
+            "previous":   "Anterior"
+          },
         },
         processing: true,
         serverSide: true,
-        ajax: '{!! route('evento_investigacion.data') !!}',
+        ajax: {
+          url: '{!! route('evento.data') !!}',
+          "data": {
+            id: {!! $investigacion->id !!}
+          }
+        },
         columns: [
-            {data: 'evento', name: 'evento'},
+            {data: 'nombre', name: 'nombre'},
             {data: 'clase', name: 'clase'},
             {data: 'tipo', name: 'tipo'},
             {data: 'action', name: 'action', orderable: false, searchable: false}

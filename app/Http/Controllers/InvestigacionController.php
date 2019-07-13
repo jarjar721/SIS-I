@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Pri_Rol;
 use App\U_Estudio;
+use App\U_Informacion;
 use App\Temporalidad;
 use App\Evento;
 use App\Pregunta;
@@ -61,13 +62,20 @@ class InvestigacionController extends Controller
 
         //Rellenado de resto de datos:
 
+        $ui = U_Informacion::create([
+            'id' => (U_Informacion::max('id'))+1,
+            'cita' => $request->$tema,
+            'nivel' => 'Genérica',
+            'fk_pregunta' => $pregunta->id
+        ]);
+
         $data = U_Estudio::create([
             'id' => (U_Estudio::max('id'))+1,
             'nombre' => $request->$unidad_estudio
         ]);
         DB::table('unidad_estudio_ui')->create([
             'fk_unidad_estudio' => $data->id,
-            'fk_unidad_informacion' => $pregunta->id
+            'fk_unidad_informacion' => $ui->id
         ]);
 
         $data = Contexto::create([
@@ -76,7 +84,7 @@ class InvestigacionController extends Controller
         ]);
         DB::table('contexto_ui')->create([
             'fk_contexto' => $data->id,
-            'fk_unidad_informacion' => $pregunta->id
+            'fk_unidad_informacion' => $ui->id
         ]);
 
         $data = Evento::create([
@@ -85,13 +93,13 @@ class InvestigacionController extends Controller
             'tipo' => $request->$tipoEvento
         ]);
         DB::table('evento_ui')->create([
-            'fk_unidad_informacion' => $pregunta->id,
+            'fk_unidad_informacion' => $ui->id,
             'fk_evento' => $data->id
         ]);
         //\ Fin creado principal
 
         //Redireccion a fase_proyectiva.blade con los datos
-        return view("investigacion.fase_proyectiva", compact('data', 'pregunta'));
+        return view("investigacion.fase_proyectiva", compact('data', 'pregunta', 'ui'));
     }
 
     public function holograma($id){
@@ -116,15 +124,14 @@ class InvestigacionController extends Controller
         return Datatables::of($investigaciones)
         ->addColumn('action', function ($investigacion) {
             return '<a href="/investigacion/holograma/'.$investigacion->id.'" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>Holograma</a>
-                <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
+                <a href="#" class="btn btn-info btn-xs"><i class="fa fa-journal"></i>Editar</a>
                 <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
         })
         ->make(true);
     }
 
     public function getPreguntaObjetivo2(){
-        $preguntaObjetivo2 = ObjetivoEspecifico::
-        join('objetivo_general as og', 'fk_objetivo_general','=', 'og.id')
+        $preguntaObjetivo2 = ObjetivoEspecifico::join('objetivo_general as og', 'fk_objetivo_general','=', 'og.id')
         ->join('pregunta', 'og.fk_pregunta','=', 'pregunta.id')
         ->join('investigacion', 'pregunta.fk_investigacion','=', 'investigacion.id')
         ->get();

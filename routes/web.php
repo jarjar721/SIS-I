@@ -60,19 +60,24 @@ Route::group(['middleware' => ['auth']], function () {
         //\Holograma
 
         //Evento
-        Route::get('/investigacion/evento', function () {
-            return view('investigacion.evento');
-        });
-        Route::get('/investigacion/sinergia', function () {
-            return view('investigacion.sinergia');
-        });
+        Route::get('/investigacion/{id}/evento', 'EventoController@eventos');
+        Route::post('/evento/store', 'EventoController@store');
         Route::get('/investigacion/indicio', function () {
             return view('investigacion.indicio');
         });
-        Route::get('/load_evento_investigacion', 'EventoController@getEventoData')->name('evento_investigacion.data');        
+        Route::get('/load_evento_investigacion', 'EventoController@getEventoData')->name('evento.data');        
         Route::get('/load_sinergia_evento', 'EventoController@getSinergiaData')->name('sinergia_evento.data'); 
         Route::get('/load_indicio_sinergia', 'EventoController@getIndicioData')->name('indicio_sinergia.data');              
         //\Evento
+
+        //Sinergia
+        Route::get('/investigacion/{idInv}/evento/{idEvento}/sinergia', 'SinergiaController@sinergias');
+        //\Sinergia
+
+        //MAITI
+        Route::get('/investigacion/MAITI/{id}', 'MAITIController@getMAITI');
+        //\MAITI
+
 
         //Metodología
         Route::get('/investigacion/item', function () {
@@ -93,10 +98,6 @@ Route::group(['middleware' => ['auth']], function () {
             return view('investigacion.unidad_informacion');
         });
         //\Unidad de Información
-
-        //MAITI
-        Route::get('/investigacion/MAITI/{id}', 'MAITIController@getMAITI');
-        //\MAITI
     });
 
     //Persona (Si no se ha creado)
