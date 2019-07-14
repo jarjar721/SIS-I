@@ -86,7 +86,7 @@
         ajax: {
           url: '{!! route('sinergia_evento.data') !!}',
           "data": {
-            eveID: {!! $evento->id !!}
+            id: {!! $evento->id !!}
           }
         },
         columns: [

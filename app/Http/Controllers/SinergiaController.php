@@ -51,15 +51,15 @@ class SinergiaController extends Controller
         return view('investigacion.sinergia', compact('investigacion', 'evento'));
     }
 
-    public function getSinergiaData(){
-        $id = $request->get('eveID');
-
+    public function getSinergiaData(Request $request){
+        $id = $request->get('id');
+        
         $evento = Evento::where('id', $id)->first();
-        $sinergias = Sinergia::whereIn('sinergia.fk_evento_ui', function($query) use ($evento){
+        $sinergias = Sinergia::whereIn('fk_evento_ui', function($query) use ($evento){
             $query->select(DB::raw('evento_ui.id'))
                     ->from('evento_ui')
                     ->where('evento_ui.fk_evento', $evento->id);
-        })->select(DB::raw('sinergia.*'))
+        })->select(DB::raw('*'))
         ->get();
 
         return Datatables::of($sinergias)
