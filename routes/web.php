@@ -66,12 +66,13 @@ Route::group(['middleware' => ['auth']], function () {
             return view('investigacion.indicio');
         });
         Route::get('/load_evento_investigacion', 'EventoController@getEventoData')->name('evento.data');        
-        Route::get('/load_sinergia_evento', 'EventoController@getSinergiaData')->name('sinergia_evento.data'); 
         Route::get('/load_indicio_sinergia', 'EventoController@getIndicioData')->name('indicio_sinergia.data');              
         //\Evento
 
         //Sinergia
         Route::get('/investigacion/{idInv}/evento/{idEvento}/sinergia', 'SinergiaController@sinergias');
+        Route::post('/sinergia/store', 'SinergiaController@store');
+        Route::get('/load_sinergia_evento', 'SinergiaController@getSinergiaData')->name('sinergia_evento.data'); 
         //\Sinergia
 
         //MAITI

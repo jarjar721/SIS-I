@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="page-title">
-            <h4>(AQUI VA EL TEMA DE LA INVESTIGACION)</h4>
+            <h4>{{$investigacion->tema}}</h4>
         </div>
     </div>
 </div>
@@ -14,7 +14,7 @@
 
         <div class="x_panel">
             <div class="x_title">
-                <h2>(AQUI VA EL NOMBRE DEL EVENTO)</h2>
+                <h2>{{$evento->nombre}}</h2>
                 <div class="clearfix"></div>
             </div>
 
@@ -23,10 +23,12 @@
                 <form method="POST" action="/sinergia/store">
                     @csrf
                     <!-- Aquí se agregan las sinergias de un evento-->
+                    <input type="hidden" name="InvID" value="{{old('InvID', $investigacion->id)}}">
+                    <input type="hidden" name="EveID" value="{{old('EveID', $evento->id)}}">
                     <div class="form-group">
                         <h4>Agregue una <b>sinergia</b> al evento:</h4>
                         <div class="col-md-10 col-sm-9 col-xs-12">
-                            <input type="text" placeholder="Nombre" id="sinergia-nombre" class="form-control col-md-7 col-xs-12">
+                            <input type="text" placeholder="Nombre" name="nombreSinergia" id="sinergia-nombre" value="{{old('nombreSinergia')}}" class="form-control col-md-7 col-xs-12">
                         </div>
                         <div class="col-md-2">
                             <button type="submit" class="btn btn-success pull-right">Agregar</button>
@@ -81,17 +83,15 @@
         },
         processing: true,
         serverSide: true,
-        ajax: '{!! route('sinergia_evento.data') !!}',
-        columns: [{
-                data: 'sinergia',
-                name: 'sinergia'
-            },
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false
-            }
+        ajax: {
+          url: '{!! route('sinergia_evento.data') !!}',
+          "data": {
+            eveID: {!! $evento->id !!}
+          }
+        },
+        columns: [
+            {data: 'nombre', name: 'nombre'},
+            {data: 'action', name: 'action', orderable: false, searchable: false}
         ],
     });
 </script>
