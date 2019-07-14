@@ -96,7 +96,13 @@
                   <ul class="nav child_menu">
                     <li><a href="/investigacion/{{$investigacion->id}}/evento">Eventos</a></li>
                     @if(isset($evento->id))
-                      <li><a href="/investigacion/'{{$investigacion->id}}'/evento/'{{$evento->id}}'/sinergia">Sinergias</a></li>
+                      <li><a href="/investigacion/{{$investigacion->id}}/evento/'{{$evento->id}}/sinergia">Sinergias</a></li>
+                      @if(isset($sinergia->id))
+                        <li><a href="/investigacion/{{$investigacion->id}}/evento/{{$evento->id}}/sinergia/{{$sinergia->id}}/indicio">Indicios</a></li>
+                        @if(isset($indicio->id))
+                          <li><a href="/investigacion/{{$investigacion->id}}/evento/{{$evento->id}}/sinergia/{{$sinergia->id}}/indicio/{{$indicio->id}}/item">Items</a></li>
+                        @endif
+                      @endif
                     @endif
                   </ul>
                 </li>
@@ -182,6 +188,8 @@
   <script src="{{asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
   <!-- Switchery -->
   <script src="{{asset('switchery/dist/switchery.min.js')}}"></script>
+  <!-- Mustache -->
+  <script type='text/javascript' src="{{asset('mustache/mustache.min.js')}}"></script>
 
   <!-- App scripts -->
   @stack('scripts')

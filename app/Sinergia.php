@@ -13,6 +13,7 @@ class Sinergia extends Model
     public $timestamps=false;
 
     protected $fillable =[
+        'id',
         'nombre',
         'fk_evento_ui'
     ];

@@ -32,7 +32,7 @@ class SinergiaController extends Controller
         $evento = Evento::where('id', $request->EveID)->first();
 
         //Comprobar si no existe una sinergia del mismo nombre en dicho evento
-        $compeven = Evento::where('nombre', $request->nombreSinergia)->first();
+        $compeven = Sinergia::where('nombre', $request->nombreSinergia)->first();
         if(!is_null($compeven)){
             Session::flash('message','Ya existe la sinergía '.$request->nombreSinergia.' en este evento.');
             return Redirect::back()->withInput(Input::all());
@@ -53,8 +53,9 @@ class SinergiaController extends Controller
 
     public function getSinergiaData(Request $request){
         $id = $request->get('id');
+        $eid = $request->get('eveID');
         
-        $evento = Evento::where('id', $id)->first();
+        $evento = Evento::where('id', $eid)->first();
         $sinergias = Sinergia::whereIn('fk_evento_ui', function($query) use ($evento){
             $query->select(DB::raw('evento_ui.id'))
                     ->from('evento_ui')
@@ -63,8 +64,9 @@ class SinergiaController extends Controller
         ->get();
 
         return Datatables::of($sinergias)
-        ->addColumn('action', function ($sinergia) {
-            return '<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
+        ->addColumn('action', function ($sinergia) use ($evento, $id) {
+            return '<a href="/investigacion/'.$id.'/evento/'.$evento->id.'/sinergia/'.$sinergia->id.'/indicio" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>Indicios</a>
+                <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
                 <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
         })
         ->make(true);

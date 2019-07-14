@@ -65,8 +65,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/investigacion/indicio', function () {
             return view('investigacion.indicio');
         });
-        Route::get('/load_evento_investigacion', 'EventoController@getEventoData')->name('evento.data');        
-        Route::get('/load_indicio_sinergia', 'EventoController@getIndicioData')->name('indicio_sinergia.data');              
+        Route::get('/load_evento_investigacion', 'EventoController@getEventoData')->name('evento.data');             
         //\Evento
 
         //Sinergia
@@ -75,17 +74,22 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/load_sinergia_evento', 'SinergiaController@getSinergiaData')->name('sinergia_evento.data'); 
         //\Sinergia
 
+        //Indicio
+        Route::get('/investigacion/{idInv}/evento/{idEvento}/sinergia/{idSinergia}/indicio', 'IndicioController@indicios');
+        Route::post('/indicio/store', 'IndicioController@store');
+        Route::get('/load_indicio_sinergia', 'IndicioController@getIndicioData')->name('indicio_sinergia.data');        
+        //\Indicio
+
+        //Item
+        Route::get('/investigacion/{idInv}/evento/{idEvento}/sinergia/{idSinergia}/indicio/{idIndicio}/item', 'ItemController@items');
+        Route::post('/item/store', 'ItemController@store');
+        Route::get('/load_item_intrumento', 'ItemController@getItemData')->name('item.data');
+        Route::get('/load_item_intrumento/{id}', 'ItemController@getItemDetailsData')->name('item_details.data');
+        //\Item
+
         //MAITI
         Route::get('/investigacion/MAITI/{id}', 'MAITIController@getMAITI');
         //\MAITI
-
-
-        //Metodología
-        Route::get('/investigacion/item', function () {
-            return view('investigacion.item');
-        });
-        Route::get('/load_item_intrumento', 'ItemController@getItemData')->name('item.data');
-        //\Metodología
 
         //Justificación
         Route::get('/investigacion/justificacion', function () {

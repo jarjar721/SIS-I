@@ -13,6 +13,7 @@ class Item extends Model
     public $timestamps=false;
 
     protected $fillable =[
+        'id',
         'numero',
         'descripcion',
         'fk_indicio',
