@@ -34,20 +34,14 @@ class ItemController extends Controller
         $sinergia = Sinergia::where('id', $request->SinID)->first();
         $indicio = Indicio::where('id', $request->IndID)->first();
 
-        //Comprobar si no existe una sinergia del mismo nombre en dicho evento
-        /*$compitem = Indicio::where('descripcion', $request->item)->first();
-        if(!is_null($compitem) && $compitem->instrumento == $request->item){
-            Session::flash('message','Ya existe el item '.$request->item.' en este indicio.');
-            return Redirect::back()->withInput(Input::all());
-        }*/
-
-        //Crear el Indicio
+        //Crear el Item
         Item::create([
             'id' => (Item::max('id'))+1,
             'numero' => Item::where('fk_indicio',$indicio->IndID)->max('numero')+1,
             'descripcion' => $request->item,
-            'descripcion' => $request->item,
-            'fk_sinergia' => $sinergia->id
+            'fk_indicio' => $indicio->id,
+            /*'fk_parametro' => ,
+            'fk_instrumento' =>*/ 
         ]);
 
         return view('investigacion.item', compact('investigacion','evento','sinergia','indicio'));
