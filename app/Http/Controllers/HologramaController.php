@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pregunta;
+use App\Evento;
 use App\Contexto;
 use App\Investigacion;
 use App\ObjetivoEspecifico;
@@ -25,29 +26,69 @@ class HologramaController extends Controller
         return view('investigacion.holograma', compact('investigacion', 'enunciado_holopraxico', 'objetivo_general'));
     }
 
-    public function getPreguntaObjetivo2($id){
-        $preguntaObjetivo2 = ObjetivoEspecifico::
-        join('objetivo_general as og', 'fk_objetivo_general','=', 'og.id')
-        ->leftjoin('pregunta', 'og.fk_pregunta','=', 'pregunta.id')
-        ->leftjoin('investigacion', 'pregunta.fk_investigacion','=', 'investigacion.id')
+    public function getPreguntaObjetivo2(Request $request){
+        $id = $request->get('id');
+
+        $preguntasObjetivos2 = ObjetivoEspecifico::leftjoin('objetivo_general as og', 'og.id','=', 'objetivo_especifico.fk_objetivo_general')
+        ->leftjoin('pregunta', 'pregunta.id','=', 'og.fk_pregunta')
+        ->leftjoin('investigacion', 'investigacion.id','=', 'pregunta.fk_investigacion')
         ->where('investigacion.id', $id)
+        ->select(DB::raw('objetivo_especifico.*, og.objetivo as pregunta_secundaria'))
         ->get();
 
-        return Datatables::of($preguntaObjetivo2)
+        return Datatables::of($preguntasObjetivos2)
         ->addColumn('action', function ($preguntaObjetivo2) {
             return '<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>';
         })
         ->make(true);
     }
 
-    public function getTablaOperacionalizacion($id){
-        $tablaOperacionalizacion = collect(DB::select('SELECT e.nombre as evento, s.nombre as sinergia' +
-        'FROM evento e, evento_ui eui, unidad_informacion ui, sinergia s' +
-        'WHERE ui.fk_pregunta = ' + $id + ' AND ui.id = eui.fk_unidad_informacion' +
-            'AND eui.fk_evento = e.id AND eui.id = s.fk_evento_ui;'));
+    public function getTablaOperacionalizacion(Request $request){
+        $id = $request->get('id');
 
-        return Datatables::of($tablaOperacionalizacion)
-        ->make(true);
+        $pregunta = Pregunta::where('fk_investigacion', $id)->first();
+        $eventos = Evento::leftjoin('evento_ui','evento_ui.fk_evento','=','evento.id')
+        ->whereIn('evento_ui.fk_unidad_informacion', function($query) use ($pregunta){
+            $query->select(DB::raw('unidad_informacion.id'))
+                    ->from('unidad_informacion')
+                    ->where('unidad_informacion.fk_pregunta', $pregunta->id);
+        })->select(DB::raw('evento.*, evento_ui.clase'))
+        ->get();
+
+        return Datatables::of($eventos)
+        ->addColumn('parametros_url', function($item) {
+            return route('item_details.data', $item->id);
+        })->make(true);
+    }
+    public function getTablaOperacionalizacion2($id){
+        $pregunta = Pregunta::where('fk_investigacion', $id)->first();
+        $eventos = Evento::leftjoin('evento_ui','evento_ui.fk_evento','=','evento.id')
+        ->whereIn('evento_ui.fk_unidad_informacion', function($query) use ($pregunta){
+            $query->select(DB::raw('unidad_informacion.id'))
+                    ->from('unidad_informacion')
+                    ->where('unidad_informacion.fk_pregunta', $pregunta->id);
+        })->select(DB::raw('evento.*, evento_ui.clase'))
+        ->get();
+
+        return Datatables::of($eventos)
+        ->addColumn('parametros_url', function($item) {
+            return route('item_details.data', $item->id);
+        })->make(true);
+    }
+    public function getTablaOperacionalizacion3($id){
+        $pregunta = Pregunta::where('fk_investigacion', $id)->first();
+        $eventos = Evento::leftjoin('evento_ui','evento_ui.fk_evento','=','evento.id')
+        ->whereIn('evento_ui.fk_unidad_informacion', function($query) use ($pregunta){
+            $query->select(DB::raw('unidad_informacion.id'))
+                    ->from('unidad_informacion')
+                    ->where('unidad_informacion.fk_pregunta', $pregunta->id);
+        })->select(DB::raw('evento.*, evento_ui.clase'))
+        ->get();
+
+        return Datatables::of($eventos)
+        ->addColumn('parametros_url', function($item) {
+            return route('item_details.data', $item->id);
+        })->make(true);
     }
 
 }

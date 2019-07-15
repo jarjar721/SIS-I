@@ -109,7 +109,9 @@
                 @endif
                 <li><a><i class="fas fa-chart-bar"></i> Reportes <span class="fas fa-chevron-down" style="float:right"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="/investigacion/MAITI">MAITI</a></li>
+                    @if(isset($investigacion->id))
+                      <li><a href="/investigacion/MAITI/{{$investigacion->id}}">MAITI</a></li>
+                    @endif
                   </ul>
                 </li>
               </ul>

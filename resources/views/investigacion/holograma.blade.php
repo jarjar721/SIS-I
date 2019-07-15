@@ -144,8 +144,8 @@
                     <tr>
                         <th>Evento</th>
                         <th>Sinergias</th>
-                        <th>Indicios</th>
-                        <th>Ítemes</th>
+                <!--         <th>Indicios</th>
+                        <th>Ítemes</th>-->
                     </tr>
                 </thead>
             </table>
@@ -189,6 +189,7 @@
 @push('js')
 
 <script>
+    
     var table = $('#pregunta_objetivo_2-table').DataTable({
         language: {
             "emptyTable": "No hay datos disponibles en la tabla",
@@ -205,7 +206,12 @@
         },
         processing: true,
         serverSide: true,
-        ajax: '/pregunta_objetivo_2/{{$investigacion->id}}',
+        ajax: {
+          url: '{!! route('p_o_2.data') !!}',
+          "data": {
+            id: {!! $investigacion->id !!}
+          }
+        },
         columns: [{
                 data: 'pregunta_secundaria',
                 name: 'pregunta_secundaria'
@@ -243,7 +249,12 @@
         },
         processing: true,
         serverSide: true,
-        ajax: '/tabla_operacionalizacion/{{$investigacion->id}}',
+        ajax: {
+          url: '{!! route('op_table.data') !!}',
+          "data": {
+            id: {!! $investigacion->id !!}
+          }
+        },
         columns: [{
                 data: 'evento',
                 name: 'evento'
