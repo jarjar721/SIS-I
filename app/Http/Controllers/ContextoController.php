@@ -61,9 +61,12 @@ class ContextoController extends Controller
         
         $pregunta = Pregunta::where('fk_investigacion', $id)->first();
         $contextos = Contexto::leftjoin('contexto_ui as c_ui','c_ui.fk_contexto','=','contexto.id')
+        ->where('contexto.deleted','!=',true)
+        ->where('contexto_ui.deleted','!=',true)
         ->whereIn('c_ui.fk_unidad_informacion', function($query) use ($pregunta){
             $query->select(DB::raw('unidad_informacion.id'))
                     ->from('unidad_informacion')
+                    ->where('unidad_informacion.deleted','!=',true)
                     ->where('unidad_informacion.fk_pregunta', $pregunta->id);
         })->select(DB::raw('contexto.*'))
         ->get();

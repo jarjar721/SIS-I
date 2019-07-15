@@ -68,8 +68,11 @@ class JustificacionController extends Controller
         ->whereIn('j_ui.fk_unidad_informacion', function($query) use ($pregunta){
             $query->select(DB::raw('unidad_informacion.id'))
                     ->from('unidad_informacion')
+                    ->where('unidad_informacion.deleted','!=',true)
                     ->where('unidad_informacion.fk_pregunta', $pregunta->id);
         })->select(DB::raw('justificacion.*'))
+        ->where('j_ui.deleted','!=',true)
+        ->where('justificacion.deleted','!=',true)
         ->get();
 
         return Datatables::of($justificaciones)

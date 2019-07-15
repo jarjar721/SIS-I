@@ -89,9 +89,12 @@ class EventoController extends Controller
 
         $pregunta = Pregunta::where('fk_investigacion', $id)->first();
         $eventos = Evento::leftjoin('evento_ui','evento_ui.fk_evento','=','evento.id')
+        ->where('evento_ui.deleted','!=',true)
+        ->where('evento.deleted','!=',true)
         ->whereIn('evento_ui.fk_unidad_informacion', function($query) use ($pregunta){
             $query->select(DB::raw('unidad_informacion.id'))
                     ->from('unidad_informacion')
+                    ->where('unidad_informacion.deleted','!=',true)
                     ->where('unidad_informacion.fk_pregunta', $pregunta->id);
         })->select(DB::raw('evento.*, evento_ui.clase'))
         ->get();

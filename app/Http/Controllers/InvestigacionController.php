@@ -126,9 +126,11 @@ class InvestigacionController extends Controller
     
     public function getInvData(){
         if(Auth::user()->fk_rol == 1){
-            $investigaciones = Investigacion::get();
+            $investigaciones = Investigacion::where('investigacion.deleted','!=',true)
+            ->get();
         }else{
             $investigaciones = Investigacion::where('fk_usuario', Auth::user()->id)
+            ->where('investigacion.deleted','!=',true)
             ->get();
         }
         
@@ -145,6 +147,10 @@ class InvestigacionController extends Controller
         $preguntaObjetivo2 = ObjetivoEspecifico::join('objetivo_general as og', 'fk_objetivo_general','=', 'og.id')
         ->join('pregunta', 'og.fk_pregunta','=', 'pregunta.id')
         ->join('investigacion', 'pregunta.fk_investigacion','=', 'investigacion.id')
+        ->where('og.deleted','!=',true)
+        ->where('pregunta.deleted','!=',true)
+        ->where('deleted','!=',true)
+        ->where('investigacion.deleted','!=',true)
         ->get();
 
         return Datatables::of($preguntaObjetivo2)

@@ -26,37 +26,39 @@
 
         <!-- Aquí se muestran los requerimientos-->
         @foreach ($categoria_calidad as $categoria)
-          <div class="row">
-            <h2><b>{{ $categoria->nombre }}</b></h2>
-            <div class="col-md-10">
-              <h4><b>Requerimiento</b></h4>
-            </div>
-            <div class="col-md-2">
-              <h4><b>Cumplido</b></h4>
-            </div>
-            @foreach ($pregunta_calidad as $pregunta)
-              @if ($pregunta->fk_categoria_calidad === $categoria->id)
-                <div class="col-md-10">
-                  <h4>{{ $pregunta->pregunta }}</h4>
-                </div>
-                @foreach ($calidad_item as $respuesta)
-                  @if ($respuesta->fk_calidad_pregunta === $pregunta->id)
-                    <div class="col-md-2">
-                      <div class="">
-                        <label>
-                          @if ($respuesta->respuesta === true)
-                            <input type="checkbox" class="js-switch" disabled="disabled" checked="checked" />
-                          @else
-                            <input type="checkbox" class="js-switch" disabled="disabled" />
-                          @endif
-                        </label>
+          @if ($categoria->id != 2 && $categoria->id != 6)
+            <div class="row">
+              <h2><b>{{ $categoria->nombre }}</b></h2>
+              <div class="col-md-10">
+                <h4><b>Requerimiento</b></h4>
+              </div>
+              <div class="col-md-2">
+                <h4><b>Cumplido</b></h4>
+              </div>
+              @foreach ($pregunta_calidad as $pregunta)
+                @if ($pregunta->fk_categoria_calidad === $categoria->id)
+                  <div class="col-md-10">
+                    <h4>{{ $pregunta->pregunta }}</h4>
+                  </div>
+                  @foreach ($calidad_item as $respuesta)
+                    @if ($respuesta->fk_calidad_pregunta === $pregunta->id)
+                      <div class="col-md-2">
+                        <div class="">
+                          <label>
+                            @if ($respuesta->respuesta === true)
+                              <input type="checkbox" class="js-switch" disabled="disabled" checked="checked" />
+                            @else
+                              <input type="checkbox" class="js-switch" disabled="disabled" />
+                            @endif
+                          </label>
+                        </div>
                       </div>
-                    </div>
-                  @endif
-                @endforeach
-              @endif
-            @endforeach
-          </div>
+                    @endif
+                  @endforeach
+                @endif
+              @endforeach
+            </div>
+          @endif
         @endforeach
 
 

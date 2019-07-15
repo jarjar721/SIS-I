@@ -28,6 +28,7 @@ class UserController extends Controller
     
     public function lista(){
         $users = User::leftjoin('rol','rol.id','=','usuario.fk_rol')
+        ->where('u.deleted','!=',true)
         ->select(DB::raw('"usuario".*, "rol"."nombre" as rol'))
         ->get();
         return view("usuarios.lista", compact('users'));
@@ -59,19 +60,24 @@ class UserController extends Controller
         $instituciones = Persona::join('usuario as u','u.id','=','persona.fk_usuario')
         ->rightjoin('institucion as i','i.id','=','persona.fk_institucion')
         ->rightjoin('investigacion as inv','inv.fk_usuario','=','u.id')
+        ->where('u.deleted','!=',true)
+        ->where('persona.deleted','!=',true)
+        ->where('i.deleted','!=',true)
+        ->where('inv.deleted','!=',true)
         ->select(DB::raw('i.nombre as institucion, inv.tema as investigacion'))
         ->get();
 
         return Datatables::of($instituciones)
         ->addColumn('action', function ($inst) {
-            return '<a href="institucion/modificar/'.$usuario->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>
-            <a href="institucion/eliminar/'.$usuario->id.'" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>';
+            return '<a href="institucion/modificar/'.$inst->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>
+            <a href="institucion/eliminar/'.$inst->id.'" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>';
         })
         ->make(true);
     }
 
     public function anyData(){
         $users = User::leftjoin('rol','rol.id','=','usuario.fk_rol')
+        ->where('u.deleted','!=',true)
         ->select(DB::raw('"usuario".*, "rol"."nombre" as rol'))
         ->get();
 
@@ -161,7 +167,7 @@ class UserController extends Controller
 
         if(isset($priv)){
             Persona::where('fk_usuario', $Codigo)->delete();
-            User::where('id', $Codigo)->delete();
+            User::where('id', $Codigo)->update(['deleted' => TRUE]);
 
             //Auditoria
             Audit::create([

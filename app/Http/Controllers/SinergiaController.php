@@ -68,8 +68,10 @@ class SinergiaController extends Controller
         $sinergias = Sinergia::whereIn('fk_evento_ui', function($query) use ($evento){
             $query->select(DB::raw('evento_ui.id'))
                     ->from('evento_ui')
+                    ->where('evento_ui.deleted','!=',true)
                     ->where('evento_ui.fk_evento', $evento->id);
-        })->select(DB::raw('*'))
+        })->where('deleted != true')
+        ->select(DB::raw('*'))
         ->get();
 
         return Datatables::of($sinergias)

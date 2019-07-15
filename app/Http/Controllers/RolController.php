@@ -57,7 +57,9 @@ class RolController extends Controller
     }
 
     public function anyData(){
-        return Datatables::of(Rol::query())
+        $roles = Rol::where('deleted','!=',true)->get();
+
+        return Datatables::of($roles)
         ->addColumn('action', function ($rol) {
             return '<a href="rol/modificar/'.$rol->code.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>
             <a href="rol/eliminar/'.$rol->code.'" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>';

@@ -72,6 +72,8 @@ class ItemController extends Controller
         $sinergia = Sinergia::where('id', $sid)->first();
         $indicio = Indicio::where('id', $iid)->first();
         $items = Item::leftjoin('instrumento as i','i.id','=','item.fk_instrumento')
+        ->where('i.deleted','!=',true)
+        ->where('item.deleted','!=',true)
         ->select(DB::raw('item.*, i.nombre as instrumento'))
         ->get();
 
@@ -88,7 +90,9 @@ class ItemController extends Controller
 
     public function getItemDetailsData($id){
         $item = Item::where('id', $id)->first();
-        $parametros = DB::table('parametro')->where('id', $item->fk_parametro)->get();
+        $parametros = DB::table('parametro')->where('id', $item->fk_parametro)
+        ->where('parametro.deleted','!=',true)
+        ->get();
         return Datatables::of($parametros)
         ->addColumn('action', function ($parametro) {
             return '<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>

@@ -67,7 +67,9 @@ class IndicioController extends Controller
         
         $evento = Evento::where('id', $eid)->first();
         $sinergia = Sinergia::where('id', $sid)->first();
-        $indicios = Indicio::where('fk_sinergia', $sid)->get();
+        $indicios = Indicio::where('fk_sinergia', $sid)
+        ->where('indicios.deleted','!=',true)
+        ->get();
 
         return Datatables::of($indicios)
         ->addColumn('action', function ($indicio) use($evento, $id, $sinergia) {
