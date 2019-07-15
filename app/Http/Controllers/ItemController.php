@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Audit;
 use App\Evento;
 use App\Sinergia;
 use App\Indicio;
@@ -10,6 +11,7 @@ use App\Pregunta;
 use App\U_Informacion;
 use App\Investigacion;
 use Datatables;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Http\Request;
 use DB;
@@ -48,6 +50,13 @@ class ItemController extends Controller
             'fk_indicio' => $indicio->id,
             'fk_parametro' => $parametro->id,
             'fk_instrumento' => 1 
+        ]);
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Creación del item '.Item::max('id').'.'
         ]);
 
         return view('investigacion.item', compact('investigacion','evento','sinergia','indicio'));

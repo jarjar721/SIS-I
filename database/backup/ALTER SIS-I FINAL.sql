@@ -1,6 +1,12 @@
 
 /*ALTER SEQUENCE START*/
 
+ALTER TABLE ONLY public.audit
+ALTER COLUMN id
+SET
+DEFAULT nextval
+('public.audit_id_seq'::regclass);
+
 ALTER TABLE ONLY public.evento_ui
 ALTER COLUMN id
 SET
@@ -276,6 +282,10 @@ DEFAULT nextval
 
 
 /*ALTER PRIMARY KEY START*/
+
+ALTER TABLE ONLY public.audit
+ADD CONSTRAINT audit_pkey PRIMARY KEY
+(id);
 
 ALTER TABLE ONLY public.evento_ui
 ADD CONSTRAINT evento_ui_pkey PRIMARY KEY
@@ -622,6 +632,10 @@ CREATE INDEX fki_tecnica_analisis_aplicada_criterio_metodologico ON public.tecni
 CREATE INDEX fki_tecnica_analisis_aplicada_tecnica_analisis ON public.tecnica_analisis_aplicada USING btree
 (fk_tecnica_analisis);
 
+/*audit*/
+CREATE INDEX fki_audit_usuario ON public.audit USING btree
+(fk_usuario);
+
 /*ALTER INDEX END*/
 
 
@@ -867,5 +881,10 @@ ADD CONSTRAINT relacion_justificacion_ui_unidad_informacion FOREIGN KEY
 (fk_unidad_informacion) REFERENCES public.unidad_informacion
 (id);
 
+/*FK audit*/
+ALTER TABLE ONLY public.audit
+ADD CONSTRAINT relacion_audit_usuario FOREIGN KEY
+(fk_usuario) REFERENCES public.usuario
+(id);
 
 /*ALTER FOREIGN KEY END*/

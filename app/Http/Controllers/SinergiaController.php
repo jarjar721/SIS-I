@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Audit;
 use App\Evento;
 use App\Sinergia;
 use App\Indicio;
@@ -10,6 +11,7 @@ use App\U_Informacion;
 use App\Investigacion;
 use Datatables;
 use Session;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use DB;
 
@@ -46,6 +48,13 @@ class SinergiaController extends Controller
             'id' => (Sinergia::max('id'))+1,
             'nombre' => $request->nombreSinergia,
             'fk_evento_ui' => $e_ui->id
+        ]);
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Creación de sinergia '.Sinergia::max('id').'.'
         ]);
 
         return view('investigacion.sinergia', compact('investigacion', 'evento'));

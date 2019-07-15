@@ -50,5 +50,6 @@ DELETE FROM public.rol_privilegio;
 DELETE FROM public.privilegio;
 DELETE FROM public.rol;
 DELETE FROM public.tipo_investigacion;
+DELETE FROM public.audit;
 
 /*DELETE END*/

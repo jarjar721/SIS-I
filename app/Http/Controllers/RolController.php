@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Audit;
 use App\Rol;
 use App\Pri_Rol;
 use Illuminate\Support\Facades\Redirect;
@@ -35,14 +36,13 @@ class RolController extends Controller
                 'nombre' => $request->nombre
             ]);
 
-            /*$user = Usuario::where('Correo', Auth::user()->email)->first();
-            Audi::create([
-                'Codigo' => Audi::max('Codigo')+1,
-                'Usuario' => Auth::user()->name,
-                'Accion' => 'Crea Rol',
-                'Fecha_Ingreso' => Carbon::now()->format('Y-m-d'),
-                'FK_Observa' => $user->Codigo
-            ]);*/
+            //Auditoria
+            Audit::create([
+                'id' => Audit::max('id')+1,
+                'fk_usuario' => Auth::user()->id,
+                'descripcion' => 'Creación de rol '.Rol::max('code').'.'
+            ]);
+
             Session::flash('message','Rol creado correctamente.');
             return Redirect::to('rol');
 
@@ -99,14 +99,13 @@ class RolController extends Controller
                 }
             }
 
-            /*$user = Usuario::where('Correo', Auth::user()->email)->first();
-            Audi::create([
-                'Codigo' => Audi::max('Codigo')+1,
-                'Usuario' => Auth::user()->name,
-                'Accion' => 'Modifica Rol',
-                'Fecha_Ingreso' => Carbon::now()->format('Y-m-d'),
-                'FK_Observa' => $user->Codigo
-            ]);*/
+            //Auditoria
+            Audit::create([
+                'id' => Audit::max('id')+1,
+                'fk_usuario' => Auth::user()->id,
+                'descripcion' => 'Modificación de rol '.$rol->code.'.'
+            ]);
+
             Session::flash('message','Rol modificado correctamente.');
             return Redirect::to('rol');
         }else{
@@ -125,14 +124,13 @@ class RolController extends Controller
             Pri_Rol::where('codigo_rol', $Codigo)->delete();
             Rol::find($Codigo)->delete();
 
-            /*$user = Usuario::where('Correo', Auth::user()->email)->first();
-            Audi::create([
-                'Codigo' => Audi::max('Codigo')+1,
-                'Usuario' => Auth::user()->name,
-                'Accion' => 'Elimina Rol',
-                'Fecha_Ingreso' => Carbon::now()->format('Y-m-d'),
-                'FK_Observa' => $user->Codigo
-            ]);*/
+            //Auditoria
+            Audit::create([
+                'id' => Audit::max('id')+1,
+                'fk_usuario' => Auth::user()->id,
+                'descripcion' => 'Eliminación de rol '.$Codigo.'.'
+            ]);
+
             Session::flash('messagedel','Rol eliminado correctamente.');
             return redirect('rol');
         }else{

@@ -4,22 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Audit;
 use Session;
 use Datatables;
 use App\Investigacion;
-use App\U_Informacion;
 use App\Pregunta;
+use App\Audit;
 use Illuminate\Support\Facades\Auth;
-use DB;
-use App\Justificacion;
+use App\Contexto;
 
-class JustificacionController extends Controller
+class ContextoController extends Controller
 {
     public function inicio($id){ 
         $investigacion = Investigacion::where('id', $id)->first();
 
-        return view('investigacion.justificacion', compact('investigacion'));
+        return view('investigacion.contexto', compact('investigacion'));
     }
 
     public function store(Request $request){ 
@@ -38,42 +36,40 @@ class JustificacionController extends Controller
             ]);
         }
 
-        Justificacion::create([
-            'id' => Justificacion::max('id')+1,
-            'argumento' => $request->argumento,
-            'tipo' => $request->tipo,
-            'acerca_de' => $request->acerca_de
+        Contexto::create([
+            'id' => Contexto::max('id')+1,
+            'contexto' => $request->contexto
         ]);
-        DB::table('justificacion_ui')->insert([
-            'id' => DB::table('justificacion_ui')->max('id')+1,
+        DB::table('contexto_ui')->insert([
+            'id' => DB::table('contexto_ui')->max('id')+1,
             'fk_unidad_informacion' => $uiGenerica->id,
-            'fk_justificacion' => Justificacion::max('id')
+            'fk_contexto' => Contexto::max('id')
         ]);
 
         //Auditoria
         Audit::create([
             'id' => Audit::max('id')+1,
             'fk_usuario' => Auth::user()->id,
-            'descripcion' => 'Creación de justificación '.Justificacion::max('id').'.'
+            'descripcion' => 'Creación de contexto '.Contexto::max('id').'.'
         ]);
 
-        return view('investigacion.justificacion', compact('investigacion'));
+        return view('investigacion.contexto', compact('investigacion'));
     }
 
-    public function getJustificacionData(Request $request){
+    public function getContextoData(Request $request){
         $id = $request->get('id');
         
         $pregunta = Pregunta::where('fk_investigacion', $id)->first();
-        $justificaciones = Justificacion::leftjoin('justificacion_ui as j_ui','j_ui.fk_justificacion','=','justificacion.id')
-        ->whereIn('j_ui.fk_unidad_informacion', function($query) use ($pregunta){
+        $contextos = Contexto::leftjoin('contexto_ui as c_ui','c_ui.fk_contexto','=','contexto.id')
+        ->whereIn('c_ui.fk_unidad_informacion', function($query) use ($pregunta){
             $query->select(DB::raw('unidad_informacion.id'))
                     ->from('unidad_informacion')
                     ->where('unidad_informacion.fk_pregunta', $pregunta->id);
-        })->select(DB::raw('justificacion.*'))
+        })->select(DB::raw('contexto.*'))
         ->get();
 
-        return Datatables::of($justificaciones)
-        ->addColumn('action', function ($justificacion) {
+        return Datatables::of($contextos)
+        ->addColumn('action', function ($contexto) {
             return '<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
             <a href="#" class="btn btn-info btn-xs"><i class="fa fa-times"></i>Eliminar</a>';
         })

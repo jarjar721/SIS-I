@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Audit;
 use App\Pri_Rol;
 use App\U_Estudio;
 use App\U_Informacion;
@@ -100,6 +101,13 @@ class InvestigacionController extends Controller
             'fk_evento' => $data->id
         ]);
         //\ Fin creado principal
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Creación de investigación '.$investigacion->id.', temporalidad '.Temporalidad::max('id').', pregunta '.Pregunta::max('id').', unidad de estudio '.U_Estudio::max('id').', contexto '.Contexto::max('id').' y evento '.Evento::max('id')
+        ]);
 
         //Redireccion a fase_proyectiva.blade con los datos
         return view("investigacion.fase_proyectiva", compact('data', 'pregunta', 'ui'));

@@ -96,6 +96,7 @@
                   <ul class="nav child_menu">
                     <li><a href="/investigacion/{{$investigacion->id}}/evento">Eventos</a></li>
                     <li><a href="/investigacion/{{$investigacion->id}}/justificacion">Justificación</a></li>
+                    <li><a href="/investigacion/{{$investigacion->id}}/contexto">Contexto</a></li>
                     @if(isset($evento->id))
                       <li><a href="/investigacion/{{$investigacion->id}}/evento/'{{$evento->id}}/sinergia">Sinergias</a></li>
                       @if(isset($sinergia->id))
@@ -110,6 +111,9 @@
                 @endif
                 <li><a><i class="fas fa-chart-bar"></i> Reportes <span class="fas fa-chevron-down" style="float:right"></span></a>
                   <ul class="nav child_menu">
+                    @if(Auth::user()->fk_rol == 1)
+                      <li><a href="/audit">Auditoria</a></li>
+                    @endif
                     @if(isset($investigacion->id))
                       <li><a href="/investigacion/MAITI/{{$investigacion->id}}">MAITI</a></li>
                     @endif

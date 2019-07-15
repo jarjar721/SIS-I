@@ -1,6 +1,24 @@
 
 /*CREATE START*/
 
+CREATE TABLE public.audit (
+    id integer NOT NULL,
+    created_at timestamp(0) without time zone,
+    updated_at timestamp(0) without time zone,
+    descripcion character varying NOT NULL,
+    fk_usuario integer
+);
+ALTER TABLE public.audit OWNER TO postgres;
+CREATE SEQUENCE public.audit_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+ALTER TABLE public.audit_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.audit_id_seq OWNED BY public.audit.id;
+
+
 CREATE TABLE public.evento_ui (
     id integer NOT NULL,
     clase character varying,

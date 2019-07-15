@@ -49,5 +49,6 @@ DROP TABLE public.rol_privilegio;
 DROP TABLE public.privilegio;
 DROP TABLE public.rol;
 DROP TABLE public.tipo_investigacion;
+DROP TABLE public.audit;
 
 /*DROP END*/

@@ -27,6 +27,8 @@ Route::group(['middleware' => ['auth']], function () {
         //\Dashboard del usuario
 
         //Usuario
+        Route::get('/audit', 'UserController@audit');
+        Route::get('/audit_load', 'UserController@audit_load')->name('audit.data');
         Route::get('/usuario', 'UserController@lista');
         Route::get('/usuario/modificar/{Codigo}', 'UserController@edit');
         Route::post('/usuario/update', 'UserController@actualizar');
@@ -35,7 +37,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('image-upload', 'UserController@imageUploadPost')->name('image.upload.post');
         //\Usuario
         //Persona
-
+        Route::get('/institucion', 'UserController@instituciones');
+        Route::get('/load_institucion', 'UserController@inst_load')->name('inst.data');
         //\Persona
 
         //Rol
@@ -93,9 +96,15 @@ Route::group(['middleware' => ['auth']], function () {
 
         //Justificación
         Route::get('/investigacion/{id}/justificacion', 'JustificacionController@inicio');
-        Route::get('/justificacion/store', 'JustificacionController@store');
+        Route::post('/justificacion/store', 'JustificacionController@store');
         Route::get('/load_justificacion', 'JustificacionController@getJustificacionData')->name('justificacion.data');        
         //\Justificación
+
+        //Contexto
+        Route::get('/investigacion/{id}/contexto', 'ContextoController@inicio');
+        Route::post('/contexto/store', 'ContextoController@store');
+        Route::get('/load_contexto', 'ContextoController@getContextonData')->name('contexto.data');        
+        //\Contexto
 
         //Unidad de Información
         Route::get('/investigacion/unidad_informacion', function () {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Audit;
 use App\Evento;
 use App\Sinergia;
 use App\Indicio;
@@ -10,6 +11,7 @@ use App\Pregunta;
 use App\U_Informacion;
 use App\Investigacion;
 use Datatables;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Http\Request;
 use DB;
@@ -46,6 +48,13 @@ class IndicioController extends Controller
             'id' => (Indicio::max('id'))+1,
             'nombre' => $request->nombreIndicio,
             'fk_sinergia' => $sinergia->id
+        ]);
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Creación de indicio '.Indicio::max('id').'.'
         ]);
 
         return view('investigacion.indicio', compact('investigacion', 'evento', 'sinergia'));

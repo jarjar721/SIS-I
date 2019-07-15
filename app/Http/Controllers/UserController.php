@@ -9,6 +9,7 @@ use App\User;
 use App\Rol;
 use App\Pri_Rol;
 use App\Persona;
+use App\Audit;
 use App\Institucion;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Datatables;
 use Session;
+use Carbon\Carbon;
 
 use DB;
 
@@ -29,6 +31,43 @@ class UserController extends Controller
         ->select(DB::raw('"usuario".*, "rol"."nombre" as rol'))
         ->get();
         return view("usuarios.lista", compact('users'));
+    }
+
+    public function instituciones(){
+        return view("usuarios.instituciones");
+    }
+
+    public function audit(){
+        return view("audit");
+    }
+
+    public function audit_load(){
+        $audits = Audit::leftjoin('usuario as u','u.id','=','audit.fk_usuario')
+        ->leftjoin('persona as p','p.fk_usuario','=','u.id')
+        ->select(DB::raw("audit.*, CONCAT(u.username,': ',p.nombre,' ',p.apellido) AS user"))
+        ->get();
+
+        foreach($audits as $a){
+            $a->created_at = date('d-m-Y H:i:s', $a->created_at);
+        }
+
+        return Datatables::of($audits)
+        ->make(true);
+    }
+
+    public function inst_load(){
+        $instituciones = Persona::join('usuario as u','u.id','=','persona.fk_usuario')
+        ->rightjoin('institucion as i','i.id','=','persona.fk_institucion')
+        ->rightjoin('investigacion as inv','inv.fk_usuario','=','u.id')
+        ->select(DB::raw('i.nombre as institucion, inv.tema as investigacion'))
+        ->get();
+
+        return Datatables::of($instituciones)
+        ->addColumn('action', function ($inst) {
+            return '<a href="institucion/modificar/'.$usuario->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>
+            <a href="institucion/eliminar/'.$usuario->id.'" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Eliminar</a>';
+        })
+        ->make(true);
     }
 
     public function anyData(){
@@ -66,6 +105,13 @@ class UserController extends Controller
         Auth::user()->image = $imageName;
         Auth::user()->save();
 
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Subida de imagen de perfil de usuario '.Auth::user()->id.'.'
+        ]);
+
         return back()
             ->with('success','Ha subido su imagen satisfactoriamente.')
             ->with('image', $imageName);
@@ -77,7 +123,7 @@ class UserController extends Controller
         ->first();
 
         if(isset($priv)){
-            $usuario = User::where('id', $request->id);
+            $usuario = User::where('id', $request->id)->first();
             $rols = Rol::select()->orderBy('id', 'asc')->get();
 
             $us = User::where('usuario.email', $request->email)->first();
@@ -87,20 +133,19 @@ class UserController extends Controller
                 return Redirect::back()->withInput(Input::all())->with('rols', $rols);
             }
 
-            $user->fill([
+            $usuario->fill([
                 'username' => $request->username,
                 'email' => $request->email,
                 'password' => Hash::make($request->password)
             ])->update();
 
-            /*$user = Usuario::where('Correo', Auth::user()->email)->first();
-            Audi::create([
-                'Codigo' => Audi::max('Codigo')+1,
-                'Usuario' => Auth::user()->name,
-                'Accion' => 'Actualiza Usuario',
-                'Fecha_Ingreso' => Carbon::now()->format('Y-m-d'),
-                'FK_Observa' => $user->Codigo
-            ]);*/
+            //Auditoria
+            Audit::create([
+                'id' => Audit::max('id')+1,
+                'fk_usuario' => Auth::user()->id,
+                'descripcion' => 'Modificación de usuario '.$usuario->id.'.'
+            ]);
+
             Session::flash('messagedel','Usuario modificado correctamente.');
             return redirect('usuario');
         }else{
@@ -115,16 +160,16 @@ class UserController extends Controller
         ->first();
 
         if(isset($priv)){
+            Persona::where('fk_usuario', $Codigo)->delete();
             User::where('id', $Codigo)->delete();
 
-            /*$user = Usuario::where('Correo', Auth::user()->email)->first();
-            Audi::create([
-                'Codigo' => Audi::max('Codigo')+1,
-                'Usuario' => Auth::user()->name,
-                'Accion' => 'Elimina Usuario',
-                'Fecha_Ingreso' => Carbon::now()->format('Y-m-d'),
-                'FK_Observa' => $user->Codigo
-            ]);*/
+            //Auditoria
+            Audit::create([
+                'id' => Audit::max('id')+1,
+                'fk_usuario' => Auth::user()->id,
+                'descripcion' => 'Eliminación de usuario '.$Codigo.'.'
+            ]);
+
             Session::flash('messagedel','Usuario eliminado correctamente.');
             return redirect('usuario');
         }else{
@@ -161,6 +206,14 @@ class UserController extends Controller
                 $p->fk_institucion = $i->id;
                 $p->save();
             }
+
+            //Auditoria
+            Audit::create([
+                'id' => Audit::max('id')+1,
+                'fk_usuario' => Auth::user()->id,
+                'descripcion' => 'Creación de persona cédula '.$p->cedula.'.'
+            ]);
+
             return redirect('/dashboard');
 
         }else{
