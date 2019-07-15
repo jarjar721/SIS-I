@@ -9,7 +9,7 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="page-title">
-            <h4>(AQUE VA EL TEMA DE LA INVESTIGACION)</h4>
+            <h4>{{$investigacion->tema}}</h4>
         </div>
     </div>
 </div>
@@ -26,9 +26,10 @@
             </div>
 
             <div class="x_content">
-                <form method="POST" action="/investigacion/justificacion/store">
+                <form method="POST" action="/justificacion/store">
                     @csrf
-                    <div class="row">
+                        <input type="hidden" name="InvID" value="{{old('InvID', $investigacion->id)}}">
+                        <div class="row">
                         <div class="form-group">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -37,15 +38,15 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <label>Tipo de Argumento</label>
-                                    <select id="tipo-argumento" class="form-control" required>
-                                        <option value="a1">A1</option>
-                                        <option value="a2">A2</option>
-                                        <option value="a3">A3</option>
+                                    <select id="tipo-argumento" name="tipo" class="form-control" required>
+                                        <option value="A1">A1</option>
+                                        <option value="A2">A2</option>
+                                        <option value="A3">A3</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <label>Acerca de</label>
-                                    <select id="tipo-argumento" class="form-control" required>
+                                    <select id="tipo-argumento" name="acerca_de" class="form-control" required>
                                         <option value="Unidad de Estudio">Unidad de Estudio</option>
                                         <option value="Contexto">Contexto</option>
                                         <option value="Temporalidad">Temporalidad</option>
@@ -116,7 +117,12 @@
         },
         processing: true,
         serverSide: true,
-        ajax: '{!! route('justificacion.data') !!}',
+        ajax: {
+          url: '{!! route('justificacion.data') !!}',
+          "data": {
+            id: {!! $investigacion->id !!}
+          }
+        },
         columns: [
             {data: 'argumento', name: 'argumento'},
             {data: 'tipo', name: 'tipo'},

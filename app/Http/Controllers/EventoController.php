@@ -52,7 +52,7 @@ class EventoController extends Controller
         ->first();
         //Se crea una Unidad de Informacion generica si no existe
         if(is_null($uiGenerica)){
-            U_Informacion::create([
+            $uiGenerica = U_Informacion::create([
                 'id' => (U_Informacion::max('id'))+1,
                 'cita' => $investigacion->$tema,
                 'nivel' => 'Genérica',

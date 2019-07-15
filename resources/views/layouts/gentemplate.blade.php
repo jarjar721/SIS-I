@@ -95,6 +95,7 @@
                 <li><a><i class="fas fa-journal"></i> Detalles de investigación <span class="fas fa-chevron-down" style="float:right"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="/investigacion/{{$investigacion->id}}/evento">Eventos</a></li>
+                    <li><a href="/investigacion/{{$investigacion->id}}/justificacion">Justificación</a></li>
                     @if(isset($evento->id))
                       <li><a href="/investigacion/{{$investigacion->id}}/evento/'{{$evento->id}}/sinergia">Sinergias</a></li>
                       @if(isset($sinergia->id))

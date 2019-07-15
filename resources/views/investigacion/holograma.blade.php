@@ -144,8 +144,8 @@
                     <tr>
                         <th>Evento</th>
                         <th>Sinergias</th>
-                <!--         <th>Indicios</th>
-                        <th>Ítemes</th>-->
+                        <th>Indicios</th>
+                        <th>Ítemes</th>
                     </tr>
                 </thead>
             </table>
@@ -262,6 +262,14 @@
             {
                 data: 'sinergia',
                 name: 'sinergia'
+            },
+            {
+                data: 'indicio',
+                name: 'indicio'
+            },
+            {
+                data: 'item',
+                name: 'item'
             }
         ],
     });

@@ -92,9 +92,8 @@ Route::group(['middleware' => ['auth']], function () {
         //\MAITI
 
         //Justificación
-        Route::get('/investigacion/justificacion', function () {
-            return view('investigacion.justificacion');
-        });
+        Route::get('/investigacion/{id}/justificacion', 'JustificacionController@inicio');
+        Route::get('/justificacion/store', 'JustificacionController@store');
         Route::get('/load_justificacion', 'JustificacionController@getJustificacionData')->name('justificacion.data');        
         //\Justificación
 

@@ -46,10 +46,11 @@ class HologramaController extends Controller
     public function getTablaOperacionalizacion(Request $request){
         $id = $request->get('id');
 
-        $tablaOperacionalizacion = DB::select(DB::raw('SELECT e.nombre as evento, s.nombre as sinergia
-        FROM evento e, evento_ui eui, unidad_informacion ui, sinergia s
+        $tablaOperacionalizacion = DB::select(DB::raw('SELECT e.nombre as evento, s.nombre as sinergia, i.nombre as indicio, it.numero as item
+        FROM evento e, evento_ui eui, unidad_informacion ui, sinergia s, indicio i, item it
         WHERE ui.fk_pregunta = '.$id.' AND ui.id = eui.fk_unidad_informacion
-        AND eui.fk_evento = e.id AND eui.id = s.fk_evento_ui;'));
+        AND eui.fk_evento = e.id AND eui.id = s.fk_evento_ui
+        AND i.fk_sinergia = s.id AND it.fk_indicio = i.id;'));
 
         return Datatables::of($tablaOperacionalizacion)
         ->make(true);

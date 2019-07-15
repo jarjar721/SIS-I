@@ -13,6 +13,7 @@ class Justificacion extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'id',
         'argumento',
         'tipo_argumento',
         'acerca_de'

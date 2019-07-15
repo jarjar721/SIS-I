@@ -4,13 +4,69 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Session;
 use Datatables;
+use App\Investigacion;
+use App\Pregunta;
 use App\Justificacion;
 
 class JustificacionController extends Controller
 {
+    public function inicio($id){ 
+        $investigacion = Investigacion::where('id', $id)->first();
 
-    public function getJustificacionData()
-    { }
+        return view('investigacion.justificacion', compact('investigacion'));
+    }
+
+    public function store(Request $request){ 
+        $investigacion = Investigacion::where('id', $request->InvID)->first();
+
+        $uiGenerica = U_Informacion::where('cita', $investigacion->tema)
+        ->where('nivel', 'Genérica')
+        ->first();
+        //Se crea una Unidad de Informacion generica si no existe
+        if(is_null($uiGenerica)){
+            $uiGenerica = U_Informacion::create([
+                'id' => (U_Informacion::max('id'))+1,
+                'cita' => $investigacion->$tema,
+                'nivel' => 'Genérica',
+                'fk_pregunta' => $pregunta->id
+            ]);
+        }
+
+        Justificacion::create([
+            'id' => Justificacion::max('id')+1,
+            'argumento' => $request->argumento,
+            'tipo' => $request->tipo,
+            'acerca_de' => $request->acerca_de
+        ]);
+        DB::table('justificacion_ui')->insert([
+            'id' => DB::table('justificacion_ui')->max('id')+1,
+            'fk_unidad_informacion' => $uiGenerica->id,
+            'fk_justificacion' => Justificacion::max('id')
+        ]);
+
+        return view('investigacion.justificacion', compact('investigacion'));
+    }
+
+    public function getJustificacionData(Request $request){
+        $id = $request->get('id');
+        
+        $pregunta = Pregunta::where('fk_investigacion', $id)->first();
+        $justificaciones = Justificacion::leftjoin('justificacion_ui as j_ui','j_ui.fk_justificacion','=','justificacion.id')
+        ->whereIn('j_ui.fk_unidad_informacion', function($query) use ($pregunta){
+            $query->select(DB::raw('unidad_informacion.id'))
+                    ->from('unidad_informacion')
+                    ->where('unidad_informacion.fk_pregunta', $pregunta->id);
+        })->select(DB::raw('justificacion.*'))
+        ->get();
+
+        return Datatables::of($justificaciones)
+        ->addColumn('action', function ($justificacion) {
+            return '<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
+            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-times"></i>Eliminar</a>';
+        })
+        ->make(true);
+    }
     
 }
