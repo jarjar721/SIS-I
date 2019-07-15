@@ -22,9 +22,6 @@ class EventoController extends Controller
     public function eventos($id){
         $investigacion = Investigacion::where('id', $id)->first();
 
-        #DB::enableQueryLog();
-        #dd(DB::getQueryLog());
-
         return view('investigacion.evento', compact('investigacion'));
     }
 

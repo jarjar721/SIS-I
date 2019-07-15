@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
 use Session;
 use Datatables;
 use App\Investigacion;
@@ -62,7 +63,7 @@ class ContextoController extends Controller
         $pregunta = Pregunta::where('fk_investigacion', $id)->first();
         $contextos = Contexto::leftjoin('contexto_ui as c_ui','c_ui.fk_contexto','=','contexto.id')
         ->where('contexto.deleted','!=',true)
-        ->where('contexto_ui.deleted','!=',true)
+        ->where('c_ui.deleted','!=',true)
         ->whereIn('c_ui.fk_unidad_informacion', function($query) use ($pregunta){
             $query->select(DB::raw('unidad_informacion.id'))
                     ->from('unidad_informacion')
@@ -70,11 +71,14 @@ class ContextoController extends Controller
                     ->where('unidad_informacion.fk_pregunta', $pregunta->id);
         })->select(DB::raw('contexto.*'))
         ->get();
+        
+        #DB::enableQueryLog();
+        #dd(DB::getQueryLog());
 
         return Datatables::of($contextos)
         ->addColumn('action', function ($contexto) {
             return '<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
-            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-times"></i>Eliminar</a>';
+            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times"></i>Eliminar</a>';
         })
         ->make(true);
     }

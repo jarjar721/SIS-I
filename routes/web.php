@@ -103,7 +103,7 @@ Route::group(['middleware' => ['auth']], function () {
         //Contexto
         Route::get('/investigacion/{id}/contexto', 'ContextoController@inicio');
         Route::post('/contexto/store', 'ContextoController@store');
-        Route::get('/load_contexto', 'ContextoController@getContextonData')->name('contexto.data');        
+        Route::get('/load_contexto', 'ContextoController@getContextoData')->name('contexto.data');        
         //\Contexto
 
         //Unidad de Información
