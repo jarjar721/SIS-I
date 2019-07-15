@@ -35,13 +35,19 @@ class ItemController extends Controller
         $indicio = Indicio::where('id', $request->IndID)->first();
 
         //Crear el Item
+        $parametro = DB::table('parametro')->insert([
+            'id' => DB::table('parametro')->max('id')+1,
+            'nivel' => $request->itemNivel,
+            'descripcion' => $request->parametro,
+            'categoria' => $request->parametro
+        ]);
         Item::create([
             'id' => (Item::max('id'))+1,
             'numero' => Item::where('fk_indicio',$indicio->IndID)->max('numero')+1,
             'descripcion' => $request->item,
             'fk_indicio' => $indicio->id,
-            /*'fk_parametro' => ,
-            'fk_instrumento' =>*/ 
+            'fk_parametro' => $parametro->id,
+            'fk_instrumento' => 1 
         ]);
 
         return view('investigacion.item', compact('investigacion','evento','sinergia','indicio'));

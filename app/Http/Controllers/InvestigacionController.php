@@ -73,7 +73,8 @@ class InvestigacionController extends Controller
             'id' => (U_Estudio::max('id'))+1,
             'nombre' => $request->$unidad_estudio
         ]);
-        DB::table('unidad_estudio_ui')->create([
+        DB::table('unidad_estudio_ui')->insert([
+            'id' => DB::table('unidad_estudio_ui')->max('id')+1,
             'fk_unidad_estudio' => $data->id,
             'fk_unidad_informacion' => $ui->id
         ]);
@@ -82,7 +83,8 @@ class InvestigacionController extends Controller
             'id' => (Contexto::max('id'))+1,
             'contexto' => $request->$contexto
         ]);
-        DB::table('contexto_ui')->create([
+        DB::table('contexto_ui')->insert([
+            'id' => DB::table('contexto_ui')->max('id')+1,
             'fk_contexto' => $data->id,
             'fk_unidad_informacion' => $ui->id
         ]);
@@ -92,7 +94,8 @@ class InvestigacionController extends Controller
             'nombre' => $request->$evento,
             'tipo' => $request->$tipoEvento
         ]);
-        DB::table('evento_ui')->create([
+        DB::table('evento_ui')->insert([
+            'id' => DB::table('evento_ui')->max('id')+1,
             'fk_unidad_informacion' => $ui->id,
             'fk_evento' => $data->id
         ]);
