@@ -57,8 +57,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/investigacion/holograma/{id}', 'HologramaController@holograma');
         Route::get('/pregunta_objetivo_2', 'HologramaController@getPreguntaObjetivo2')->name('p_o_2.data');
         Route::get('/tabla_operacionalizacion', 'HologramaController@getTablaOperacionalizacion')->name('op_table.data');
-        Route::get('/tabla_operacionalizacion/{id}', 'HologramaController@getTablaOperacionalizacion2')->name('op_table2.data');
-        Route::get('/tabla_operacionalizacion2/{id}', 'HologramaController@getTablaOperacionalizacion3')->name('op_table3.data');
         //\Holograma
 
         //Evento
