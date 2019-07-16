@@ -57,13 +57,30 @@ class ContextoController extends Controller
         return view('investigacion.contexto', compact('investigacion'));
     }
 
+    public function delete($Codigo, $id){ 
+        $investigacion = Investigacion::where('id', $id)->first();
+
+        Contexto::where('id', $Codigo)->update([
+            'deleted' => TRUE
+        ]);
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Eliminación de contexto '.$Codigo.'.'
+        ]);
+
+        Session::flash('messagedel','Contexto eliminado correctamente.');
+        return view('investigacion.contexto', compact('investigacion'));
+    }
+
     public function getContextoData(Request $request){
         $id = $request->get('id');
         
         $pregunta = Pregunta::where('fk_investigacion', $id)->first();
         $contextos = Contexto::leftjoin('contexto_ui as c_ui','c_ui.fk_contexto','=','contexto.id')
         ->where('contexto.deleted','!=',true)
-        ->where('c_ui.deleted','!=',true)
         ->whereIn('c_ui.fk_unidad_informacion', function($query) use ($pregunta){
             $query->select(DB::raw('unidad_informacion.id'))
                     ->from('unidad_informacion')
@@ -76,9 +93,9 @@ class ContextoController extends Controller
         #dd(DB::getQueryLog());
 
         return Datatables::of($contextos)
-        ->addColumn('action', function ($contexto) {
+        ->addColumn('action', function ($contexto) use ($id){
             return '<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
-            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times"></i>Eliminar</a>';
+            <a href="/contexto/eliminar/'.$contexto.'/'.$id.'" class="btn btn-danger btn-xs"><i class="fa fa-times"></i>Eliminar</a>';
         })
         ->make(true);
     }

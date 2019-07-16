@@ -52,6 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         //Investigacion
         Route::get('/investigacion/delimitacion_tema', 'InvestigacionController@d_tema');
+        Route::get('/investigacion/eliminar/{Codigo}', 'InvestigacionController@delete');
         Route::post('/investigacion/store', 'InvestigacionController@store');
         Route::get('/inv', 'InvestigacionController@getInvData')->name('inv.data');        
         //\Investigacion
@@ -64,27 +65,28 @@ Route::group(['middleware' => ['auth']], function () {
 
         //Evento
         Route::get('/investigacion/{id}/evento', 'EventoController@eventos');
+        Route::get('/evento/eliminar/{Codigo}/{id}', 'EventoController@delete');
         Route::post('/evento/store', 'EventoController@store');
-        Route::get('/investigacion/indicio', function () {
-            return view('investigacion.indicio');
-        });
         Route::get('/load_evento_investigacion', 'EventoController@getEventoData')->name('evento.data');             
         //\Evento
 
         //Sinergia
         Route::get('/investigacion/{idInv}/evento/{idEvento}/sinergia', 'SinergiaController@sinergias');
+        Route::get('/sinergia/eliminar/{Codigo}/{id}/{idE}', 'SinergiaController@delete');
         Route::post('/sinergia/store', 'SinergiaController@store');
         Route::get('/load_sinergia_evento', 'SinergiaController@getSinergiaData')->name('sinergia_evento.data'); 
         //\Sinergia
 
         //Indicio
         Route::get('/investigacion/{idInv}/evento/{idEvento}/sinergia/{idSinergia}/indicio', 'IndicioController@indicios');
+        Route::get('/indicio/eliminar/{Codigo}/{id}/{idE}/{idS}', 'IndicioController@delete');
         Route::post('/indicio/store', 'IndicioController@store');
         Route::get('/load_indicio_sinergia', 'IndicioController@getIndicioData')->name('indicio_sinergia.data');        
         //\Indicio
 
         //Item
         Route::get('/investigacion/{idInv}/evento/{idEvento}/sinergia/{idSinergia}/indicio/{idIndicio}/item', 'ItemController@items');
+        Route::get('/item/eliminar/{Codigo}/{id}/{idE}/{idS}/{idI}', 'ItemController@delete');
         Route::post('/item/store', 'ItemController@store');
         Route::get('/load_item_intrumento', 'ItemController@getItemData')->name('item.data');
         Route::get('/load_item_intrumento/{id}', 'ItemController@getItemDetailsData')->name('item_details.data');
@@ -96,12 +98,14 @@ Route::group(['middleware' => ['auth']], function () {
 
         //Justificación
         Route::get('/investigacion/{id}/justificacion', 'JustificacionController@inicio');
+        Route::get('/justificacion/eliminar/{Codigo}/{id}', 'JustificacionController@delete');
         Route::post('/justificacion/store', 'JustificacionController@store');
         Route::get('/load_justificacion', 'JustificacionController@getJustificacionData')->name('justificacion.data');        
         //\Justificación
 
         //Contexto
         Route::get('/investigacion/{id}/contexto', 'ContextoController@inicio');
+        Route::get('/contexto/eliminar/{Codigo}/{id}', 'ContextoController@delete');
         Route::post('/contexto/store', 'ContextoController@store');
         Route::get('/load_contexto', 'ContextoController@getContextoData')->name('contexto.data');        
         //\Contexto

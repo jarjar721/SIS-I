@@ -62,6 +62,27 @@ class ItemController extends Controller
         return view('investigacion.item', compact('investigacion','evento','sinergia','indicio'));
     }
 
+    public function delete($Codigo, $id, $idS, $idE, $idI){ 
+        $investigacion = Investigacion::where('id', $id)->first();
+        $evento = Evento::where('id', $idE)->first();
+        $sinergia = Sinergia::where('id', $idS)->first();
+        $indicio = Indicio::where('id', $idI)->first();
+
+        Item::where('id', $Codigo)->update([
+            'deleted' => TRUE
+        ]);
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Eliminación de item '.$Codigo.'.'
+        ]);
+
+        Session::flash('messagedel','Item eliminado correctamente.');
+        return view('investigacion.item', compact('investigacion','evento','sinergia','indicio'));
+    }
+
     public function getItemData(Request $request){
         $id = $request->get('id');
         $eid = $request->get('eveID');
@@ -80,11 +101,10 @@ class ItemController extends Controller
         return Datatables::of($items)
         ->addColumn('parametros_url', function($item) {
             return route('item_details.data', $item->id);
-        })->addColumn('action', function ($item) {
+        })->addColumn('action', function ($item) use($id, $eid, $sid, $iid) {
             return '<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
-                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
+                <a href="/item/eliminar/'.$item.'/'.$id.'/'.$eid.'/'.$sid.'/'.$iid.'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
         })
-        //->rawColumns(['status', 'action'])
         ->make(true);
     }
 

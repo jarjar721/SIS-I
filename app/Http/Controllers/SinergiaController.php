@@ -60,6 +60,25 @@ class SinergiaController extends Controller
         return view('investigacion.sinergia', compact('investigacion', 'evento'));
     }
 
+    public function delete($Codigo, $id, $idE){ 
+        $investigacion = Investigacion::where('id', $id)->first();
+        $evento = Evento::where('id', $idE)->first();
+
+        Sinergia::where('id', $Codigo)->update([
+            'deleted' => TRUE
+        ]);
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Eliminación de sinergia '.$Codigo.'.'
+        ]);
+
+        Session::flash('messagedel','Sinergia eliminada correctamente.');
+        return view('investigacion.sinergia', compact('investigacion', 'evento'));
+    }
+
     public function getSinergiaData(Request $request){
         $id = $request->get('id');
         $eid = $request->get('eveID');
@@ -78,7 +97,7 @@ class SinergiaController extends Controller
         ->addColumn('action', function ($sinergia) use ($evento, $id) {
             return '<a href="/investigacion/'.$id.'/evento/'.$evento->id.'/sinergia/'.$sinergia->id.'/indicio" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>Indicios</a>
                 <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
-                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
+                <a href="/sinergia/eliminar/'.$sinergia->id.'/'.$id.'/'.$evento->id.'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
         })
         ->make(true);
     }

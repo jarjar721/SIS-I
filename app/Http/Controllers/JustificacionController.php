@@ -60,6 +60,24 @@ class JustificacionController extends Controller
         return view('investigacion.justificacion', compact('investigacion'));
     }
 
+    public function delete($Codigo, $id){ 
+        $investigacion = Investigacion::where('id', $id)->first();
+
+        Justificacion::where('id', $Codigo)->update([
+            'deleted' => TRUE
+        ]);
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Eliminación de justificación '.$Codigo.'.'
+        ]);
+
+        Session::flash('messagedel','Justificacion eliminada correctamente.');
+        return view('investigacion.justificacion', compact('investigacion'));
+    }
+
     public function getJustificacionData(Request $request){
         $id = $request->get('id');
         
@@ -76,9 +94,9 @@ class JustificacionController extends Controller
         ->get();
 
         return Datatables::of($justificaciones)
-        ->addColumn('action', function ($justificacion) {
+        ->addColumn('action', function ($justificacion) use($id) {
             return '<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
-            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-times"></i>Eliminar</a>';
+            <a href="/justificacion/eliminar/'.$justificacion.'/'.$id.'" class="btn btn-info btn-xs"><i class="fa fa-times"></i>Eliminar</a>';
         })
         ->make(true);
     }

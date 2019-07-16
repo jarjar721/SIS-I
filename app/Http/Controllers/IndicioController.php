@@ -60,6 +60,26 @@ class IndicioController extends Controller
         return view('investigacion.indicio', compact('investigacion', 'evento', 'sinergia'));
     }
 
+    public function delete($Codigo, $id, $idS, $idE){ 
+        $investigacion = Investigacion::where('id', $id)->first();
+        $evento = Evento::where('id', $idE)->first();
+        $sinergia = Sinergia::where('id', $idS)->first();
+
+        Indicio::where('id', $Codigo)->update([
+            'deleted' => TRUE
+        ]);
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Eliminación de indicio '.$Codigo.'.'
+        ]);
+
+        Session::flash('messagedel','Indicio eliminado correctamente.');
+        return view('investigacion.indicio', compact('investigacion', 'evento', 'sinergia'));
+    }
+
     public function getIndicioData(Request $request){
         $id = $request->get('id');
         $eid = $request->get('eveID');
@@ -75,7 +95,7 @@ class IndicioController extends Controller
         ->addColumn('action', function ($indicio) use($evento, $id, $sinergia) {
             return '<a href="/investigacion/'.$id.'/evento/'.$evento->id.'/sinergia/'.$sinergia->id.'/indicio/'.$indicio->id.'/item" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>Items</a>
                 <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
-                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
+                <a href="/indicio/eliminar/'.$indicio->id.'/'.$id.'/'.$evento->id.'/'.$sinergia->id.'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
         })
         ->make(true);
     }

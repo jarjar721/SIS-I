@@ -81,12 +81,29 @@ class EventoController extends Controller
         return view('investigacion.evento', compact('investigacion'));
     }
 
+    public function delete($Codigo, $id){ 
+        $investigacion = Investigacion::where('id', $id)->first();
+
+        Evento::where('id', $Codigo)->update([
+            'deleted' => TRUE
+        ]);
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Eliminación de evento '.$Codigo.'.'
+        ]);
+
+        Session::flash('messagedel','Evento eliminado correctamente.');
+        return view('investigacion.evento', compact('investigacion'));
+    }
+
     public function getEventoData(Request $request){
         $id = $request->get('id');
 
         $pregunta = Pregunta::where('fk_investigacion', $id)->first();
         $eventos = Evento::leftjoin('evento_ui','evento_ui.fk_evento','=','evento.id')
-        ->where('evento_ui.deleted','!=',true)
         ->where('evento.deleted','!=',true)
         ->whereIn('evento_ui.fk_unidad_informacion', function($query) use ($pregunta){
             $query->select(DB::raw('unidad_informacion.id'))
@@ -100,7 +117,7 @@ class EventoController extends Controller
         ->addColumn('action', function ($evento) use($id) {
             return '<a href="/investigacion/'.$id.'/evento/'.$evento->id.'/sinergia" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>Sinergias</a>
                 <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
-                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
+                <a href="/evento/eliminar/'.$evento->id.'/'.$id.'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
         })
         ->make(true);
     }

@@ -109,8 +109,24 @@ class InvestigacionController extends Controller
             'descripcion' => 'Creación de investigación '.$investigacion->id.', temporalidad '.Temporalidad::max('id').', pregunta '.Pregunta::max('id').', unidad de estudio '.U_Estudio::max('id').', contexto '.Contexto::max('id').' y evento '.Evento::max('id')
         ]);
 
-        //Redireccion a fase_proyectiva.blade con los datos
-        return view("investigacion.fase_proyectiva", compact('data', 'pregunta', 'ui'));
+        //Redireccion a welcome.blade con los datos
+        return view("welcome", compact('data', 'pregunta', 'ui'));
+    }
+
+    public function delete($Codigo){ 
+        $investigacion = Investigacion::where('id', $Codigo)->update([
+            'deleted' => TRUE
+        ]);
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Eliminación de investigacion '.$Codigo.'.'
+        ]);
+
+        Session::flash('messagedel','Investigacion eliminada correctamente.');
+        return view('welcome');
     }
 
     public function holograma($id){
@@ -138,7 +154,7 @@ class InvestigacionController extends Controller
         ->addColumn('action', function ($investigacion) {
             return '<a href="/investigacion/holograma/'.$investigacion->id.'" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>Holograma</a>
                 <a href="#" class="btn btn-info btn-xs"><i class="fa fa-journal"></i>Editar</a>
-                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
+                <a href="/investigacion/eliminar/'.$investigacion->id.'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
         })
         ->make(true);
     }
