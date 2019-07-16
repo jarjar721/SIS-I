@@ -32,10 +32,8 @@
                         <div class="row">
                         <div class="form-group">
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <h4>Agregue los <b>contextos</b> a la investigación:</h4>
-                                    <input type="text" id="contexto" class="form-control" name="contexto">
-                                </div>
+                                <h4>Agregue los <b>contextos</b> a la investigación:</h4>
+                                <input type="text" id="contexto" class="form-control" name="contexto">
                                 <div class="ln_solid"></div>
                             </div>
                         </div>

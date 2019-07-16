@@ -115,6 +115,24 @@ Route::group(['middleware' => ['auth']], function () {
             return view('investigacion.unidad_informacion');
         });
         //\Unidad de Información
+
+        //Modificar
+        Route::get('/investigacion/modificar/{Codigo}', 'InvestigacionController@edit');
+        Route::get('/evento/modificar/{Codigo}/{id}', 'EventoController@edit');
+        Route::get('/sinergia/modificar/{Codigo}/{id}/{idE}', 'SinergiaController@edit');
+        Route::get('/indicio/modificar/{Codigo}/{id}/{idE}/{idS}', 'IndicioController@edit');
+        Route::get('/item/modificar/{Codigo}/{id}/{idE}/{idS}/{idI}', 'ItemController@edit');
+        Route::get('/justificacion/modificar/{Codigo}/{id}', 'JustificacionController@edit');
+        Route::get('/contexto/modificar/{Codigo}/{id}', 'ContextoController@edit');
+        Route::post('/investigacion/edit', 'InvestigacionController@update');
+        Route::post('/evento/edit', 'EventoController@update');
+        Route::post('/sinergia/edit', 'SinergiaController@update');
+        Route::post('/indicio/edit', 'IndicioController@update');
+        Route::post('/item/edit', 'ItemController@update');
+        Route::post('/justificacion/edit', 'JustificacionController@update');
+        Route::post('/contexto/edit', 'ContextoController@update');
+        //\Modificar
+
     });
 
     //Persona (Si no se ha creado)

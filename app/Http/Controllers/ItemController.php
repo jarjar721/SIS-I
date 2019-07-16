@@ -40,7 +40,7 @@ class ItemController extends Controller
         $parametro = DB::table('parametro')->insert([
             'id' => DB::table('parametro')->max('id')+1,
             'nivel' => $request->itemNivel,
-            'descripcion' => $request->parametro,
+            'descripcion' => $request->item,
             'categoria' => $request->parametro
         ]);
         Item::create([
@@ -57,6 +57,47 @@ class ItemController extends Controller
             'id' => Audit::max('id')+1,
             'fk_usuario' => Auth::user()->id,
             'descripcion' => 'Creación del item '.Item::max('id').'.'
+        ]);
+
+        return view('investigacion.item', compact('investigacion','evento','sinergia','indicio'));
+    }
+
+    public function edit($Codigo, $id, $idE, $idS, $idI){
+        $investigacion = Investigacion::where('id', $id)->first();
+        $evento = Evento::where('id', $idE)->first();
+        $sinergia = Sinergia::where('id', $idS)->first();
+        $indicio = Indicio::where('id', $idI)->first();
+        $item = Item::where('id', $Codigo)->first();
+
+        return view('investigacion.itemedit', compact('investigacion','evento','sinergia','indicio','item'));
+    }
+
+    public function update(Request $request){
+        $investigacion = Investigacion::where('id', $request->InvID)->first();
+        $evento = Evento::where('id', $request->EveID)->first();
+        $sinergia = Sinergia::where('id', $request->SinID)->first();
+        $indicio = Indicio::where('id', $request->IndID)->first();  
+        $item = Item::where('id', $request->id)->first();  
+        $parametro = DB::table('parametro')->where('id', $item->fk_parametro)->first();
+
+        if($parametro->nivel != $request->itemNivel || $parametro->categoria != $request->parametro){
+            $parametro = DB::table('parametro')->insert([
+                'id' => DB::table('parametro')->max('id')+1,
+                'nivel' => $request->itemNivel,
+                'descripcion' => $request->item,
+                'categoria' => $request->parametro
+            ]);
+        }
+        $item->fill([
+            'fk_parametro' => $parametro->id,
+            'descripcion' => $request->item
+        ])->update();
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Modificación de item '.$item->id.'.'
         ]);
 
         return view('investigacion.item', compact('investigacion','evento','sinergia','indicio'));
@@ -102,7 +143,7 @@ class ItemController extends Controller
         ->addColumn('parametros_url', function($item) {
             return route('item_details.data', $item->id);
         })->addColumn('action', function ($item) use($id, $eid, $sid, $iid) {
-            return '<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
+            return '<a href="/item/modificar/'.$item.'/'.$id.'/'.$eid.'/'.$sid.'/'.$iid.'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
                 <a href="/item/eliminar/'.$item.'/'.$id.'/'.$eid.'/'.$sid.'/'.$iid.'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
         })
         ->make(true);

@@ -8,6 +8,7 @@ use DB;
 use Session;
 use Datatables;
 use App\Investigacion;
+use App\U_Informacion;
 use App\Pregunta;
 use App\Audit;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,7 @@ class ContextoController extends Controller
 
     public function store(Request $request){ 
         $investigacion = Investigacion::where('id', $request->InvID)->first();
+        $pregunta = Pregunta::where('fk_investigacion', $investigacion->id)->first();
 
         $uiGenerica = U_Informacion::where('cita', $investigacion->tema)
         ->where('nivel', 'Genérica')
@@ -31,7 +33,7 @@ class ContextoController extends Controller
         if(is_null($uiGenerica)){
             $uiGenerica = U_Informacion::create([
                 'id' => (U_Informacion::max('id'))+1,
-                'cita' => $investigacion->$tema,
+                'cita' => $investigacion->tema,
                 'nivel' => 'Genérica',
                 'fk_pregunta' => $pregunta->id
             ]);
@@ -52,6 +54,45 @@ class ContextoController extends Controller
             'id' => Audit::max('id')+1,
             'fk_usuario' => Auth::user()->id,
             'descripcion' => 'Creación de contexto '.Contexto::max('id').'.'
+        ]);
+
+        return view('investigacion.contexto', compact('investigacion'));
+    }
+
+    public function edit($Codigo, $id){ 
+        $investigacion = Investigacion::where('id', $id)->first();
+        $contexto = Contexto::where('id', $Codigo)->first();
+
+        return view('investigacion.contextoedit', compact('investigacion','contexto'));
+    }
+
+    public function update(Request $request){ 
+        $investigacion = Investigacion::where('id', $request->InvID)->first();
+        $pregunta = Pregunta::where('fk_investigacion', $investigacion->id)->first();
+        $contexto = Contexto::where('id', $request->id)->first();
+
+        $uiGenerica = U_Informacion::where('cita', $investigacion->tema)
+        ->where('nivel', 'Genérica')
+        ->first();
+        //Se crea una Unidad de Informacion generica si no existe
+        if(is_null($uiGenerica)){
+            $uiGenerica = U_Informacion::create([
+                'id' => (U_Informacion::max('id'))+1,
+                'cita' => $investigacion->tema,
+                'nivel' => 'Genérica',
+                'fk_pregunta' => $pregunta->id
+            ]);
+        }
+
+        $contexto->fill([
+            'contexto' => $request->contexto
+        ])->update();
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Modificación de contexto '.Contexto::max('id').'.'
         ]);
 
         return view('investigacion.contexto', compact('investigacion'));
@@ -94,8 +135,8 @@ class ContextoController extends Controller
 
         return Datatables::of($contextos)
         ->addColumn('action', function ($contexto) use ($id){
-            return '<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
-            <a href="/contexto/eliminar/'.$contexto.'/'.$id.'" class="btn btn-danger btn-xs"><i class="fa fa-times"></i>Eliminar</a>';
+            return '<a href="/contexto/modificar/'.$contexto->id.'/'.$id.'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
+            <a href="/contexto/eliminar/'.$contexto->id.'/'.$id.'" class="btn btn-danger btn-xs"><i class="fa fa-times"></i>Eliminar</a>';
         })
         ->make(true);
     }

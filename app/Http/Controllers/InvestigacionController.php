@@ -48,13 +48,13 @@ class InvestigacionController extends Controller
         //Llenado de la investigacion
         $data = Temporalidad::create([
             'id' => (Temporalidad::max('id'))+1,
-            'fecha_inicio' => $request->$temp_inicio,
-            'fecha_fin' => $request->$temp_fin
+            'fecha_inicio' => $request->temp_inicio,
+            'fecha_fin' => $request->temp_fin
         ]);
 
         $pregunta = Pregunta::create([
             'id' => (Pregunta::max('id'))+1,
-            'pregunta' => $request->$pregunta,
+            'pregunta' => $request->pregunta,
             'fk_investigacion' => $investigacion->id,
             'fk_tipo_investigacion' => $request->tipoInvestigacion,
             'fk_modalidad' => 1,
@@ -65,7 +65,7 @@ class InvestigacionController extends Controller
 
         $ui = U_Informacion::create([
             'id' => (U_Informacion::max('id'))+1,
-            'cita' => $request->$tema,
+            'cita' => $request->tema,
             'nivel' => 'Genérica',
             'fk_pregunta' => $pregunta->id
         ]);
@@ -82,7 +82,7 @@ class InvestigacionController extends Controller
 
         $data = Contexto::create([
             'id' => (Contexto::max('id'))+1,
-            'contexto' => $request->$contexto
+            'contexto' => $request->contexto
         ]);
         DB::table('contexto_ui')->insert([
             'id' => DB::table('contexto_ui')->max('id')+1,
@@ -92,8 +92,8 @@ class InvestigacionController extends Controller
 
         $data = Evento::create([
             'id' => (Evento::max('id'))+1,
-            'nombre' => $request->$evento,
-            'tipo' => $request->$tipoEvento
+            'nombre' => $request->evento,
+            'tipo' => $request->tipoEvento
         ]);
         DB::table('evento_ui')->insert([
             'id' => DB::table('evento_ui')->max('id')+1,
@@ -113,6 +113,44 @@ class InvestigacionController extends Controller
         return view("welcome", compact('data', 'pregunta', 'ui'));
     }
 
+    public function edit($Codigo){
+        $investigacion = Investigacion::where('id', $Codigo)->first(); 
+        $pregunta = Pregunta::where('fk_investigacion', $investigacion->id)->first();
+        $temp = Temporalidad::where('id', $pregunta->fk_temporalidad)->first();
+
+        return view('investigacion.indicioedit', compact('investigacion','pregunta','temp'));
+    }
+
+    public function update(Request $request){
+        $investigacion = Investigacion::where('id', $request->InvID)->first();
+        $pregunta = Pregunta::where('id', $request->PID)->first();
+        $temp = Temporalidad::where('id', $request->TID)->first();
+
+        $investigacion->fill([
+            'tema' => $request->tema,
+            'fecha_creacion' => Carbon::now(),
+            'disciplina' => $request->disciplina
+        ])->update();
+        $pregunta->fill([
+            'pregunta' => $request->$pregunta,
+            'fk_tipo_investigacion' => $request->tipoInvestigacion,
+            'fk_modalidad' => 1
+        ])->update();
+        $temp->fill([
+            'fecha_inicio' => $request->temp_inicio,
+            'fecha_fin' => $request->temp_fin
+        ])->update();
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Modificación de investigación '.$request->InvID.', temporalidad '.$request->TID.', pregunta '.$request->PID
+        ]);
+
+        return view('welcome');
+    }
+
     public function delete($Codigo){ 
         $investigacion = Investigacion::where('id', $Codigo)->update([
             'deleted' => TRUE
@@ -122,7 +160,7 @@ class InvestigacionController extends Controller
         Audit::create([
             'id' => Audit::max('id')+1,
             'fk_usuario' => Auth::user()->id,
-            'descripcion' => 'Eliminación de investigacion '.$Codigo.'.'
+            'descripcion' => 'Eliminación de investigación '.$Codigo.'.'
         ]);
 
         Session::flash('messagedel','Investigacion eliminada correctamente.');
@@ -153,7 +191,7 @@ class InvestigacionController extends Controller
         return Datatables::of($investigaciones)
         ->addColumn('action', function ($investigacion) {
             return '<a href="/investigacion/holograma/'.$investigacion->id.'" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>Holograma</a>
-                <a href="#" class="btn btn-info btn-xs"><i class="fa fa-journal"></i>Editar</a>
+                <a href="/investigacion/modificar/'.$investigacion->id.'" class="btn btn-info btn-xs"><i class="fa fa-journal"></i>Editar</a>
                 <a href="/investigacion/eliminar/'.$investigacion->id.'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
         })
         ->make(true);

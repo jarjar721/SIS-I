@@ -36,7 +36,8 @@ class IndicioController extends Controller
         $evento = Evento::where('id', $request->EveID)->first();
         $sinergia = Sinergia::where('id', $request->SinID)->first();
 
-        //Comprobar si no existe una sinergia del mismo nombre en dicho evento
+        //Comprobar si no existe un indicio del mismo nombre en dicho evento
+        $pregunta = Pregunta::where('fk_investigacion', $investigacion->id)->first();
         $compind = Indicio::where('nombre', $request->nombreIndicio)->first();
         if(!is_null($compind)){
             Session::flash('message','Ya existe el indicio '.$request->nombreIndicio.' en esta sinergía.');
@@ -55,6 +56,43 @@ class IndicioController extends Controller
             'id' => Audit::max('id')+1,
             'fk_usuario' => Auth::user()->id,
             'descripcion' => 'Creación de indicio '.Indicio::max('id').'.'
+        ]);
+
+        return view('investigacion.indicio', compact('investigacion', 'evento', 'sinergia'));
+    }
+
+    public function edit($Codigo, $id, $idE, $idS){
+        $investigacion = Investigacion::where('id', $id)->first();
+        $evento = Evento::where('id', $idE)->first();
+        $sinergia = Sinergia::where('id', $idS)->first();
+        $indicio = Indicio::where('id', $Codigo)->first();  
+
+        return view('investigacion.investedit', compact('investigacion', 'evento', 'sinergia','indicio'));
+    }
+
+    public function update(Request $request){
+        $investigacion = Investigacion::where('id', $request->InvID)->first();
+        $evento = Evento::where('id', $request->EveID)->first();
+        $sinergia = Sinergia::where('id', $request->SinID)->first();
+        $indicio = Indicio::where('id', $request->id)->first();  
+
+        //Comprobar si no existe un indicio del mismo nombre en dicho evento
+        $pregunta = Pregunta::where('fk_investigacion', $investigacion->id)->first();
+        $compind = Indicio::where('nombre', $request->nombreIndicio)->first();
+        if(!is_null($compind)){
+            Session::flash('message','Ya existe el indicio '.$request->nombreIndicio.' en esta sinergía.');
+            return Redirect::back()->withInput(Input::all());
+        }
+
+        $indicio->fill([
+            'nombre' => $request->nombreIndicio
+        ])->update();
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Modificación de indicio '.$indicio->id.'.'
         ]);
 
         return view('investigacion.indicio', compact('investigacion', 'evento', 'sinergia'));
@@ -94,7 +132,7 @@ class IndicioController extends Controller
         return Datatables::of($indicios)
         ->addColumn('action', function ($indicio) use($evento, $id, $sinergia) {
             return '<a href="/investigacion/'.$id.'/evento/'.$evento->id.'/sinergia/'.$sinergia->id.'/indicio/'.$indicio->id.'/item" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>Items</a>
-                <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
+                <a href="/indicio/modificar/'.$indicio->id.'/'.$id.'/'.$evento->id.'/'.$sinergia->id.'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
                 <a href="/indicio/eliminar/'.$indicio->id.'/'.$id.'/'.$evento->id.'/'.$sinergia->id.'" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>Eliminar</a>';
         })
         ->make(true);
