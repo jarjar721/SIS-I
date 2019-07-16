@@ -44,11 +44,11 @@ DROP TABLE public.pregunta;
 DROP TABLE public.temporalidad;
 DROP TABLE public.investigacion;
 DROP TABLE public.modalidad;
+DROP TABLE public.audit;
 DROP TABLE public.usuario;
 DROP TABLE public.rol_privilegio;
 DROP TABLE public.privilegio;
 DROP TABLE public.rol;
 DROP TABLE public.tipo_investigacion;
-DROP TABLE public.audit;
 
 /*DROP END*/
