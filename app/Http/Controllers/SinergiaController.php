@@ -60,6 +60,33 @@ class SinergiaController extends Controller
         return view('investigacion.sinergia', compact('investigacion', 'evento'));
     }
 
+    public function edit($Codigo, $id, $idE){ 
+        $investigacion = Investigacion::where('id', $id)->first();
+        $evento = Evento::where('id', $idE)->first();
+        $sinergia = Sinergia::where('id', $Codigo)->first();
+
+        return view('investigacion.sinergiaedit', compact('investigacion', 'evento', 'sinergia'));
+    }
+
+    public function update(Request $request){ 
+        $investigacion = Investigacion::where('id', $request->InvID)->first();
+        $evento = Evento::where('id', $request->EveID)->first();
+        $sinergia = Sinergia::where('id', $request->id)->first();
+
+        $sinergia->fill([
+            'nombre' => $request->nombreSinergia
+        ])->update();
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Modificación de sinergia '.$sinergia->id.'.'
+        ]);
+
+        return view('investigacion.sinergia', compact('investigacion', 'evento'));
+    }
+
     public function delete($Codigo, $id, $idE){ 
         $investigacion = Investigacion::where('id', $id)->first();
         $evento = Evento::where('id', $idE)->first();

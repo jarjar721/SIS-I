@@ -60,6 +60,47 @@ class JustificacionController extends Controller
         return view('investigacion.justificacion', compact('investigacion'));
     }
 
+    public function edit($Codigo, $id){ 
+        $investigacion = Investigacion::where('id', $id)->first();
+        $justificacion = Justificacion::where('id', $Codigo)->first();
+
+        return view('investigacion.justiedit', compact('investigacion','justificacion'));
+    }
+
+    public function update(Request $request){ 
+        $investigacion = Investigacion::where('id', $request->InvID)->first();
+        $pregunta = Pregunta::where('fk_investigacion', $investigacion->id)->first();
+        $justificacion = Justificacion::where('id', $request->id)->first();
+
+        $uiGenerica = U_Informacion::where('cita', $investigacion->tema)
+        ->where('nivel', 'Genérica')
+        ->first();
+        //Se crea una Unidad de Informacion generica si no existe
+        if(is_null($uiGenerica)){
+            $uiGenerica = U_Informacion::create([
+                'id' => (U_Informacion::max('id'))+1,
+                'cita' => $investigacion->tema,
+                'nivel' => 'Genérica',
+                'fk_pregunta' => $pregunta->id
+            ]);
+        }
+
+        $justificacion->fill([
+            'argumento' => $request->argumento,
+            'tipo_argumento' => $request->tipo,
+            'acerca_de' => $request->acerca_de
+        ])->update();
+
+        //Auditoria
+        Audit::create([
+            'id' => Audit::max('id')+1,
+            'fk_usuario' => Auth::user()->id,
+            'descripcion' => 'Modificación de justificación '.$justificacion->id.'.'
+        ]);
+
+        return view('investigacion.contexto', compact('investigacion'));
+    }
+
     public function delete($Codigo, $id){ 
         $investigacion = Investigacion::where('id', $id)->first();
 
@@ -95,7 +136,7 @@ class JustificacionController extends Controller
 
         return Datatables::of($justificaciones)
         ->addColumn('action', function ($justificacion) use($id) {
-            return '<a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
+            return '<a href="/justificacion/modificar/'.$justificacion.'/'.$id.'" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>Editar</a>
             <a href="/justificacion/eliminar/'.$justificacion.'/'.$id.'" class="btn btn-info btn-xs"><i class="fa fa-times"></i>Eliminar</a>';
         })
         ->make(true);
