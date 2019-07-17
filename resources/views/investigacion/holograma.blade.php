@@ -51,7 +51,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
-                <p>{{$objetivo_general->objetivo}}</p>
+                <p>@if(isset($objetivo_general->objetivo)){{$objetivo_general->objetivo}}@endif</p>
             </div>
         </div>
 

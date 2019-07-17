@@ -126,9 +126,7 @@ class InvestigacionController extends Controller
         $c_i = CalidadItem::where('fk_investigacion', $investigacion->id)->get();
         foreach($c_i as $c){
             if($c->fk_calidad_pregunta == 7 || $c->fk_calidad_pregunta == 10){
-                CalidadItem::fill([
-                    'respuesta' => true
-                ])->update();
+                $c->respuesta = true; $c->save();
             }
         }
 

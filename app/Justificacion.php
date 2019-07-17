@@ -15,7 +15,7 @@ class Justificacion extends Model
     protected $fillable = [
         'id',
         'argumento',
-        'tipo_argumento',
+        'tipo',
         'acerca_de'
     ];
 

@@ -86,7 +86,6 @@
                     <li><a href="/investigacion/unidad_estudio">Unidades de Estudio</a></li>
                     <li><a href="/investigacion/poblacion_muestra">Población y Muestra</a></li>
                     <li><a href="/investigacion/unidad_informacion">Unidades de Información</a></li>
-                    <li><a href="/investigacion/justificacion">Justificaciones</a></li>
                     <li><a href="/investigacion/">Metodología</a></li>
                     <li><a href="/investigacion/item">Instrumento de Recolección</a></li>
                   </ul>

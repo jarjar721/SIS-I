@@ -27,6 +27,7 @@ class ContextoController extends Controller
         $pregunta = Pregunta::where('fk_investigacion', $investigacion->id)->first();
 
         $uiGenerica = U_Informacion::where('cita', $investigacion->tema)
+        ->where('fk_pregunta', $pregunta->id)
         ->where('nivel', 'Genérica')
         ->first();
         //Se crea una Unidad de Informacion generica si no existe
@@ -72,6 +73,7 @@ class ContextoController extends Controller
         $contexto = Contexto::where('id', $request->id)->first();
 
         $uiGenerica = U_Informacion::where('cita', $investigacion->tema)
+        ->where('fk_pregunta', $pregunta->id)
         ->where('nivel', 'Genérica')
         ->first();
         //Se crea una Unidad de Informacion generica si no existe

@@ -31,7 +31,6 @@
                         <input type="hidden" name="InvID" value="{{old('InvID', $investigacion->id)}}">
                         <div class="row">
                         <div class="form-group">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <h4>Agregue los <b>argumentos</b> que justificaran la investigación:</h4>
                                     <textarea id="argumento" class="form-control" name="argumento"></textarea>
@@ -56,7 +55,6 @@
                                 </div>
                                 <div class="ln_solid"></div>
                             </div>
-                        </div>
                     </div>
 
                     <br>

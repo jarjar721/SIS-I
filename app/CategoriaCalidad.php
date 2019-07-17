@@ -13,6 +13,7 @@ class CategoriaCalidad extends Model
     public $timestamps=false;
 
     protected $fillable =[
+        'id',
         'nombre'
     ];
 

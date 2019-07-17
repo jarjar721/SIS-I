@@ -13,6 +13,7 @@ class CalidadPregunta extends Model
     public $timestamps=false;
 
     protected $fillable =[
+        'id',
         'pregunta',
         'fk_categoria_calidad'
     ];

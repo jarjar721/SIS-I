@@ -47,6 +47,7 @@ class EventoController extends Controller
 
         //Crear el evento
         $uiGenerica = U_Informacion::where('cita', $investigacion->tema)
+        ->where('fk_pregunta', $pregunta->id)
         ->where('nivel', 'Genérica')
         ->first();
         //Se crea una Unidad de Informacion generica si no existe
@@ -113,6 +114,7 @@ class EventoController extends Controller
 
         //Crear el evento
         $uiGenerica = U_Informacion::where('cita', $investigacion->tema)
+        ->where('fk_pregunta', $pregunta->id)
         ->where('nivel', 'Genérica')
         ->first();
         //Se crea una Unidad de Informacion generica si no existe
