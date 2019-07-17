@@ -24,7 +24,7 @@ class MAITIController extends Controller
             ])
         ->count('respuesta');
 
-        $porcentaje_calidad = number_format(($cuenta*100)/13, 2, '.', '');
+        $porcentaje_calidad = number_format(($cuenta*100)/16, 2, '.', '');
 
         return view('investigacion.MAITI', compact('investigacion', 'categoria_calidad', 'pregunta_calidad', 'calidad_item', 'porcentaje_calidad'));
     }

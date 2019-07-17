@@ -26,7 +26,7 @@
 
         <!-- Aquí se muestran los requerimientos-->
         @foreach ($categoria_calidad as $categoria)
-          @if ($categoria->id != 2 && $categoria->id != 4 && $categoria->id != 6)
+          @if ($categoria->id != 2 && $categoria->id != 6)
             <div class="row">
               <h2><b>{{ $categoria->nombre }}</b></h2>
               <div class="col-md-10">
@@ -36,7 +36,7 @@
                 <h4><b>Cumplido</b></h4>
               </div>
               @foreach ($pregunta_calidad as $pregunta)
-                @if ($pregunta->fk_categoria_calidad === $categoria->id && $pregunta->id != 9 && $pregunta->id != 12)
+                @if ($pregunta->fk_categoria_calidad === $categoria->id)
                   <div class="col-md-10">
                     <h4>{{ $pregunta->pregunta }}</h4>
                   </div>

@@ -16,6 +16,9 @@ use App\Contexto;
 use App\Investigacion;
 use App\ObjetivoEspecifico;
 use App\ObjetivoGeneral;
+use App\CalidadPregunta;
+use App\CalidadItem;
+use App\CategoriaCalidad;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Support\Facades\Auth;
@@ -109,6 +112,25 @@ class InvestigacionController extends Controller
             'fk_usuario' => Auth::user()->id,
             'descripcion' => 'Creación de investigación '.$investigacion->id.', temporalidad '.Temporalidad::max('id').', pregunta '.Pregunta::max('id').', unidad de estudio '.U_Estudio::max('id').', contexto '.Contexto::max('id').' y evento '.Evento::max('id')
         ]);
+
+        //Calidad
+        $p_c = CalidadPregunta::get();
+        foreach($p_c as $p){
+            CalidadItem::create([
+                'id' => CalidadItem::max('id')+1,
+                'respuesta' => false,
+                'fk_calidad_pregunta' => $p->id,
+                'fk_investigacion' => $investigacion->id
+            ]);
+        }
+        $c_i = CalidadItem::where('fk_investigacion', $investigacion->id)->get();
+        foreach($c_i as $c){
+            if($c->fk_calidad_pregunta == 7 || $c->fk_calidad_pregunta == 10){
+                CalidadItem::fill([
+                    'respuesta' => true
+                ])->update();
+            }
+        }
 
         //Redireccion a welcome.blade con los datos
         return view("welcome", compact('data', 'pregunta', 'ui'));
