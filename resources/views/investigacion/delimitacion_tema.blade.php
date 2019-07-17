@@ -120,6 +120,14 @@
                                                         <option value="Situación">Situación</option> 
                                                     </select>
                                                 </div> 
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <label>Clase de Evento</label> 
+                                                    <select id="claseEvento" class="form-control" name="claseEvento" required>
+                                                      <option value="" disabled selected hidden>Clase</option>
+                                                      <option value="Evento a Modificar" @if (old('claseEvento') == "Evento a Modificar") selected @endif>Evento a Modificar</option>
+                                                      <option value="Evento Causal" @if (old('claseEvento') == "Evento Causal") selected @endif>Evento Causal</option>
+                                                    </select>
+                                                  </div>
                                             </div> 
                                         </div> 
                                         <br> 

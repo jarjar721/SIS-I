@@ -72,7 +72,7 @@ class InvestigacionController extends Controller
 
         $data = U_Estudio::create([
             'id' => (U_Estudio::max('id'))+1,
-            'nombre' => $request->$unidad_estudio
+            'nombre' => $request->unidad_estudio
         ]);
         DB::table('unidad_estudio_ui')->insert([
             'id' => DB::table('unidad_estudio_ui')->max('id')+1,
@@ -97,6 +97,7 @@ class InvestigacionController extends Controller
         ]);
         DB::table('evento_ui')->insert([
             'id' => DB::table('evento_ui')->max('id')+1,
+            'clase' => $request->claseEvento,
             'fk_unidad_informacion' => $ui->id,
             'fk_evento' => $data->id
         ]);
