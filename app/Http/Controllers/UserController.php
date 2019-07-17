@@ -27,11 +27,7 @@ class UserController extends Controller
     public function __construct(){}
     
     public function lista(){
-        $users = User::leftjoin('rol','rol.id','=','usuario.fk_rol')
-        ->where('u.deleted','!=',true)
-        ->select(DB::raw('"usuario".*, "rol"."nombre" as rol'))
-        ->get();
-        return view("usuarios.lista", compact('users'));
+        return view("usuarios.lista");
     }
 
     public function instituciones(){
@@ -77,7 +73,7 @@ class UserController extends Controller
 
     public function anyData(){
         $users = User::leftjoin('rol','rol.id','=','usuario.fk_rol')
-        ->where('u.deleted','!=',true)
+        ->where('usuario.deleted','!=',true)
         ->select(DB::raw('"usuario".*, "rol"."nombre" as rol'))
         ->get();
 
