@@ -1,4 +1,4 @@
-
+/**/
 /*CREATE START*/
 
 CREATE TABLE public.audit (
