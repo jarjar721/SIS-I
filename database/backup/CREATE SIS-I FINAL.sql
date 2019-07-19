@@ -9,14 +9,14 @@ CREATE TABLE public.audit (
     fk_usuario integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.audit OWNER TO postgres;
+ALTER TABLE public.audit OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.audit_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.audit_id_seq OWNER TO postgres;
+ALTER TABLE public.audit_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.audit_id_seq OWNED BY public.audit.id;
 
 
@@ -27,14 +27,14 @@ CREATE TABLE public.evento_ui (
     fk_evento integer NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.evento_ui OWNER TO postgres;
+ALTER TABLE public.evento_ui OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.evento_ui_id_seq
     START WITH 10
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.evento_ui_id_seq OWNER TO postgres;
+ALTER TABLE public.evento_ui_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.evento_ui_id_seq OWNED BY public.evento_ui.id;
 
 
@@ -45,14 +45,14 @@ CREATE TABLE public.contexto (
     contexto character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.contexto OWNER TO postgres;
+ALTER TABLE public.contexto OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.contexto_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.contexto_id_seq OWNER TO postgres;
+ALTER TABLE public.contexto_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.contexto_id_seq OWNED BY public.contexto.id;
 
 
@@ -64,14 +64,14 @@ CREATE TABLE public.criterio_metodologico (
     fk_diseno integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.criterio_metodologico OWNER TO postgres;
+ALTER TABLE public.criterio_metodologico OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.criterio_metodologico_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.criterio_metodologico_id_seq OWNER TO postgres;
+ALTER TABLE public.criterio_metodologico_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.criterio_metodologico_id_seq OWNED BY public.criterio_metodologico.id;
 
 
@@ -82,14 +82,14 @@ CREATE TABLE public.criterio_metodologico_ui (
     fk_criterio_metodologico integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.criterio_metodologico_ui OWNER TO postgres;
+ALTER TABLE public.criterio_metodologico_ui OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.criterio_metodologico_ui_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.criterio_metodologico_ui_id_seq OWNER TO postgres;
+ALTER TABLE public.criterio_metodologico_ui_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.criterio_metodologico_ui_id_seq OWNED BY public.criterio_metodologico_ui.id;
 
 
@@ -101,14 +101,14 @@ CREATE TABLE public.diseno (
     fk_foco integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.diseno OWNER TO postgres;
+ALTER TABLE public.diseno OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.diseno_id_seq
     START WITH 65
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.diseno_id_seq OWNER TO postgres;
+ALTER TABLE public.diseno_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.diseno_id_seq OWNED BY public.diseno.id;
 
 
@@ -120,14 +120,14 @@ CREATE TABLE public.evento (
     tipo character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.evento OWNER TO postgres;
+ALTER TABLE public.evento OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.evento_id_seq
     START WITH 10
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.evento_id_seq OWNER TO postgres;
+ALTER TABLE public.evento_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.evento_id_seq OWNED BY public.evento.id;
 
 
@@ -139,14 +139,14 @@ CREATE TABLE public.foco (
     agrupacion character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.foco OWNER TO postgres;
+ALTER TABLE public.foco OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.foco_id_seq
     START WITH 3
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.foco_id_seq OWNER TO postgres;
+ALTER TABLE public.foco_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.foco_id_seq OWNED BY public.foco.id;
 
 
@@ -159,14 +159,14 @@ CREATE TABLE public.fuente (
     ambiente character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.fuente OWNER TO postgres;
+ALTER TABLE public.fuente OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.fuente_id_seq
     START WITH 3
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.fuente_id_seq OWNER TO postgres;
+ALTER TABLE public.fuente_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.fuente_id_seq OWNED BY public.fuente.id;
 
 
@@ -177,14 +177,14 @@ CREATE TABLE public.dimension (
     dimension character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.dimension OWNER TO postgres;
+ALTER TABLE public.dimension OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.dimension_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.dimension_id_seq OWNER TO postgres;
+ALTER TABLE public.dimension_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.dimension_id_seq OWNED BY public.dimension.id;
 
 
@@ -195,14 +195,14 @@ CREATE TABLE public.indicio (
     fk_sinergia integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.indicio OWNER TO postgres;
+ALTER TABLE public.indicio OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.indicio_id_seq
     START WITH 81
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.indicio_id_seq OWNER TO postgres;
+ALTER TABLE public.indicio_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.indicio_id_seq OWNED BY public.indicio.id;
 
 
@@ -213,14 +213,14 @@ CREATE TABLE public.institucion (
     nombre character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.institucion OWNER TO postgres;
+ALTER TABLE public.institucion OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.institucion_id_seq
     START WITH 7
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.institucion_id_seq OWNER TO postgres;
+ALTER TABLE public.institucion_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.institucion_id_seq OWNED BY public.institucion.id;
 
 
@@ -232,14 +232,14 @@ CREATE TABLE public.instrumento (
     fk_tecnica_recoleccion integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.instrumento OWNER TO postgres;
+ALTER TABLE public.instrumento OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.instrumento_id_seq
     START WITH 7
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.instrumento_id_seq OWNER TO postgres;
+ALTER TABLE public.instrumento_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.instrumento_id_seq OWNED BY public.instrumento.id;
 
 
@@ -250,14 +250,14 @@ CREATE TABLE public.tecnica_recoleccion (
     nombre character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.tecnica_recoleccion OWNER TO postgres;
+ALTER TABLE public.tecnica_recoleccion OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.tecnica_recoleccion_id_seq
     START WITH 6
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.tecnica_recoleccion_id_seq OWNER TO postgres;
+ALTER TABLE public.tecnica_recoleccion_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.tecnica_recoleccion_id_seq OWNED BY public.tecnica_recoleccion.id;
 
 
@@ -270,14 +270,14 @@ CREATE TABLE public.investigacion (
     fk_usuario integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.investigacion OWNER TO postgres;
+ALTER TABLE public.investigacion OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.investigacion_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.investigacion_id_seq OWNER TO postgres;
+ALTER TABLE public.investigacion_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.investigacion_id_seq OWNED BY public.investigacion.id;
 
 
@@ -292,14 +292,14 @@ CREATE TABLE public.item (
     fk_instrumento integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.item OWNER TO postgres;
+ALTER TABLE public.item OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.item_id_seq
     START WITH 98
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.item_id_seq OWNER TO postgres;
+ALTER TABLE public.item_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.item_id_seq OWNED BY public.item.id;
 
 
@@ -309,14 +309,14 @@ CREATE TABLE public.migrations (
     batch integer NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.migrations OWNER TO postgres;
+ALTER TABLE public.migrations OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.migrations_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.migrations_id_seq OWNER TO postgres;
+ALTER TABLE public.migrations_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
 
 
@@ -327,14 +327,14 @@ CREATE TABLE public.justificacion_ui (
     fk_justificacion integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.justificacion_ui OWNER TO postgres;
+ALTER TABLE public.justificacion_ui OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.justificacion_ui_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.justificacion_ui_id_seq OWNER TO postgres;
+ALTER TABLE public.justificacion_ui_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.justificacion_ui_id_seq OWNED BY public.justificacion_ui.id;
 
 
@@ -348,14 +348,14 @@ CREATE TABLE public.objetivo_general (
     fk_pregunta integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.objetivo_general OWNER TO postgres;
+ALTER TABLE public.objetivo_general OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.objetivo_general_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.objetivo_general_id_seq OWNER TO postgres;
+ALTER TABLE public.objetivo_general_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.objetivo_general_id_seq OWNED BY public.objetivo_general.id;
 
 
@@ -369,14 +369,14 @@ CREATE TABLE public.objetivo_especifico (
     fk_objetivo_general integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.objetivo_especifico OWNER TO postgres;
+ALTER TABLE public.objetivo_especifico OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.objetivo_especifico_id_seq
     START WITH 16
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.objetivo_especifico_id_seq OWNER TO postgres;
+ALTER TABLE public.objetivo_especifico_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.objetivo_especifico_id_seq OWNED BY public.objetivo_especifico.id;
 
 
@@ -389,14 +389,14 @@ CREATE TABLE public.parametro (
     nivel character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.parametro OWNER TO postgres;
+ALTER TABLE public.parametro OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.parametro_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.parametro_id_seq OWNER TO postgres;
+ALTER TABLE public.parametro_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.parametro_id_seq OWNED BY public.parametro.id;
 
 
@@ -408,7 +408,7 @@ CREATE TABLE public.password_resets (
     created_at timestamp(0) without time zone,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.password_resets OWNER TO postgres;
+ALTER TABLE public.password_resets OWNER TO jnmvtocuxclshv;
 
 
 
@@ -423,7 +423,7 @@ CREATE TABLE public.persona (
     fk_institucion integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.persona OWNER TO postgres;
+ALTER TABLE public.persona OWNER TO jnmvtocuxclshv;
 
 
 
@@ -437,14 +437,14 @@ CREATE TABLE public.pregunta (
     fk_temporalidad integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.pregunta OWNER TO postgres;
+ALTER TABLE public.pregunta OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.pregunta_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.pregunta_id_seq OWNER TO postgres;
+ALTER TABLE public.pregunta_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.pregunta_id_seq OWNED BY public.pregunta.id;
 
 
@@ -455,14 +455,14 @@ CREATE TABLE public.privilegio (
     tipo character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.privilegio OWNER TO postgres;
+ALTER TABLE public.privilegio OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.privilegio_id_seq
     START WITH 2
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.privilegio_id_seq OWNER TO postgres;
+ALTER TABLE public.privilegio_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.privilegio_id_seq OWNED BY public.privilegio.id;
 
 
@@ -473,14 +473,14 @@ CREATE TABLE public.rol (
     nombre character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.rol OWNER TO postgres;
+ALTER TABLE public.rol OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.rol_id_seq
     START WITH 6
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.rol_id_seq OWNER TO postgres;
+ALTER TABLE public.rol_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.rol_id_seq OWNED BY public.rol.id;
 
 
@@ -492,14 +492,14 @@ CREATE TABLE public.rol_privilegio (
     fk_privilegio integer NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.rol_privilegio OWNER TO postgres;
+ALTER TABLE public.rol_privilegio OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.rol_privilegio_id_seq
     START WITH 2
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.rol_privilegio_id_seq OWNER TO postgres;
+ALTER TABLE public.rol_privilegio_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.rol_privilegio_id_seq OWNED BY public.rol_privilegio.id;
 
 
@@ -511,14 +511,14 @@ CREATE TABLE public.sinergia (
     fk_evento_ui integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.sinergia OWNER TO postgres;
+ALTER TABLE public.sinergia OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.sinergia_id_seq
     START WITH 30
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.sinergia_id_seq OWNER TO postgres;
+ALTER TABLE public.sinergia_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.sinergia_id_seq OWNED BY public.sinergia.id;
 
 
@@ -530,14 +530,14 @@ CREATE TABLE public.temporalidad (
     fecha_fin date NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.temporalidad OWNER TO postgres;
+ALTER TABLE public.temporalidad OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.temporalidad_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.temporalidad_id_seq OWNER TO postgres;
+ALTER TABLE public.temporalidad_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.temporalidad_id_seq OWNED BY public.temporalidad.id;
 
 
@@ -549,14 +549,14 @@ CREATE TABLE public.tipo_investigacion (
     holotipo character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.tipo_investigacion OWNER TO postgres;
+ALTER TABLE public.tipo_investigacion OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.tipo_investigacion_id_seq
     START WITH 11
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.tipo_investigacion_id_seq OWNER TO postgres;
+ALTER TABLE public.tipo_investigacion_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.tipo_investigacion_id_seq OWNED BY public.tipo_investigacion.id;
 
 
@@ -567,14 +567,14 @@ CREATE TABLE public.unidad_estudio (
     nombre character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.unidad_estudio OWNER TO postgres;
+ALTER TABLE public.unidad_estudio OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.unidad_estudio_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.unidad_estudio_id_seq OWNER TO postgres;
+ALTER TABLE public.unidad_estudio_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.unidad_estudio_id_seq OWNED BY public.unidad_estudio.id;
 
 
@@ -587,14 +587,14 @@ CREATE TABLE public.unidad_informacion (
     fk_pregunta integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.unidad_informacion OWNER TO postgres;
+ALTER TABLE public.unidad_informacion OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.unidad_informacion_id_seq
     START WITH 79
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.unidad_informacion_id_seq OWNER TO postgres;
+ALTER TABLE public.unidad_informacion_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.unidad_informacion_id_seq OWNED BY public.unidad_informacion.id;
 
 
@@ -613,14 +613,14 @@ CREATE TABLE public.usuario (
     image character varying DEFAULT 'user.png'::character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.usuario OWNER TO postgres;
+ALTER TABLE public.usuario OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.usuario_id_seq
     START WITH 7
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.usuario_id_seq OWNER TO postgres;
+ALTER TABLE public.usuario_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.usuario_id_seq OWNED BY public.usuario.id;
 
 
@@ -631,14 +631,14 @@ CREATE TABLE public.modalidad (
     modalidad character varying,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.modalidad OWNER TO postgres;
+ALTER TABLE public.modalidad OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.modalidad_id_seq
     START WITH 2
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.modalidad_id_seq OWNER TO postgres;
+ALTER TABLE public.modalidad_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.modalidad_id_seq OWNED BY public.modalidad.id;
 
 
@@ -654,14 +654,14 @@ CREATE TABLE public.bibliografia (
     ano integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.bibliografia OWNER TO postgres;
+ALTER TABLE public.bibliografia OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.bibliografia_id_seq
     START WITH 31
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.bibliografia_id_seq OWNER TO postgres;
+ALTER TABLE public.bibliografia_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.bibliografia_id_seq OWNED BY public.bibliografia.id;
 
 
@@ -673,14 +673,14 @@ CREATE TABLE public.bibliografia_usada (
     fk_unidad_informacion integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.bibliografia_usada OWNER TO postgres;
+ALTER TABLE public.bibliografia_usada OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.bibliografia_usada_id_seq
     START WITH 67
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.bibliografia_usada_id_seq OWNER TO postgres;
+ALTER TABLE public.bibliografia_usada_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.bibliografia_usada_id_seq OWNED BY public.bibliografia_usada.id;
 
 
@@ -693,14 +693,14 @@ CREATE TABLE public.categoria (
     fk_categoria integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.categoria OWNER TO postgres;
+ALTER TABLE public.categoria OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.categoria_id_seq
     START WITH 78
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.categoria_id_seq OWNER TO postgres;
+ALTER TABLE public.categoria_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.categoria_id_seq OWNED BY public.categoria.id;
 
 
@@ -712,14 +712,14 @@ CREATE TABLE public.tecnica_analisis (
     descripcion character varying ,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.tecnica_analisis OWNER TO postgres;
+ALTER TABLE public.tecnica_analisis OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.tecnica_analisis_id_seq
     START WITH 23
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.tecnica_analisis_id_seq OWNER TO postgres;
+ALTER TABLE public.tecnica_analisis_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.tecnica_analisis_id_seq OWNED BY public.tecnica_analisis.id;
 
 
@@ -731,14 +731,14 @@ CREATE TABLE public.tecnica_analisis_aplicada (
     fk_tecnica_analisis integer ,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.tecnica_analisis_aplicada OWNER TO postgres;
+ALTER TABLE public.tecnica_analisis_aplicada OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.tecnica_analisis_aplicada_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.tecnica_analisis_aplicada_id_seq OWNER TO postgres;
+ALTER TABLE public.tecnica_analisis_aplicada_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.tecnica_analisis_aplicada_id_seq OWNED BY public.tecnica_analisis_aplicada.id;
 
 
@@ -750,14 +750,14 @@ CREATE TABLE public.unidad_estudio_ui (
     fk_unidad_informacion integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.unidad_estudio_ui OWNER TO postgres;
+ALTER TABLE public.unidad_estudio_ui OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.unidad_estudio_ui_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.unidad_estudio_ui_id_seq OWNER TO postgres;
+ALTER TABLE public.unidad_estudio_ui_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.unidad_estudio_ui_id_seq OWNED BY public.unidad_estudio_ui.id;
 
 
@@ -769,14 +769,14 @@ CREATE TABLE public.contexto_ui (
     fk_unidad_informacion integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.contexto_ui OWNER TO postgres;
+ALTER TABLE public.contexto_ui OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.contexto_ui_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.contexto_ui_id_seq OWNER TO postgres;
+ALTER TABLE public.contexto_ui_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.contexto_ui_id_seq OWNED BY public.contexto_ui.id;
 
 
@@ -787,14 +787,14 @@ CREATE TABLE public.categoria_calidad (
     nombre character varying NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.categoria_calidad OWNER TO postgres;
+ALTER TABLE public.categoria_calidad OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.categoria_calidad_id_seq
     START WITH 10
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.categoria_calidad_id_seq OWNER TO postgres;
+ALTER TABLE public.categoria_calidad_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.categoria_calidad_id_seq OWNED BY public.categoria_calidad.id;
 
 
@@ -806,14 +806,14 @@ CREATE TABLE public.calidad_pregunta (
     fk_categoria_calidad integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.calidad_pregunta OWNER TO postgres;
+ALTER TABLE public.calidad_pregunta OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.calidad_pregunta_id_seq
     START WITH 17
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.calidad_pregunta_id_seq OWNER TO postgres;
+ALTER TABLE public.calidad_pregunta_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.calidad_pregunta_id_seq OWNED BY public.calidad_pregunta.id;
 
 
@@ -826,14 +826,14 @@ CREATE TABLE public.calidad_item (
     fk_investigacion integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.calidad_item OWNER TO postgres;
+ALTER TABLE public.calidad_item OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.calidad_item_id_seq
     START WITH 65
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.calidad_item_id_seq OWNER TO postgres;
+ALTER TABLE public.calidad_item_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.calidad_item_id_seq OWNED BY public.calidad_item.id;
 
 
@@ -846,14 +846,14 @@ CREATE TABLE public.justificacion (
     acerca_de character varying,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.justificacion OWNER TO postgres;
+ALTER TABLE public.justificacion OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.justificacion_id_seq
     START WITH 30
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.justificacion_id_seq OWNER TO postgres;
+ALTER TABLE public.justificacion_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.justificacion_id_seq OWNED BY public.justificacion.id;
 
 
@@ -866,14 +866,14 @@ CREATE TABLE public.poblacion (
     fk_unidad_estudio_ui integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.poblacion OWNER TO postgres;
+ALTER TABLE public.poblacion OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.poblacion_id_seq
     START WITH 5
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.poblacion_id_seq OWNER TO postgres;
+ALTER TABLE public.poblacion_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.poblacion_id_seq OWNED BY public.poblacion.id;
 
 
@@ -886,14 +886,14 @@ CREATE TABLE public.muestra (
     fk_poblacion integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.muestra OWNER TO postgres;
+ALTER TABLE public.muestra OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.muestra_id_seq
     START WITH 12
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.muestra_id_seq OWNER TO postgres;
+ALTER TABLE public.muestra_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.muestra_id_seq OWNED BY public.muestra.id;
 
 
@@ -905,14 +905,14 @@ CREATE TABLE public.tecnica_muestreo_aplicada (
     fk_tecnica_muestreo integer,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.tecnica_muestreo_aplicada OWNER TO postgres;
+ALTER TABLE public.tecnica_muestreo_aplicada OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.tecnica_muestreo_aplicada_id_seq
     START WITH 12
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.tecnica_muestreo_aplicada_id_seq OWNER TO postgres;
+ALTER TABLE public.tecnica_muestreo_aplicada_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.tecnica_muestreo_aplicada_id_seq OWNED BY public.tecnica_muestreo_aplicada.id;
 
 
@@ -923,14 +923,14 @@ CREATE TABLE public.tecnica_muestreo (
     tecnica character varying,
     deleted boolean NOT NULL DEFAULT FALSE 
 );
-ALTER TABLE public.tecnica_muestreo OWNER TO postgres;
+ALTER TABLE public.tecnica_muestreo OWNER TO jnmvtocuxclshv;
 CREATE SEQUENCE public.tecnica_muestreo_id_seq
     START WITH 8
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-ALTER TABLE public.tecnica_muestreo_id_seq OWNER TO postgres;
+ALTER TABLE public.tecnica_muestreo_id_seq OWNER TO jnmvtocuxclshv;
 ALTER SEQUENCE public.tecnica_muestreo_id_seq OWNED BY public.tecnica_muestreo.id;
 
 /*CREATE END*/
