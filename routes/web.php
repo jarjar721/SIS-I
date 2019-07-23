@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/investigacion/delimitacion_tema', 'InvestigacionController@d_tema');
         Route::get('/investigacion/eliminar/{Codigo}', 'InvestigacionController@delete');
         Route::post('/investigacion/store', 'InvestigacionController@store');
-        Route::get('/inv', 'InvestigacionController@getInvData')->name('inv.data');        
+        Route::get('/inv', 'InvestigacionController@getInvData')->name('inv.data');
         //\Investigacion
 
         //Holograma
@@ -67,21 +67,21 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/investigacion/{id}/evento', 'EventoController@eventos');
         Route::get('/evento/eliminar/{Codigo}/{id}', 'EventoController@delete');
         Route::post('/evento/store', 'EventoController@store');
-        Route::get('/load_evento_investigacion', 'EventoController@getEventoData')->name('evento.data');             
+        Route::get('/load_evento_investigacion', 'EventoController@getEventoData')->name('evento.data');
         //\Evento
 
         //Sinergia
         Route::get('/investigacion/{idInv}/evento/{idEvento}/sinergia', 'SinergiaController@sinergias');
         Route::get('/sinergia/eliminar/{Codigo}/{id}/{idE}', 'SinergiaController@delete');
         Route::post('/sinergia/store', 'SinergiaController@store');
-        Route::get('/load_sinergia_evento', 'SinergiaController@getSinergiaData')->name('sinergia_evento.data'); 
+        Route::get('/load_sinergia_evento', 'SinergiaController@getSinergiaData')->name('sinergia_evento.data');
         //\Sinergia
 
         //Indicio
         Route::get('/investigacion/{idInv}/evento/{idEvento}/sinergia/{idSinergia}/indicio', 'IndicioController@indicios');
         Route::get('/indicio/eliminar/{Codigo}/{id}/{idE}/{idS}', 'IndicioController@delete');
         Route::post('/indicio/store', 'IndicioController@store');
-        Route::get('/load_indicio_sinergia', 'IndicioController@getIndicioData')->name('indicio_sinergia.data');        
+        Route::get('/load_indicio_sinergia', 'IndicioController@getIndicioData')->name('indicio_sinergia.data');
         //\Indicio
 
         //Item
@@ -100,14 +100,14 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/investigacion/{id}/justificacion', 'JustificacionController@inicio');
         Route::get('/justificacion/eliminar/{Codigo}/{id}', 'JustificacionController@delete');
         Route::post('/justificacion/store', 'JustificacionController@store');
-        Route::get('/load_justificacion', 'JustificacionController@getJustificacionData')->name('justificacion.data');        
+        Route::get('/load_justificacion', 'JustificacionController@getJustificacionData')->name('justificacion.data');
         //\Justificación
 
         //Contexto
         Route::get('/investigacion/{id}/contexto', 'ContextoController@inicio');
         Route::get('/contexto/eliminar/{Codigo}/{id}', 'ContextoController@delete');
         Route::post('/contexto/store', 'ContextoController@store');
-        Route::get('/load_contexto', 'ContextoController@getContextoData')->name('contexto.data');        
+        Route::get('/load_contexto', 'ContextoController@getContextoData')->name('contexto.data');
         //\Contexto
 
         //Unidad de Información
@@ -133,6 +133,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/contexto/edit', 'ContextoController@update');
         //\Modificar
 
+        //EN CONSTRUCCION
+        Route::get('/perfil', 'PerfilController@getPerfil');
+        Route::get('/editar-perfil', function () {
+            return view('usuarios.persona.editar_perfil');
+        });
+        //\EN CONSTRUCCION
+
     });
 
     //Persona (Si no se ha creado)
@@ -148,11 +155,3 @@ Route::group(['middleware' => ['auth']], function () {
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //\Login
-
-
-//EN CONSTRUCCION
-Route::get('/perfil', 'PerfilController@getPerfil');
-Route::get('/editar-perfil', function () {
-    return view('usuarios.persona.editar_perfil');
-});
-//\EN CONSTRUCCION
