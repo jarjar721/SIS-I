@@ -11,35 +11,35 @@
   <title>Sistema Administrativo de Investigaciones</title>
 
   <!-- Bootstrap -->
-  <link href="{{secure_asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Datatable -->
-  <link rel="stylesheet" type="text/css" href="{{secure_asset('DataTables-1.10.18/css/dataTables.bootstrap4.min.css')}}" />
+  <link rel="stylesheet" type="text/css" href="DataTables-1.10.18/css/dataTables.bootstrap4.min.css" />
 
   <!-- Font Awesome -->
-  <link href="{{secure_asset('font-awesome/css/all.css')}}" rel="stylesheet">
-  <script defer src="{{secure_asset('font-awesome/js/all.js')}}"></script>
+  <link href="font-awesome/css/all.css" rel="stylesheet">
+  <script defer src="font-awesome/js/all.js"></script>
 
   <!-- NProgress -->
-  <link href="{{secure_asset('nprogress/nprogress.css')}}" rel="stylesheet">
+  <link href="nprogress/nprogress.css" rel="stylesheet">
 
   <!-- iCheck -->
-  <link href="{{secure_asset('iCheck/skins/flat/green.css')}}" rel="stylesheet">
+  <link href="iCheck/skins/flat/green.css" rel="stylesheet">
 
   <!-- bootstrap-progressbar -->
-  <link href="{{secure_asset('bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
+  <link href="bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
 
   <!-- bootstrap-daterangepicker -->
-  <link href="{{secure_asset('bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+  <link href="bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
   <!-- Switchery -->
-  <link href="{{secure_asset('switchery/dist/switchery.min.css')}}" rel="stylesheet">
+  <link href="switchery/dist/switchery.min.css" rel="stylesheet">
 
   <!-- Custom Theme Style -->
   @if(Auth::user()->fk_rol == 1)
-  <link href="{{secure_asset('build/css/admin.min.css')}}" rel="stylesheet">
+  <link href="build/css/admin.min.css" rel="stylesheet">
   @else
-  <link href="{{secure_asset('build/css/custom.min.css')}}" rel="stylesheet">
+  <link href="build/css/custom.min.css" rel="stylesheet">
   @endif
   @yield('css')
 
@@ -59,8 +59,7 @@
           <!-- menu profile quick info -->
           <div class="profile clearfix">
             <div class="profile_pic">
-              <!-- <img src="{{secure_asset('images/'.Auth::user()->image)}}" alt="..." class="img-circle profile_img"> -->
-              <img src="{{asset('images/'.Auth::user()->image)}}" alt="..." class="img-circle profile_img">
+              <img src="{{secure_asset('images/'.Auth::user()->image)}}" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
               @if(Auth::user()->fk_rol == 1)
@@ -144,8 +143,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <!-- <img src="{{secure_asset('images/'.Auth::user()->image)}}" alt="">{{Auth::user()->username}} -->
-                  <img src="{{asset('images/'.Auth::user()->image)}}" alt="">{{Auth::user()->username}}
+                  <img src="{{secure_asset('images/'.Auth::user()->image)}}" alt="">{{Auth::user()->username}}
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -186,43 +184,43 @@
   </div>
 
   <!-- jQuery -->
-  <script src="{{secure_asset('jquery/dist/jquery.min.js')}}"></script>
+  <script src="jquery/dist/jquery.min.js"></script>
 
   <!-- Datatable -->
-  <script type="text/javascript" src="{{secure_asset('DataTables-1.10.18/js/jquery.dataTables.min.js')}}"></script>
-  <script type="text/javascript" src="{{secure_asset('DataTables-1.10.18/js/dataTables.bootstrap4.min.js')}}"></script>
+  <script type="text/javascript" src="DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="DataTables-1.10.18/js/dataTables.bootstrap4.min.js"></script>
 
   <!-- Bootstrap -->
-  <script src="{{secure_asset('bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
 
   <!-- FastClick -->
-  <script src="{{secure_asset('fastclick/lib/fastclick.js')}}"></script>
+  <script src="fastclick/lib/fastclick.js"></script>
 
   <!-- NProgress -->
-  <script src="{{secure_asset('nprogress/nprogress.js')}}"></script>
+  <script src="nprogress/nprogress.js"></script>
 
   <!-- Skycons -->
-  <script src="{{secure_asset('skycons/skycons.js')}}"></script>
+  <script src="skycons/skycons.js"></script>
 
   <!-- DateJS -->
-  <script src="{{secure_asset('DateJS/build/date.js')}}"></script>
+  <script src="DateJS/build/date.js"></script>
 
   <!-- bootstrap-daterangepicker -->
-  <script src="{{secure_asset('moment/min/moment.min.js')}}"></script>
-  <script src="{{secure_asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+  <script src="moment/min/moment.min.js"></script>
+  <script src="bootstrap-daterangepicker/daterangepicker.js"></script>
 
   <!-- Switchery -->
-  <script src="{{secure_asset('switchery/dist/switchery.min.js')}}"></script>
+  <script src="switchery/dist/switchery.min.js"></script>
 
   <!-- Mustache -->
-  <script type='text/javascript' src="{{secure_asset('mustache/mustache.min.js')}}"></script>
+  <script type='text/javascript' src="mustache/mustache.min.js"></script>
 
   <!-- App scripts -->
   @stack('scripts')
   @stack('js')
 
   <!-- Custom Theme Scripts -->
-  <script src="{{secure_asset('build/js/custom.min.js')}}"></script>
+  <script src="build/js/custom.min.js"></script>
 
 </body>
 
