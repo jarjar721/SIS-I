@@ -200,47 +200,35 @@
 
   <!-- jQuery -->
   <script src="{{secure_asset('jquery/dist/jquery.min.js')}}"></script>
-  <script src="{{asset('jquery/dist/jquery.min.js')}}"></script>
 
   <!-- Datatable -->
   <script type="text/javascript" src="{{secure_asset('DataTables-1.10.18/js/jquery.dataTables.min.js')}}"></script>
   <script type="text/javascript" src="{{secure_asset('DataTables-1.10.18/js/dataTables.bootstrap4.min.js')}}"></script>
-  <script type="text/javascript" src="{{asset('DataTables-1.10.18/js/jquery.dataTables.min.js')}}"></script>
-  <script type="text/javascript" src="{{asset('DataTables-1.10.18/js/dataTables.bootstrap4.min.js')}}"></script>
 
   <!-- Bootstrap -->
   <script src="{{secure_asset('bootstrap/js/bootstrap.min.js')}}"></script>
-  <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 
   <!-- FastClick -->
   <script src="{{secure_asset('fastclick/lib/fastclick.js')}}"></script>
-  <script src="{{asset('fastclick/lib/fastclick.js')}}"></script>
 
   <!-- NProgress -->
   <script src="{{secure_asset('nprogress/nprogress.js')}}"></script>
-  <script src="{{asset('nprogress/nprogress.js')}}"></script>
 
   <!-- Skycons -->
   <script src="{{secure_asset('skycons/skycons.js')}}"></script>
-  <script src="{{asset('skycons/skycons.js')}}"></script>
 
   <!-- DateJS -->
   <script src="{{secure_asset('DateJS/build/date.js')}}"></script>
-  <script src="{{asset('DateJS/build/date.js')}}"></script>
 
   <!-- bootstrap-daterangepicker -->
   <script src="{{secure_asset('moment/min/moment.min.js')}}"></script>
   <script src="{{secure_asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
-  <script src="{{asset('moment/min/moment.min.js')}}"></script>
-  <script src="{{asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 
   <!-- Switchery -->
   <script src="{{secure_asset('switchery/dist/switchery.min.js')}}"></script>
-  <script src="{{asset('switchery/dist/switchery.min.js')}}"></script>
 
   <!-- Mustache -->
   <script type='text/javascript' src="{{secure_asset('mustache/mustache.min.js')}}"></script>
-  <script type='text/javascript' src="{{asset('mustache/mustache.min.js')}}"></script>
 
   <!-- App scripts -->
   @stack('scripts')
@@ -248,7 +236,6 @@
 
   <!-- Custom Theme Scripts -->
   <script src="{{secure_asset('build/js/custom.min.js')}}"></script>
-  <script src="{{asset('build/js/custom.min.js')}}"></script>
 
 </body>
 
