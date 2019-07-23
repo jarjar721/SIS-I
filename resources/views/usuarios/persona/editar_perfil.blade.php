@@ -1,4 +1,5 @@
 @extends('layouts.gentemplate')
+
 @section('Content')
 
 <div class="">

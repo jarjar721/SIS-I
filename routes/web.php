@@ -151,6 +151,8 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
 //EN CONSTRUCCION
-
 Route::get('/perfil', 'PerfilController@getPerfil');
+Route::get('/editar-perfil', function () {
+    return view('usuarios.persona.editar_perfil');
+});
 //\EN CONSTRUCCION

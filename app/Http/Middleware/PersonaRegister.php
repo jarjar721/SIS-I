@@ -17,9 +17,9 @@ class PersonaRegister
      */
     public function handle($request, Closure $next)
     {
-        $p = Persona::where('fk_usuario', Auth::user()->id)->first();
+        $persona = Persona::where('fk_usuario', Auth::user()->id)->first();
 
-        if (is_null($p)) {
+        if (is_null($persona)) {
             return redirect('/usuario/persona');
         }
 

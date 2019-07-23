@@ -28,7 +28,7 @@
   <link href="{{secure_asset('switchery/dist/switchery.min.css')}}" rel="stylesheet">
   <!-- Datatable -->
   <link rel="stylesheet" type="text/css" href="{{secure_asset('DataTables-1.10.18/css/dataTables.bootstrap4.min.css')}}" />
-  
+
   <!-- Custom Theme Style -->
   @if(Auth::user()->fk_rol == 1)
   <link href="{{secure_asset('build/css/admin.min.css')}}" rel="stylesheet">
@@ -141,6 +141,11 @@
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li>
+                    <a href="editar-perfil">
+                      <span>Editar perfil</span>
+                    </a>
+                  </li>
                   <li>
                     <a href="usuario/persona">
                       <span>Configuraciones</span>
