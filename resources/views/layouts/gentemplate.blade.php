@@ -11,29 +11,29 @@
   <title>Sistema Administrativo de Investigaciones</title>
 
   <!-- Bootstrap -->
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{secure_asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <!-- Font Awesome -->
-  <link href="font-awesome/css/all.css" rel="stylesheet">
-  <script defer src="font-awesome/js/all.js"></script>
+  <link href="{{secure_asset('font-awesome/css/all.css')}}" rel="stylesheet">
+  <script defer src="{{secure_asset('font-awesome/js/all.js')}}"></script>
   <!-- NProgress -->
-  <link href="nprogress/nprogress.css" rel="stylesheet">
+  <link href="{{secure_asset('nprogress/nprogress.css')}}" rel="stylesheet">
 
   <!-- iCheck -->
-  <link href="iCheck/skins/flat/green.css" rel="stylesheet">
+  <link href="{{secure_asset('iCheck/skins/flat/green.css')}}" rel="stylesheet">
   <!-- bootstrap-progressbar -->
-  <link href="bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+  <link href="{{secure_asset('bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
   <!-- bootstrap-daterangepicker -->
-  <link href="bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+  <link href="{{secure_asset('bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
   <!-- Switchery -->
-  <link href="switchery/dist/switchery.min.css" rel="stylesheet">
+  <link href="{{secure_asset('switchery/dist/switchery.min.css')}}" rel="stylesheet">
   <!-- Datatable -->
-  <link rel="stylesheet" type="text/css" href="DataTables-1.10.18/css/dataTables.bootstrap4.min.css" />
+  <link rel="stylesheet" type="text/css" href="{{secure_asset('DataTables-1.10.18/css/dataTables.bootstrap4.min.css')}}" />
   
   <!-- Custom Theme Style -->
   @if(Auth::user()->fk_rol == 1)
-  <link href="build/css/admin.min.css" rel="stylesheet">
+  <link href="{{secure_asset('build/css/admin.min.css')}}" rel="stylesheet">
   @else
-  <link href="build/css/custom.min.css" rel="stylesheet">
+  <link href="{{secure_asset('build/css/custom.min.css')}}" rel="stylesheet">
   @endif
   @yield('css')
 
@@ -178,28 +178,28 @@
   </div>
 
   <!-- jQuery -->
-  <script src="jquery/dist/jquery.min.js"></script>
+  <script src="{{secure_asset('jquery/dist/jquery.min.js')}}"></script>
   <!-- Bootstrap -->
-  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="{{secure_asset('bootstrap/js/bootstrap.min.js')}}"></script>
   <!-- FastClick -->
-  <script src="fastclick/lib/fastclick.js"></script>
+  <script src="{{secure_asset('fastclick/lib/fastclick.js')}}"></script>
   <!-- NProgress -->
-  <script src="nprogress/nprogress.js"></script>
+  <script src="{{secure_asset('nprogress/nprogress.js')}}"></script>
   <!-- Skycons -->
-  <script src="skycons/skycons.js"></script>
+  <script src="{{secure_asset('skycons/skycons.js')}}"></script>
 
   <!-- DateJS -->
-  <script src="DateJS/build/date.js"></script>
+  <script src="{{secure_asset('DateJS/build/date.js')}}"></script>
   <!-- bootstrap-daterangepicker -->
-  <script src="moment/min/moment.min.js"></script>
-  <script src="bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script src="{{secure_asset('moment/min/moment.min.js')}}"></script>
+  <script src="{{secure_asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
   <!-- Switchery -->
-  <script src="switchery/dist/switchery.min.js"></script>
+  <script src="{{secure_asset('switchery/dist/switchery.min.js')}}"></script>
   <!-- Mustache -->
-  <script type='text/javascript' src="mustache/mustache.min.js"></script>
+  <script type='text/javascript' src="{{secure_asset('mustache/mustache.min.js')}}"></script>
 
   <!-- Custom Theme Scripts -->
-  <script src="build/js/custom.min.js"></script>
+  <script src="{{secure_asset('build/js/custom.min.js')}}"></script>
 
   <!-- App scripts -->
   @stack('js')

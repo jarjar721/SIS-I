@@ -11,15 +11,15 @@
     <title>Sistema Administrativo de Investigaciones</title>
 
     <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{secure_asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!-- NProgress -->
-    <link href="nprogress/nprogress.css" rel="stylesheet">
+    <link href="{{secure_asset('nprogress/nprogress.css')}}" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="animate.css/animate.min.css" rel="stylesheet">
+    <link href="{{secure_asset('animate.css/animate.min.css')}}" rel="stylesheet">
     <!-- Custom Theme Style -->
-    <link href="build/css/custom.min.css" rel="stylesheet">
+    <link href="{{secure_asset('build/css/custom.min.css')}}" rel="stylesheet">
 </head>
 
 <body class="login">
