@@ -12,47 +12,34 @@
 
   <!-- Bootstrap -->
   <link href="{{secure_asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
   <!-- Datatable -->
   <link rel="stylesheet" type="text/css" href="{{secure_asset('DataTables-1.10.18/css/dataTables.bootstrap4.min.css')}}" />
-  <link rel="stylesheet" type="text/css" href="{{asset('DataTables-1.10.18/css/dataTables.bootstrap4.min.css')}}" />
 
   <!-- Font Awesome -->
   <link href="{{secure_asset('font-awesome/css/all.css')}}" rel="stylesheet">
-  <link href="{{asset('font-awesome/css/all.css')}}" rel="stylesheet">
   <script defer src="{{secure_asset('font-awesome/js/all.js')}}"></script>
-  <script defer src="{{asset('font-awesome/js/all.js')}}"></script>
 
   <!-- NProgress -->
   <link href="{{secure_asset('nprogress/nprogress.css')}}" rel="stylesheet">
-  <link href="{{asset('nprogress/nprogress.css')}}" rel="stylesheet">
 
   <!-- iCheck -->
   <link href="{{secure_asset('iCheck/skins/flat/green.css')}}" rel="stylesheet">
-  <link href="{{asset('iCheck/skins/flat/green.css')}}" rel="stylesheet">
 
   <!-- bootstrap-progressbar -->
   <link href="{{secure_asset('bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
-  <link href="{{asset('bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
 
   <!-- bootstrap-daterangepicker -->
   <link href="{{secure_asset('bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
-  <link href="{{asset('bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
 
   <!-- Switchery -->
   <link href="{{secure_asset('switchery/dist/switchery.min.css')}}" rel="stylesheet">
-  <link href="{{asset('switchery/dist/switchery.min.css')}}" rel="stylesheet">
-
-
 
   <!-- Custom Theme Style -->
   @if(Auth::user()->fk_rol == 1)
   <link href="{{secure_asset('build/css/admin.min.css')}}" rel="stylesheet">
-  <link href="{{asset('build/css/admin.min.css')}}" rel="stylesheet">
   @else
   <link href="{{secure_asset('build/css/custom.min.css')}}" rel="stylesheet">
-  <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
   @endif
   @yield('css')
 
