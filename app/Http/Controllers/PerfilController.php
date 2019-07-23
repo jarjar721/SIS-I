@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Persona;
+use App\Investigacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
