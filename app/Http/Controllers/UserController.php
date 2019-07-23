@@ -92,7 +92,7 @@ class UserController extends Controller
         ->first();
         $rols = Rol::select()->orderBy('id', 'asc')->get();
 
-        return view("usuarios.invconf", compact('validated', 'rols'));
+        return view("usuarios.editar_perfil", compact('validated', 'rols'));
     }
 
     public function imageUploadPost(){

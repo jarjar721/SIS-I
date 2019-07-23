@@ -22,7 +22,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         //Dashboard del usuario
         Route::get('/dashboard', function () {
-            return view('usuarios.dashboard');
+            return view('welcome');
         });
         //\Dashboard del usuario
 
@@ -137,7 +137,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Persona (Si no se ha creado)
     Route::get('/usuario/persona', function () {
-        return view('usuarios.persona.crear');
+        return view('usuarios.persona.configuracion');
     });
     Route::post('/usuario/persona/store', 'UserController@crear');
     //\Persona
@@ -148,3 +148,9 @@ Route::group(['middleware' => ['auth']], function () {
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //\Login
+
+
+//EN CONSTRUCCION
+
+Route::get('/perfil', 'PerfilController@getPerfil');
+//\EN CONSTRUCCION

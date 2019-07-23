@@ -12,28 +12,47 @@
 
   <!-- Bootstrap -->
   <link href="{{secure_asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
   <!-- Datatable -->
   <link rel="stylesheet" type="text/css" href="{{secure_asset('DataTables-1.10.18/css/dataTables.bootstrap4.min.css')}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset('DataTables-1.10.18/css/dataTables.bootstrap4.min.css')}}" />
+
   <!-- Font Awesome -->
   <link href="{{secure_asset('font-awesome/css/all.css')}}" rel="stylesheet">
+  <link href="{{asset('font-awesome/css/all.css')}}" rel="stylesheet">
   <script defer src="{{secure_asset('font-awesome/js/all.js')}}"></script>
+  <script defer src="{{asset('font-awesome/js/all.js')}}"></script>
+
   <!-- NProgress -->
   <link href="{{secure_asset('nprogress/nprogress.css')}}" rel="stylesheet">
+  <link href="{{asset('nprogress/nprogress.css')}}" rel="stylesheet">
+
   <!-- iCheck -->
   <link href="{{secure_asset('iCheck/skins/flat/green.css')}}" rel="stylesheet">
+  <link href="{{asset('iCheck/skins/flat/green.css')}}" rel="stylesheet">
+
   <!-- bootstrap-progressbar -->
   <link href="{{secure_asset('bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
+  <link href="{{asset('bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
+
   <!-- bootstrap-daterangepicker -->
   <link href="{{secure_asset('bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+  <link href="{{asset('bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+
   <!-- Switchery -->
   <link href="{{secure_asset('switchery/dist/switchery.min.css')}}" rel="stylesheet">
+  <link href="{{asset('switchery/dist/switchery.min.css')}}" rel="stylesheet">
+
 
 
   <!-- Custom Theme Style -->
   @if(Auth::user()->fk_rol == 1)
   <link href="{{secure_asset('build/css/admin.min.css')}}" rel="stylesheet">
+  <link href="{{asset('build/css/admin.min.css')}}" rel="stylesheet">
   @else
   <link href="{{secure_asset('build/css/custom.min.css')}}" rel="stylesheet">
+  <link href="{{asset('build/css/custom.min.css')}}" rel="stylesheet">
   @endif
   @yield('css')
 
@@ -45,7 +64,7 @@
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
           <div class="navbar nav_title" style="border: 0;">
-            <a href="/" class="site_title"><i class="fas fa-pen-alt"></i> <span>Investigaciones UCAB</span></a>
+            <a href="/dashboard" class="site_title"><i class="fas fa-pen-alt"></i> <span>Investigaciones UCAB</span></a>
           </div>
 
           <div class="clearfix"></div>
@@ -53,7 +72,8 @@
           <!-- menu profile quick info -->
           <div class="profile clearfix">
             <div class="profile_pic">
-              <img src="{{secure_asset('images/'.Auth::user()->image)}}" alt="..." class="img-circle profile_img">
+              <!-- <img src="{{secure_asset('images/'.Auth::user()->image)}}" alt="..." class="img-circle profile_img"> -->
+              <img src="{{asset('images/'.Auth::user()->image)}}" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
               @if(Auth::user()->fk_rol == 1)
@@ -75,8 +95,7 @@
               <ul class="nav side-menu">
                 <li><a><i class="fas fa-list"></i> Usuarios <span class="fas fa-chevron-down" style="float:right"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="/usuario">Lista de Usuarios</a></li>
+                    <li><a href="/usuario">Lista de usuarios</a></li>
                     <li><a href="/rol">Roles</a></li>
                   </ul>
                 </li>
@@ -97,13 +116,13 @@
                     <li><a href="/investigacion/{{$investigacion->id}}/justificacion">Justificación</a></li>
                     <li><a href="/investigacion/{{$investigacion->id}}/contexto">Contexto</a></li>
                     @if(isset($evento->id))
-                      <li><a href="/investigacion/{{$investigacion->id}}/evento/'{{$evento->id}}/sinergia">Sinergias</a></li>
-                      @if(isset($sinergia->id))
-                        <li><a href="/investigacion/{{$investigacion->id}}/evento/{{$evento->id}}/sinergia/{{$sinergia->id}}/indicio">Indicios</a></li>
-                        @if(isset($indicio->id))
-                          <li><a href="/investigacion/{{$investigacion->id}}/evento/{{$evento->id}}/sinergia/{{$sinergia->id}}/indicio/{{$indicio->id}}/item">Items</a></li>
-                        @endif
-                      @endif
+                    <li><a href="/investigacion/{{$investigacion->id}}/evento/'{{$evento->id}}/sinergia">Sinergias</a></li>
+                    @if(isset($sinergia->id))
+                    <li><a href="/investigacion/{{$investigacion->id}}/evento/{{$evento->id}}/sinergia/{{$sinergia->id}}/indicio">Indicios</a></li>
+                    @if(isset($indicio->id))
+                    <li><a href="/investigacion/{{$investigacion->id}}/evento/{{$evento->id}}/sinergia/{{$sinergia->id}}/indicio/{{$indicio->id}}/item">Items</a></li>
+                    @endif
+                    @endif
                     @endif
                   </ul>
                 </li>
@@ -111,10 +130,10 @@
                 <li><a><i class="fas fa-chart-bar"></i> Reportes <span class="fas fa-chevron-down" style="float:right"></span></a>
                   <ul class="nav child_menu">
                     @if(Auth::user()->fk_rol == 1)
-                      <li><a href="/audit">Auditoria</a></li>
+                    <li><a href="/audit">Auditoria</a></li>
                     @endif
                     @if(isset($investigacion->id))
-                      <li><a href="/investigacion/MAITI/{{$investigacion->id}}">MAITI</a></li>
+                    <li><a href="/investigacion/MAITI/{{$investigacion->id}}">MAITI</a></li>
                     @endif
                   </ul>
                 </li>
@@ -138,16 +157,21 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <img src="{{secure_asset('images/'.Auth::user()->image)}}" alt="">{{Auth::user()->username}}
+                  <!-- <img src="{{secure_asset('images/'.Auth::user()->image)}}" alt="">{{Auth::user()->username}} -->
+                  <img src="{{asset('images/'.Auth::user()->image)}}" alt="">{{Auth::user()->username}}
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
                   <li>
-                    <a href="javascript:;">
-                      <span>Settings</span>
+                    <a href="usuario/persona">
+                      <span>Configuraciones</span>
                     </a>
                   </li>
-                  <li><a href="logout"><i class="fas fa-sign-out-alt pull-right"></i> Log Out</a></li>
+                  <li>
+                    <a href="logout">
+                      <i class="fas fa-sign-out-alt pull-right"></i> Log out
+                    </a>
+                  </li>
                 </ul>
               </li>
 
@@ -161,7 +185,7 @@
       <div class="right_col" role="main">
         @yield('Content')
       </div>
-      <!-- page content -->
+      <!-- /page content -->
 
       <!-- footer content -->
       <footer>
@@ -176,26 +200,47 @@
 
   <!-- jQuery -->
   <script src="{{secure_asset('jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{asset('jquery/dist/jquery.min.js')}}"></script>
+
   <!-- Datatable -->
   <script type="text/javascript" src="{{secure_asset('DataTables-1.10.18/js/jquery.dataTables.min.js')}}"></script>
   <script type="text/javascript" src="{{secure_asset('DataTables-1.10.18/js/dataTables.bootstrap4.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('DataTables-1.10.18/js/jquery.dataTables.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('DataTables-1.10.18/js/dataTables.bootstrap4.min.js')}}"></script>
+
   <!-- Bootstrap -->
   <script src="{{secure_asset('bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
+
   <!-- FastClick -->
   <script src="{{secure_asset('fastclick/lib/fastclick.js')}}"></script>
+  <script src="{{asset('fastclick/lib/fastclick.js')}}"></script>
+
   <!-- NProgress -->
   <script src="{{secure_asset('nprogress/nprogress.js')}}"></script>
+  <script src="{{asset('nprogress/nprogress.js')}}"></script>
+
   <!-- Skycons -->
   <script src="{{secure_asset('skycons/skycons.js')}}"></script>
+  <script src="{{asset('skycons/skycons.js')}}"></script>
+
   <!-- DateJS -->
   <script src="{{secure_asset('DateJS/build/date.js')}}"></script>
+  <script src="{{asset('DateJS/build/date.js')}}"></script>
+
   <!-- bootstrap-daterangepicker -->
   <script src="{{secure_asset('moment/min/moment.min.js')}}"></script>
   <script src="{{secure_asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+  <script src="{{asset('moment/min/moment.min.js')}}"></script>
+  <script src="{{asset('bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+
   <!-- Switchery -->
   <script src="{{secure_asset('switchery/dist/switchery.min.js')}}"></script>
+  <script src="{{asset('switchery/dist/switchery.min.js')}}"></script>
+
   <!-- Mustache -->
   <script type='text/javascript' src="{{secure_asset('mustache/mustache.min.js')}}"></script>
+  <script type='text/javascript' src="{{asset('mustache/mustache.min.js')}}"></script>
 
   <!-- App scripts -->
   @stack('scripts')
@@ -203,6 +248,7 @@
 
   <!-- Custom Theme Scripts -->
   <script src="{{secure_asset('build/js/custom.min.js')}}"></script>
+  <script src="{{asset('build/js/custom.min.js')}}"></script>
 
 </body>
 

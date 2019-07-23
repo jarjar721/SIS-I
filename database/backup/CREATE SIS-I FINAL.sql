@@ -419,6 +419,8 @@ CREATE TABLE public.persona (
     nombre_2 character varying,
     apellido character varying NOT NULL,
     apellido_2 character varying,
+    ocupacion character varying,
+    telefono numeric,
     fk_usuario integer,
     fk_institucion integer,
     deleted boolean NOT NULL DEFAULT FALSE 

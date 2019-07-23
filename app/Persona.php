@@ -19,7 +19,9 @@ class Persona extends Model
         'nombre_2',
         'apellido_2',
         'fk_usuario',
-        'fk_institucion'
+        'fk_institucion',
+        'ocupacion',
+        'telefono'
     ];
 
     protected $guarded =[

@@ -64,7 +64,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $u = User::create([
+        $user = User::create([
             'id' => User::max('id')+1,
             'username' => $data['username'],
             'email' => $data['email'],
@@ -75,10 +75,10 @@ class RegisterController extends Controller
         //Auditoria
         Audit::create([
             'id' => Audit::max('id')+1,
-            'fk_usuario' => $u->id,
-            'descripcion' => 'Creación de usuario '.$u->id.'.'
+            'fk_usuario' => $user->id,
+            'descripcion' => 'Creación de usuario '.$user->id.'.'
         ]);
 
-        return $u;
+        return $user;
     }
 }
