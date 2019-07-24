@@ -28,9 +28,6 @@
                 <input id="apellido" type="text" class="form-control" name="apellido" placeholder="Apellido" value="{{ old('apellido') }}" required autocomplete="apellido" />
               </div>
               <div>
-                <input id="apellido2" type="text" class="form-control" name="apellido2" placeholder="Segundo apellido (Opcional)" value="{{ old('apellido2') }}" autocomplete="apellido2" />
-              </div>
-              <div>
                 <input id="institucion" type="text" class="form-control" name="institucion" value="{{ old('institucion') }}" placeholder="Institución (Opcional)" autocomplete="institucion" />
               </div>
               <div>

@@ -31,7 +31,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/audit_load', 'UserController@audit_load')->name('audit.data');
         Route::get('/usuario', 'UserController@lista');
         Route::get('/usuario/modificar/{Codigo}', 'UserController@edit');
-        Route::post('/usuario/update', 'UserController@actualizar');
         Route::get('/usuario/eliminar/{Codigo}', 'UserController@delete');
         Route::get('/users', 'UserController@anyData')->name('user.data');
         Route::post('image-upload', 'UserController@imageUploadPost')->name('image.upload.post');
@@ -135,16 +134,15 @@ Route::group(['middleware' => ['auth']], function () {
 
         //EN CONSTRUCCION
         Route::get('/perfil', 'PerfilController@getPerfil');
-        Route::get('/editar-perfil', function () {
-            return view('usuarios.persona.editar_perfil');
-        });
+        Route::get('/configuraciones', 'PerfilController@loadConfiguraciones');
+        Route::post('/configuraciones/update', 'UserController@updateConfiguraciones');
         //\EN CONSTRUCCION
 
     });
 
     //Persona (Si no se ha creado)
     Route::get('/usuario/persona', function () {
-        return view('usuarios.persona.configuracion');
+        return view('usuarios.persona.crear');
     });
     Route::post('/usuario/persona/store', 'UserController@crear');
     //\Persona

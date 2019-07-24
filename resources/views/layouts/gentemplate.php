@@ -142,12 +142,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
                   <li>
-                    <a href="editar-perfil">
-                      <span>Editar perfil</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="usuario/persona">
+                    <a href="configuraciones">
                       <span>Configuraciones</span>
                     </a>
                   </li>

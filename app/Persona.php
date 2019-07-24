@@ -17,7 +17,6 @@ class Persona extends Model
         'nombre',
         'apellido',
         'nombre_2',
-        'apellido_2',
         'fk_usuario',
         'fk_institucion',
         'ocupacion',
