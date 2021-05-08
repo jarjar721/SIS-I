@@ -24,7 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "handlebars": "^4.1.2",
+        "handlebars": "^4.7.7",
         "mustache": "^3.0.1"
     }
 }
